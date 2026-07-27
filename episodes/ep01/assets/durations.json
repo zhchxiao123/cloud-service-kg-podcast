@@ -1,0 +1,522 @@
+[
+  {
+    "index": 0,
+    "turn_index": 0,
+    "role": "host",
+    "duration": 4.0,
+    "start": 0.0,
+    "slide": 1,
+    "sentence_index": 0,
+    "text": "大家好，欢迎来到《本体工程与知识图谱实战》第一集。"
+  },
+  {
+    "index": 1,
+    "turn_index": 0,
+    "role": "host",
+    "duration": 5.256,
+    "start": 4.0,
+    "slide": 1,
+    "sentence_index": 1,
+    "text": "很多朋友听过知识图谱、GraphRAG、数据编织，但一说到「本体」就懵了。"
+  },
+  {
+    "index": 2,
+    "turn_index": 0,
+    "role": "host",
+    "duration": 4.56,
+    "start": 9.256,
+    "slide": 1,
+    "sentence_index": 2,
+    "text": "今天我们不写代码，先回答一个基础问题：本体到底解决什么问题？"
+  },
+  {
+    "index": 3,
+    "turn_index": 1,
+    "role": "guest",
+    "duration": 1.84,
+    "start": 13.816,
+    "slide": 1,
+    "sentence_index": 0,
+    "text": "对，这个问题很关键。"
+  },
+  {
+    "index": 4,
+    "turn_index": 1,
+    "role": "guest",
+    "duration": 3.04,
+    "start": 15.656,
+    "slide": 1,
+    "sentence_index": 1,
+    "text": "没搞清楚痛点，工具再熟也容易用错地方。"
+  },
+  {
+    "index": 5,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 4.56,
+    "start": 18.696,
+    "slide": 2,
+    "sentence_index": 0,
+    "text": "我用三个问题串起本期内容：一个客服问题为什么会难住 AI？"
+  },
+  {
+    "index": 6,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 4.16,
+    "start": 23.256,
+    "slide": 2,
+    "sentence_index": 1,
+    "text": "数据孤岛、语义不一致、LLM 幻觉有什么联系？"
+  },
+  {
+    "index": 7,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 2.72,
+    "start": 27.416,
+    "slide": 2,
+    "sentence_index": 2,
+    "text": "为什么本体是企业 AI 落地的必修课？"
+  },
+  {
+    "index": 8,
+    "turn_index": 3,
+    "role": "host",
+    "duration": 1.52,
+    "start": 30.136,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "先看一个制造业场景。"
+  },
+  {
+    "index": 9,
+    "turn_index": 3,
+    "role": "host",
+    "duration": 2.96,
+    "start": 31.656,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "客户打电话问：「我的订单为什么延迟？"
+  },
+  {
+    "index": 10,
+    "turn_index": 3,
+    "role": "host",
+    "duration": 8.88,
+    "start": 34.616,
+    "slide": 3,
+    "sentence_index": 2,
+    "text": "」客服 AI 要同时查五个系统：ERP 的订单、MES 的工序、WMS 的库存、物流的发货记录、客服的历史工单。"
+  },
+  {
+    "index": 11,
+    "turn_index": 4,
+    "role": "guest",
+    "duration": 3.28,
+    "start": 43.496,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "更麻烦的是，每个系统对同一个东西叫法不同。"
+  },
+  {
+    "index": 12,
+    "turn_index": 4,
+    "role": "guest",
+    "duration": 4.16,
+    "start": 46.776,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "ERP 里的订单号，MES 叫生产批次，物流又叫运单号。"
+  },
+  {
+    "index": 13,
+    "turn_index": 4,
+    "role": "guest",
+    "duration": 2.32,
+    "start": 50.936,
+    "slide": 3,
+    "sentence_index": 2,
+    "text": "AI 要么答错，要么只能回答不知道。"
+  },
+  {
+    "index": 14,
+    "turn_index": 5,
+    "role": "host",
+    "duration": 3.04,
+    "start": 53.256,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "有人反驳：这不就是数据中台该干的事吗？"
+  },
+  {
+    "index": 15,
+    "turn_index": 5,
+    "role": "host",
+    "duration": 1.84,
+    "start": 56.296,
+    "slide": 4,
+    "sentence_index": 1,
+    "text": "把数据抽到一块不就行了。"
+  },
+  {
+    "index": 16,
+    "turn_index": 6,
+    "role": "guest",
+    "duration": 4.48,
+    "start": 58.136,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "数据中台解决的是存得下和查得快，但没解决讲同一个故事。"
+  },
+  {
+    "index": 17,
+    "turn_index": 6,
+    "role": "guest",
+    "duration": 4.96,
+    "start": 62.616,
+    "slide": 4,
+    "sentence_index": 1,
+    "text": "同一个人在 CRM 是联系人，在 ERP 是开票主体，在物流是收件人。"
+  },
+  {
+    "index": 18,
+    "turn_index": 6,
+    "role": "guest",
+    "duration": 3.04,
+    "start": 67.576,
+    "slide": 4,
+    "sentence_index": 2,
+    "text": "技术上同一个 ID，语义上未必是同一回事。"
+  },
+  {
+    "index": 19,
+    "turn_index": 7,
+    "role": "host",
+    "duration": 4.0,
+    "start": 70.616,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "这就是痛点一：数据孤岛不是问题，语义孤岛才是。"
+  },
+  {
+    "index": 20,
+    "turn_index": 7,
+    "role": "host",
+    "duration": 8.08,
+    "start": 74.616,
+    "slide": 4,
+    "sentence_index": 1,
+    "text": "Fluree 调研显示，56% 的企业把数据孤岛列为 AI 落地最大障碍，自认数据完全 AI-ready 的只有 7%。"
+  },
+  {
+    "index": 21,
+    "turn_index": 8,
+    "role": "host",
+    "duration": 4.24,
+    "start": 82.696,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "第二个痛点更隐蔽：同一个词，不同部门说的不是一回事。"
+  },
+  {
+    "index": 22,
+    "turn_index": 8,
+    "role": "host",
+    "duration": 5.12,
+    "start": 86.936,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "同一个人，财务叫 client、CRM 叫 customer、ERP 叫 account。"
+  },
+  {
+    "index": 23,
+    "turn_index": 9,
+    "role": "guest",
+    "duration": 8.047,
+    "start": 92.056,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "TigerGraph 有个案例，生物科技公司让大模型直接抽取临床试验概念，结果一个 Phase 3 临床试验被抽出了 17 种互不兼容的说法。"
+  },
+  {
+    "index": 24,
+    "turn_index": 9,
+    "role": "guest",
+    "duration": 3.76,
+    "start": 100.103,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "术语不统一靠业务规范只能约束人，约束不了机器。"
+  },
+  {
+    "index": 25,
+    "turn_index": 10,
+    "role": "host",
+    "duration": 2.466,
+    "start": 103.863,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "说到这，我们可以把「本体」请出来了。"
+  },
+  {
+    "index": 26,
+    "turn_index": 10,
+    "role": "host",
+    "duration": 4.72,
+    "start": 106.329,
+    "slide": 6,
+    "sentence_index": 1,
+    "text": "前面两个痛点的共同根因，是企业数据没有一张共享的语义地图。"
+  },
+  {
+    "index": 27,
+    "turn_index": 10,
+    "role": "host",
+    "duration": 1.68,
+    "start": 111.049,
+    "slide": 6,
+    "sentence_index": 2,
+    "text": "本体，就是这张地图。"
+  },
+  {
+    "index": 28,
+    "turn_index": 11,
+    "role": "guest",
+    "duration": 4.96,
+    "start": 112.729,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "本体是对某个领域概念、关系、约束的形式化、可共享、显式说明。"
+  },
+  {
+    "index": 29,
+    "turn_index": 11,
+    "role": "guest",
+    "duration": 9.484,
+    "start": 117.689,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "它和 ER 图不一样：ER 图是给人看的数据库设计，本体是给机器理解的语义层，能说明客户和订单的业务关系，以及订单什么状态下算已完成。"
+  },
+  {
+    "index": 30,
+    "turn_index": 12,
+    "role": "host",
+    "duration": 1.52,
+    "start": 127.173,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "数据字典也不一样。"
+  },
+  {
+    "index": 31,
+    "turn_index": 12,
+    "role": "host",
+    "duration": 5.52,
+    "start": 128.693,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "数据字典是静态标签，本体还包含关系方向和业务规则，能支撑推理。"
+  },
+  {
+    "index": 32,
+    "turn_index": 12,
+    "role": "host",
+    "duration": 3.2,
+    "start": 134.213,
+    "slide": 7,
+    "sentence_index": 2,
+    "text": "RDF 和 OWL 是两种常见表达格式。"
+  },
+  {
+    "index": 33,
+    "turn_index": 13,
+    "role": "host",
+    "duration": 5.04,
+    "start": 137.413,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "第三个痛点和大模型直接相关：LLM 会猜，而且猜得很自信。"
+  },
+  {
+    "index": 34,
+    "turn_index": 13,
+    "role": "host",
+    "duration": 5.6,
+    "start": 142.453,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "企业字段命名晦涩，业务规则藏在文档里，LLM 只能靠概率猜。"
+  },
+  {
+    "index": 35,
+    "turn_index": 14,
+    "role": "guest",
+    "duration": 4.88,
+    "start": 148.053,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "普通 LLM 直接回答企业问题，幻觉率能达到 20% 到 30%。"
+  },
+  {
+    "index": 36,
+    "turn_index": 14,
+    "role": "guest",
+    "duration": 8.207,
+    "start": 152.933,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "但用本体加 FDE 方法，可以把幻觉率压到 4% 以下，同时流程效率提升 55%，错误率下降 60%。"
+  },
+  {
+    "index": 37,
+    "turn_index": 15,
+    "role": "host",
+    "duration": 2.96,
+    "start": 161.139,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "有人问：给大模型写更好的 prompt 不够吗？"
+  },
+  {
+    "index": 38,
+    "turn_index": 15,
+    "role": "host",
+    "duration": 1.2,
+    "start": 164.099,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "为什么要建本体？"
+  },
+  {
+    "index": 39,
+    "turn_index": 16,
+    "role": "guest",
+    "duration": 3.581,
+    "start": 165.299,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "prompt 优化一次问答，本体统一所有问答的语义口径。"
+  },
+  {
+    "index": 40,
+    "turn_index": 16,
+    "role": "guest",
+    "duration": 3.84,
+    "start": 168.88,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "你没法给一百个 Agent、一百个报表各自写 prompt 还保证一致。"
+  },
+  {
+    "index": 41,
+    "turn_index": 16,
+    "role": "guest",
+    "duration": 2.96,
+    "start": 172.72,
+    "slide": 8,
+    "sentence_index": 2,
+    "text": "本体不是替代 prompt，而是 prompt 下面的地基。"
+  },
+  {
+    "index": 42,
+    "turn_index": 17,
+    "role": "host",
+    "duration": 10.24,
+    "start": 175.68,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "制造业、HVAC、金融物流三个行业表面不同，解题路径一样：先定义本体统一语义，再建知识图谱融合数据，最后用 GraphRAG 或 Agent 消费。"
+  },
+  {
+    "index": 43,
+    "turn_index": 17,
+    "role": "host",
+    "duration": 2.785,
+    "start": 185.92,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "本体工程是跨行业的通用基础设施。"
+  },
+  {
+    "index": 44,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 4.64,
+    "start": 188.705,
+    "slide": 10,
+    "sentence_index": 0,
+    "text": "最后留三个关键认知：第一，数据孤岛本质是语义孤岛；"
+  },
+  {
+    "index": 45,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 4.4,
+    "start": 193.345,
+    "slide": 10,
+    "sentence_index": 1,
+    "text": "第二，LLM 不会自动理解业务，需要显式语义层约束；"
+  },
+  {
+    "index": 46,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 5.92,
+    "start": 197.745,
+    "slide": 10,
+    "sentence_index": 2,
+    "text": "第三，本体工程不是学术玩具，是 GraphRAG、Agent、数据编织落地的前提。"
+  },
+  {
+    "index": 47,
+    "turn_index": 19,
+    "role": "guest",
+    "duration": 7.2,
+    "start": 203.665,
+    "slide": 10,
+    "sentence_index": 0,
+    "text": "行动建议：打开你公司的数据库 schema 或数据字典，找出三个在不同系统里名称不同但指同一事物的词。"
+  },
+  {
+    "index": 48,
+    "turn_index": 19,
+    "role": "guest",
+    "duration": 2.64,
+    "start": 210.865,
+    "slide": 10,
+    "sentence_index": 1,
+    "text": "这三个词，就是你本体的第一批概念。"
+  },
+  {
+    "index": 49,
+    "turn_index": 20,
+    "role": "host",
+    "duration": 1.28,
+    "start": 213.505,
+    "slide": 10,
+    "sentence_index": 0,
+    "text": "今天我们就聊到这。"
+  },
+  {
+    "index": 50,
+    "turn_index": 20,
+    "role": "host",
+    "duration": 5.016,
+    "start": 214.785,
+    "slide": 10,
+    "sentence_index": 1,
+    "text": "下一集进入本体建模的具体方法，从概念抽取到 OWL 表示。"
+  },
+  {
+    "index": 51,
+    "turn_index": 20,
+    "role": "host",
+    "duration": 1.36,
+    "start": 219.802,
+    "slide": 10,
+    "sentence_index": 2,
+    "text": "谢谢收听，再见。"
+  }
+]

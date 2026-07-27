@@ -1,0 +1,192 @@
+{
+  "meta": {
+    "topic": "《本体工程与知识图谱实战》第 01 集：本体到底解决什么问题？",
+    "suggested_title": "本体到底解决什么问题？",
+    "total_slides": 10,
+    "estimated_duration_min": 10
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "type": "cover",
+      "title": "本体到底解决什么问题？",
+      "subtitle": "数据孤岛、语义不一致、LLM 幻觉背后的共同根因",
+      "key_points": [],
+      "speaker_notes": "开场：观众可能听过知识图谱、GraphRAG、数据编织，但对「本体」很陌生。本期不讲代码，先回答一个根本问题：为什么需要本体？用一个制造业客服的真实问题串起三大痛点。",
+      "depth": "short",
+      "visual": {
+        "enabled": true,
+        "kind": "cover",
+        "prompt": "A minimalist hero image of a single jigsaw puzzle piece floating above a network of disconnected glowing nodes, soft teal and cream palette, editorial illustration style, lots of negative space",
+        "style_anchor": "editorial infographic, muted teal + cream + charcoal, white background, thin sans-serif, publication-grade",
+        "size": "1536x1024",
+        "quality": "high"
+      }
+    },
+    {
+      "slide": 2,
+      "type": "toc",
+      "title": "本期要聊什么",
+      "subtitle": "",
+      "key_points": [],
+      "speaker_notes": "主持人用三个问题带节奏：一个客服问题为什么会难住 AI？数据孤岛、语义不一致、LLM 幻觉三者之间有什么联系？本体为什么是企业 AI 落地的必修课？",
+      "depth": "short"
+    },
+    {
+      "slide": 3,
+      "type": "content",
+      "title": "开场故事：客户问了一句「我的订单为什么延迟？」",
+      "subtitle": "",
+      "key_points": [
+        "答案散落在 5 个系统里",
+        "ERP、MES、WMS、物流、客服",
+        "每个系统都说自己是对的"
+      ],
+      "speaker_notes": "用一个制造业客户投诉开场。客户下单后问为什么延迟，客服 AI 必须查 ERP 看订单、MES 看工序、WMS 看库存、物流看发货。每个系统数据格式不同，AI 要么答错，要么答「我不知道」。嘉宾追问：这不是数据中台/数据仓库已经解决的问题吗？主持人回应：仓库解决的是「存得下」，没解决「讲同一个故事」。",
+      "depth": "medium",
+      "visual": {
+        "enabled": true,
+        "kind": "diagram",
+        "prompt": "A clean diagram showing five labeled boxes ERP, MES, WMS, Logistics, Support around a central question mark, each box has different arrows pointing inward but none connected, editorial infographic style",
+        "style_anchor": "editorial infographic, muted teal + cream + charcoal, white background, thin sans-serif, publication-grade",
+        "size": "1024x1024",
+        "quality": "low"
+      }
+    },
+    {
+      "slide": 4,
+      "type": "content",
+      "title": "痛点一：数据孤岛不是问题，语义孤岛才是",
+      "subtitle": "",
+      "key_points": [
+        "56% 企业视数据孤岛为 AI 首障",
+        "客户在不同系统里名字不同",
+        "join 的真是同一实体？"
+      ],
+      "speaker_notes": "数据孤岛不是技术问题，而是语义问题。Fluree 调研显示 56% 企业把数据孤岛和集成困难列为 AI 落地最大障碍。AWS / Stardog 的 Customer 360 案例里，客户记录在 Aurora，订单分析在 Redshift，共用 cid 但没有跨库约束。嘉宾质疑：直接 ETL 到一个宽表不行吗？主持人反驳：宽表解决查询效率，但不解决「客户」在 CRM、ERP、物流系统里定义不同的问题。",
+      "depth": "long",
+      "visual": {
+        "enabled": true,
+        "kind": "data-viz",
+        "prompt": "A simple bar chart with one tall bar labeled '56% cite data silos' and a smaller bar labeled '7% fully AI-ready', clean teal and charcoal, editorial infographic style, no grid lines",
+        "style_anchor": "editorial infographic, muted teal + cream + charcoal, white background, thin sans-serif, publication-grade",
+        "size": "1024x1024",
+        "quality": "low"
+      }
+    },
+    {
+      "slide": 5,
+      "type": "content",
+      "title": "痛点二：同一个词，不同部门说的不是一回事",
+      "subtitle": "",
+      "key_points": [
+        "财务、CRM、ERP 叫法不同",
+        "同一人在三系统三个名",
+        "17 种 Phase III trial"
+      ],
+      "speaker_notes": "语义不一致比数据孤岛更隐蔽。Fluree 举过例子：同一个人在财务系统是 client、CRM 是 customer、ERP 是 account。TigerGraph 案例中，生物科技公司让 LLM 直接抽取临床试验概念，没先定义本体，结果冒出 17 种互不兼容的 Phase III trial。嘉宾提出反驳：术语不统一靠业务规范就能解决，为什么要上 ontology？主持人回应：业务规范给人看，ontology 给机器执行，能自动校验、自动对齐、自动推理。",
+      "depth": "long",
+      "visual": {
+        "enabled": true,
+        "kind": "diagram",
+        "prompt": "Four speech bubbles with different words 'client', 'customer', 'account', 'consignee' all pointing to a single blurred human silhouette in the center, editorial infographic style",
+        "style_anchor": "editorial infographic, muted teal + cream + charcoal, white background, thin sans-serif, publication-grade",
+        "size": "1024x1024",
+        "quality": "low"
+      }
+    },
+    {
+      "slide": 6,
+      "type": "section",
+      "title": "本体登场：先给业务画一张「语义地图」",
+      "subtitle": "",
+      "key_points": [],
+      "speaker_notes": "过渡到本体的定义。主持人说：前面两个痛点的共同根因是，企业数据没有一张共享的「语义地图」。本体就是这张地图。",
+      "depth": "short",
+      "visual": {
+        "enabled": true,
+        "kind": "section-bg",
+        "prompt": "A stylized map or blueprint with labeled nodes Customer, Order, Product, Shipment connected by clean lines, editorial infographic style, teal and charcoal on cream background",
+        "style_anchor": "editorial infographic, muted teal + cream + charcoal, white background, thin sans-serif, publication-grade",
+        "size": "1536x1024",
+        "quality": "low"
+      }
+    },
+    {
+      "slide": 7,
+      "type": "content",
+      "title": "本体是什么？不只是高级版 E-R 图",
+      "subtitle": "",
+      "key_points": [
+        "形式化的领域概念、关系、约束",
+        "机器可读、可共享、可推理",
+        "RDF / OWL 是常见表达格式"
+      ],
+      "speaker_notes": "给出本体的正式定义：对某一领域概念、关系、约束的形式化、可共享、显式说明。和 E-R 图的关键区别：E-R 图是给人画的数据库设计；本体是给机器理解的语义层，能回答「如果一个订单已发货但客户没收到，该找哪个系统？」这类需要推理的问题。嘉宾追问：听起来像数据字典？主持人回应：数据字典是静态标签，本体还带关系方向和业务规则。",
+      "depth": "medium",
+      "visual": {
+        "enabled": true,
+        "kind": "diagram",
+        "prompt": "A side-by-side comparison of an E-R diagram with boxes and diamond relationships versus an ontology graph with labeled arrows, editorial infographic style",
+        "style_anchor": "editorial infographic, muted teal + cream + charcoal, white background, thin sans-serif, publication-grade",
+        "size": "1024x1024",
+        "quality": "low"
+      }
+    },
+    {
+      "slide": 8,
+      "type": "content",
+      "title": "痛点三：LLM 会「猜」，本体让它「有据可查」",
+      "subtitle": "",
+      "key_points": [
+        "晦涩字段名让 LLM 靠概率猜",
+        "LLM 幻觉率高达 20-30%",
+        "本体方法幻觉率 4%"
+      ],
+      "speaker_notes": "第三个痛点是 LLM 幻觉。用友 LOM 论文指出，企业字段命名晦涩、业务规则隐性化，LLM 只能概率猜测。环曜 Agent 案例里，长三角汽配企业用 Ontology + FDE 方法，把 AI 幻觉率控制在 4% 以下。嘉宾质疑：给 LLM 写 better prompt 不够吗？主持人反驳：prompt 是软件，ontology 是基础设施；prompt 能优化一次问答，ontology 能统一所有问答的语义口径。",
+      "depth": "long",
+      "visual": {
+        "enabled": true,
+        "kind": "data-viz",
+        "prompt": "A simple two-bar comparison chart showing 'vanilla LLM hallucination ~25%' in muted red and 'ontology-grounded ~4%' in teal, clean editorial infographic style",
+        "style_anchor": "editorial infographic, muted teal + cream + charcoal, white background, thin sans-serif, publication-grade",
+        "size": "1024x1024",
+        "quality": "low"
+      }
+    },
+    {
+      "slide": 9,
+      "type": "content",
+      "title": "三个行业，同一套解题思路",
+      "subtitle": "",
+      "key_points": [
+        "制造：四系统语义统一",
+        "HVAC：PDF 手册术语归一化",
+        "金融/物流：客户 360 与风控"
+      ],
+      "speaker_notes": "用一页把案例收束起来。制造业是阿里云案例，HVAC 是腾讯云案例，金融客户 360 是 AWS/Stardog 案例。三个行业表面不同，但都遵循同一条路径：先定义本体（统一语义），再建知识图谱（融合数据），再用 GraphRAG / Agent 消费。嘉宾补充：这说明本体工程不是垂直行业工具，而是跨行业的通用基础设施。",
+      "depth": "medium",
+      "visual": {
+        "enabled": true,
+        "kind": "diagram",
+        "prompt": "Three horizontal cards labeled Manufacturing, HVAC, Finance with arrows flowing into a central pipeline 'Ontology -> Knowledge Graph -> AI Agent', editorial infographic style",
+        "style_anchor": "editorial infographic, muted teal + cream + charcoal, white background, thin sans-serif, publication-grade",
+        "size": "1024x1024",
+        "quality": "low"
+      }
+    },
+    {
+      "slide": 10,
+      "type": "summary",
+      "title": "关键洞察：本体是 AI 理解企业数据的语义地基",
+      "subtitle": "",
+      "key_points": [
+        "数据孤岛本质是语义孤岛",
+        "LLM 不会自动理解业务",
+        "本体工程是企业 AI 落地必修课"
+      ],
+      "speaker_notes": "收尾：总结三个核心认知。第一，数据孤岛不是缺管道，是缺统一语义。第二，LLM 不能替代本体，它能把文本转成结构，但需要本体来约束结构。第三，本体工程不是学术玩具，是 GraphRAG、Agent、数据编织的基础设施。行动建议：打开你所在公司的数据库 schema 或数据字典，找出三个在不同系统里名称不同但指同一事物的词——这就是你本体的第一批概念。",
+      "depth": "short"
+    }
+  ]
+}

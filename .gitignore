@@ -5,6 +5,7 @@ __pycache__/
 *.so
 .Python
 build/
+!episodes/**/build/
 develop-eggs/
 dist/
 downloads/
@@ -68,6 +69,13 @@ temp/
 *.wav
 *.aiff
 *.srt.rendered
+# But keep final episode deliverables tracked by Git LFS
+!episodes/**/assets/*.mp4
+!episodes/**/assets/*.mov
+!episodes/**/assets/*.mp3
+!episodes/**/assets/*.wav
+!episodes/**/assets/*.aiff
+!episodes/**/assets/*.pptx
 
 # OS
 Thumbs.db

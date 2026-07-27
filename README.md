@@ -62,6 +62,8 @@ git clone https://github.com/zhchxiao123/cloud-service-kg-podcast.git
 cd cloud-service-kg-podcast
 ```
 
+> 本仓库使用 [Git LFS](https://git-lfs.com/) 管理视频、音频、PPT 等大文件。如果 episodes 目录下的 mp4/mp3/pptx 文件无法播放，请运行 `git lfs install && git lfs pull`。
+
 ### 2. 安装依赖
 
 ```bash
@@ -115,7 +117,7 @@ python src/build_kg.py \
 
 | 集数 | 标题 | 视频 | 代码 |
 |------|------|------|------|
-| EP01 | 本体到底解决什么问题？ | [B站] · [YouTube] | [`episodes/ep01/`](./episodes/ep01) |
+| EP01 | 本体到底解决什么问题？ | ✅ 已发布 · [B站] · [YouTube] · [音频](./episodes/ep01/assets/podcast.mp3) | [`episodes/ep01/`](./episodes/ep01) |
 | EP02 | RDF 三元组：知识的原子单位 | [B站] · [YouTube] | [`episodes/ep02/`](./episodes/ep02) |
 | EP03 | Protégé 入门：画出你的第一个本体 | [B站] · [YouTube] | [`episodes/ep03/`](./episodes/ep03) |
 | EP04 | OWL 与推理机：让知识自己说话 | [B站] · [YouTube] | [`episodes/ep04/`](./episodes/ep04) |
