@@ -2,7 +2,7 @@
 
 from pathlib import Path
 
-from rdflib import Graph
+from rdflib import Graph, Namespace
 
 from src.pipeline import create_minimal_kg
 
@@ -15,8 +15,9 @@ def test_create_minimal_kg():
     assert isinstance(g, Graph)
     assert len(g) > 0
     # Check that the sample Azure instance was added
+    cskg = Namespace("https://example.org/cloud-service-kg#")
     assert (
-        "https://example.org/cloud-service-kg#Azure_NC24ads_A100_v4",
+        cskg.Azure_NC24ads_A100_v4,
         None,
         None,
     ) in g

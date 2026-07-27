@@ -1,6 +1,7 @@
 @prefix : <https://example.org/cloud-service-kg#> .
 @prefix sh: <http://www.w3.org/ns/shacl#> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 
 :CloudServiceShape a sh:NodeShape ;
     sh:targetClass :CloudService ;
@@ -13,8 +14,11 @@
     ], [
         sh:path rdfs:label ;
         sh:minCount 1 ;
-        sh:datatype xsd:string ;
-        sh:message "Each CloudService must have at least one label."
+        sh:or (
+            [ sh:datatype xsd:string ]
+            [ sh:languageIn ("en" "zh") ]
+        ) ;
+        sh:message "Each CloudService must have at least one label (xsd:string or en/zh language tag)."
     ], [
         sh:path :serviceCode ;
         sh:minCount 1 ;

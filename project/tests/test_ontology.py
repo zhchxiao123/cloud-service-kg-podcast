@@ -3,7 +3,7 @@
 from pathlib import Path
 
 import pytest
-from rdflib import Graph
+from rdflib import Graph, Namespace, URIRef
 
 from src.ontology import load_ontology, load_shapes, validate_ontology_with_shacl
 
@@ -19,8 +19,12 @@ def test_ontology_loads():
 
 def test_cloud_service_class_exists():
     g = load_ontology(PROJECT_ROOT / "ontology" / "cloud_service.ttl")
-    ns = "https://example.org/cloud-service-kg#"
-    assert (f"{ns}CloudService", None, None) in g or (None, None, f"{ns}CloudService") in g
+    cskg = Namespace("https://example.org/cloud-service-kg#")
+    # A class should appear as the subject of owl:Class or object of rdfs:subClassOf
+    assert (
+        (cskg.CloudService, URIRef("http://www.w3.org/2002/07/owl#Class"), None) in g
+        or (None, URIRef("http://www.w3.org/2000/01/rdf-schema#subClassOf"), cskg.CloudService) in g
+    )
 
 
 def test_sample_data_passes_shacl():

@@ -13,7 +13,7 @@ import typer
 from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.namespace import RDF, RDFS, XSD
 
-from ontology import load_ontology
+from src.ontology import load_ontology
 
 
 app = typer.Typer(help="Cloud service KG construction pipeline")
