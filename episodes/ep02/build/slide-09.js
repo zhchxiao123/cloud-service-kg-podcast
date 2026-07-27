@@ -17,12 +17,12 @@ function createSlide(pres, theme) {
   ];
 
   const tblX = 0.6;
-  const tblY = 1.30;
+  const tblY = 1.25;
   const colW1 = 1.8;
   const colW2 = 3.4;
   const colW3 = 3.4;
-  const rowH = 0.55;
-  const hdrH = 0.45;
+  const rowH = 0.50;
+  const hdrH = 0.42;
 
   // Header
   slide.addShape(pres.shapes.RECTANGLE, {
@@ -88,14 +88,14 @@ function createSlide(pres, theme) {
     });
   });
 
-  // Bottom insight band
+  // Bottom insight band (inside safe area: y=3.85, h=0.55 → bottom=4.40)
   slide.addShape(pres.shapes.RECTANGLE, {
-    x: 0.6, y: 4.05, w: 8.8, h: 0.55,
+    x: 0.6, y: 3.85, w: 8.8, h: 0.55,
     fill: { color: theme.primary }, line: { type: 'none' },
     rectRadius: 0.06,
   });
   slide.addText('企业通常共存：RDF 作为语义层盖在数据库之上', {
-    x: 0.6, y: 4.05, w: 8.8, h: 0.55,
+    x: 0.6, y: 3.85, w: 8.8, h: 0.55,
     fontSize: 14, fontFace: 'Noto Sans CJK SC',
     color: '000814', bold: true, align: 'center', valign: 'middle',
   });

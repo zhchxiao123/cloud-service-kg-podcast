@@ -13,13 +13,13 @@ function createSlide(pres, theme) {
     'PREFIX 声明命名空间，避免每次都写长 URI',
     'a 是 rdf:type 的语法糖',
     '; 同一主语继续陈述，, 同一谓语并列宾语',
-  ], { y: 1.35, lineH: 0.46, fontSize: 16 });
+  ], { y: 1.35, lineH: 0.42, fontSize: 16, w: 8.8 });
 
-  // Code block card — moved up so everything stays inside the safe area
+  // Code block card
   const codeX = 0.7;
-  const codeY = 2.55;
+  const codeY = 2.85;
   const codeW = 8.6;
-  const codeH = 1.85;
+  const codeH = 1.55;
   slide.addShape(pres.shapes.RECTANGLE, {
     x: codeX, y: codeY, w: codeW, h: codeH,
     fill: { color: '0B1426' }, line: { color: theme.accent, width: 1.5 },
@@ -48,8 +48,8 @@ function createSlide(pres, theme) {
 
   code.forEach((line, i) => {
     slide.addText(line, {
-      x: codeX + 0.25, y: codeY + 0.35 + i * 0.155,
-      w: codeW - 0.5, h: 0.18,
+      x: codeX + 0.25, y: codeY + 0.35 + i * 0.135,
+      w: codeW - 0.5, h: 0.16,
       fontSize: 12, fontFace: 'Liberation Sans',
       color: theme.primary, align: 'left', valign: 'middle',
     });

@@ -14,30 +14,30 @@ function createSlide(pres, theme) {
     '支持字符串、数字、日期等',
     '可附带数据类型或语言标签',
     '字符串想变主体？提升为资源节点',
-  ], { y: 1.35, lineH: 0.50, fontSize: 16 });
+  ], { y: 1.35, lineH: 0.44, fontSize: 16, w: 5.2 });
 
   // Code-like examples card
   const cardX = 0.7;
-  const cardY = 3.25;
+  const cardY = 3.05;
   const cardW = 5.0;
-  const cardH = 1.25;
+  const cardH = 1.20;
   slide.addShape(pres.shapes.RECTANGLE, {
     x: cardX, y: cardY, w: cardW, h: cardH,
     fill: { color: '0B1426' }, line: { color: theme.accent, width: 1.5 },
     rectRadius: 0.08,
   });
   slide.addText('Bob 的名字  →  "Bob"^^xsd:string', {
-    x: cardX + 0.2, y: cardY + 0.18, w: cardW - 0.4, h: 0.28,
+    x: cardX + 0.2, y: cardY + 0.16, w: cardW - 0.4, h: 0.26,
     fontSize: 13, fontFace: 'Liberation Sans',
     color: theme.primary, align: 'left', valign: 'middle',
   });
   slide.addText('Bob 的年龄  →  30^^xsd:integer', {
-    x: cardX + 0.2, y: cardY + 0.52, w: cardW - 0.4, h: 0.28,
+    x: cardX + 0.2, y: cardY + 0.48, w: cardW - 0.4, h: 0.26,
     fontSize: 13, fontFace: 'Liberation Sans',
     color: theme.primary, align: 'left', valign: 'middle',
   });
   slide.addText('Bob 的生日  →  "1990-07-04"^^xsd:date', {
-    x: cardX + 0.2, y: cardY + 0.86, w: cardW - 0.4, h: 0.28,
+    x: cardX + 0.2, y: cardY + 0.80, w: cardW - 0.4, h: 0.26,
     fontSize: 13, fontFace: 'Liberation Sans',
     color: theme.primary, align: 'left', valign: 'middle',
   });
@@ -46,58 +46,57 @@ function createSlide(pres, theme) {
   const diagX = 6.2;
   const diagY = 1.35;
   const diagW = 3.5;
-  const diagH = 3.15;
+  const diagH = 2.85;
   slide.addShape(pres.shapes.RECTANGLE, {
     x: diagX, y: diagY, w: diagW, h: diagH,
     fill: { color: '0B1426' }, line: { color: theme.light, width: 1 },
     rectRadius: 0.08,
   });
   slide.addText('把字面量提升为资源', {
-    x: diagX, y: diagY + 0.12, w: diagW, h: 0.30,
+    x: diagX, y: diagY + 0.10, w: diagW, h: 0.28,
     fontSize: 14, fontFace: 'Noto Sans CJK SC',
     color: theme.secondary, bold: true, align: 'center', valign: 'middle',
   });
 
-  // Before/after
   slide.addText('Before', {
-    x: diagX + 0.2, y: diagY + 0.55, w: 1.5, h: 0.25,
+    x: diagX + 0.2, y: diagY + 0.50, w: 1.5, h: 0.22,
     fontSize: 11, fontFace: 'Liberation Sans',
     color: theme.light, align: 'left', valign: 'middle',
   });
   slide.addText('Bob  name  "Bob"', {
-    x: diagX + 0.2, y: diagY + 0.85, w: 3.1, h: 0.25,
+    x: diagX + 0.2, y: diagY + 0.76, w: 3.1, h: 0.22,
     fontSize: 12, fontFace: 'Liberation Sans',
     color: theme.primary, align: 'left', valign: 'middle',
   });
 
   slide.addShape(pres.shapes.RECTANGLE, {
-    x: diagX + 0.2, y: diagY + 1.25, w: 3.1, h: 0.02,
+    x: diagX + 0.2, y: diagY + 1.10, w: 3.1, h: 0.02,
     fill: { color: theme.accent }, line: { type: 'none' },
   });
 
   slide.addText('After', {
-    x: diagX + 0.2, y: diagY + 1.40, w: 1.5, h: 0.25,
+    x: diagX + 0.2, y: diagY + 1.22, w: 1.5, h: 0.22,
     fontSize: 11, fontFace: 'Liberation Sans',
     color: theme.light, align: 'left', valign: 'middle',
   });
   slide.addText(':name1  rdf:value  "Bob"', {
-    x: diagX + 0.2, y: diagY + 1.70, w: 3.1, h: 0.25,
+    x: diagX + 0.2, y: diagY + 1.48, w: 3.1, h: 0.22,
     fontSize: 12, fontFace: 'Liberation Sans',
     color: theme.primary, align: 'left', valign: 'middle',
   });
   slide.addText(':name1  :language  "en"', {
-    x: diagX + 0.2, y: diagY + 2.00, w: 3.1, h: 0.25,
+    x: diagX + 0.2, y: diagY + 1.74, w: 3.1, h: 0.22,
     fontSize: 12, fontFace: 'Liberation Sans',
     color: theme.primary, align: 'left', valign: 'middle',
   });
   slide.addText(':name1  :source  "HR"', {
-    x: diagX + 0.2, y: diagY + 2.30, w: 3.1, h: 0.25,
+    x: diagX + 0.2, y: diagY + 2.00, w: 3.1, h: 0.22,
     fontSize: 12, fontFace: 'Liberation Sans',
     color: theme.primary, align: 'left', valign: 'middle',
   });
 
   slide.addText('复杂性换可链接性', {
-    x: diagX, y: diagY + 2.75, w: diagW, h: 0.25,
+    x: diagX, y: diagY + 2.46, w: diagW, h: 0.24,
     fontSize: 12, fontFace: 'Noto Sans CJK SC',
     color: theme.secondary, bold: true, align: 'center', valign: 'middle',
   });

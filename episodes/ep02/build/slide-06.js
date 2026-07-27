@@ -14,12 +14,12 @@ function createSlide(pres, theme) {
     '节点：资源（URI）或字面量',
     '边：谓语，连接两个节点',
     '共享 URI 让图自然连接、扩展',
-  ], { x: 6.2, y: 1.35, w: 3.4, lineH: 0.52, fontSize: 15 });
+  ], { x: 6.4, y: 1.35, w: 3.2, lineH: 0.48, fontSize: 15 });
 
-  // Graph diagram — larger, cleaner layout
-  const nodeW = 1.15;
-  const nodeH = 0.55;
-  const nodeR = 0.08; // corner radius
+  // Graph diagram
+  const nodeW = 1.05;
+  const nodeH = 0.50;
+  const nodeR = 0.08;
 
   function drawNode(x, y, label, sub, fill) {
     slide.addShape(pres.shapes.ROUNDED_RECTANGLE, {
@@ -34,7 +34,7 @@ function createSlide(pres, theme) {
     });
     if (sub) {
       slide.addText(sub, {
-        x: x - nodeW / 2, y: y + nodeH / 2 + 0.06, w: nodeW, h: 0.22,
+        x: x - nodeW / 2, y: y + nodeH / 2 + 0.05, w: nodeW, h: 0.20,
         fontSize: 9, fontFace: 'Liberation Sans',
         color: theme.light, align: 'center', valign: 'middle',
       });
@@ -42,7 +42,6 @@ function createSlide(pres, theme) {
   }
 
   function drawEdge(x1, y1, x2, y2, label, labelOffset = { dx: 0, dy: -0.18 }) {
-    // Compute start/end points on node edges
     const dx = x2 - x1;
     const dy = y2 - y1;
     const len = Math.sqrt(dx * dx + dy * dy);
@@ -51,13 +50,11 @@ function createSlide(pres, theme) {
     const halfW = nodeW / 2 + 0.05;
     const halfH = nodeH / 2 + 0.05;
 
-    // Approximate edge intersection with rounded rectangle by using bounding-box margin
     const startX = x1 + ux * halfW;
     const startY = y1 + uy * halfH;
     const endX = x2 - ux * halfW;
     const endY = y2 - uy * halfH;
 
-    // Line
     slide.addShape(pres.shapes.RECTANGLE, {
       x: startX, y: startY + (endY - startY) / 2 - 0.015,
       w: Math.sqrt((endX - startX) ** 2 + (endY - startY) ** 2),
@@ -66,7 +63,6 @@ function createSlide(pres, theme) {
       rotate: Math.atan2(endY - startY, endX - startX) * 180 / Math.PI,
     });
 
-    // Arrowhead
     const angle = Math.atan2(endY - startY, endX - startX);
     slide.addShape(pres.shapes.RIGHT_TRIANGLE, {
       x: endX - 0.12 * Math.cos(angle - Math.PI / 6),
@@ -76,7 +72,6 @@ function createSlide(pres, theme) {
       rotate: angle * 180 / Math.PI,
     });
 
-    // Label background for readability
     const midX = (startX + endX) / 2;
     const midY = (startY + endY) / 2;
     const lx = midX + labelOffset.dx;
@@ -93,10 +88,10 @@ function createSlide(pres, theme) {
     });
   }
 
-  const bob = { x: 1.6, y: 2.9 };
-  const alice = { x: 4.5, y: 2.2 };
-  const company = { x: 4.5, y: 3.8 };
-  const age = { x: 1.6, y: 3.9 };
+  const bob = { x: 1.55, y: 2.75 };
+  const alice = { x: 4.2, y: 2.10 };
+  const company = { x: 4.2, y: 3.55 };
+  const age = { x: 1.55, y: 3.65 };
 
   drawEdge(bob.x, bob.y, alice.x, alice.y, 'knows', { dx: 0.0, dy: -0.22 });
   drawEdge(alice.x, alice.y, company.x, company.y, 'worksAt', { dx: 0.55, dy: 0.0 });
@@ -107,23 +102,23 @@ function createSlide(pres, theme) {
   drawNode(company.x, company.y, 'Company', 'Resource', theme.primary);
   drawNode(age.x, age.y, '30', 'Literal', theme.light);
 
-  // Insight callout placed below the bullets on the right
+  // Insight callout on the right
   const boxX = 6.0;
-  const boxY = 3.15;
+  const boxY = 3.00;
   const boxW = 3.6;
-  const boxH = 1.35;
+  const boxH = 1.20;
   slide.addShape(pres.shapes.RECTANGLE, {
     x: boxX, y: boxY, w: boxW, h: boxH,
     fill: { color: '0B1426' }, line: { color: theme.accent, width: 1.5 },
     rectRadius: 0.08,
   });
   slide.addText('图的力量', {
-    x: boxX, y: boxY + 0.12, w: boxW, h: 0.28,
+    x: boxX, y: boxY + 0.10, w: boxW, h: 0.26,
     fontSize: 15, fontFace: 'Noto Sans CJK SC',
     color: theme.secondary, bold: true, align: 'center', valign: 'middle',
   });
   slide.addText('如果 Bob knows Alice\nAlice worksAt Company\n那么 Bob 通过 Alice\n间接连接 Company', {
-    x: boxX, y: boxY + 0.42, w: boxW, h: 0.90,
+    x: boxX, y: boxY + 0.36, w: boxW, h: 0.84,
     fontSize: 13, fontFace: 'Noto Sans CJK SC',
     color: theme.primary, align: 'center', valign: 'middle',
   });

@@ -6,21 +6,21 @@ function createSlide(pres, theme) {
   const slide = pres.addSlide();
   slide.background = { color: theme.bg };
 
-  titleBlock(slide, pres, theme, '本期要聊什么', { fontSize: 30 });
+  titleBlock(slide, pres, theme, '本期要聊什么', { fontSize: 28 });
 
   const toc = [
-    { num: '01', text: '从本体到 RDF：我们需要一种通用语言' },
-    { num: '02', text: '三元组：知识的最小表达单位' },
-    { num: '03', text: 'URI：给每个事物一张全球身份证' },
-    { num: '04', text: '图模型：三元组连成的知识网络' },
-    { num: '05', text: '字面量：当知识需要具体数值' },
-    { num: '06', text: 'Turtle：最友好的 RDF 写法' },
+    { num: '01', text: '从本体到 RDF：通用语言' },
+    { num: '02', text: '三元组：知识的最小单位' },
+    { num: '03', text: 'URI：全球唯一身份证' },
+    { num: '04', text: '图模型：三元组连成网' },
+    { num: '05', text: '字面量：具体数值' },
+    { num: '06', text: 'Turtle：友好的 RDF 写法' },
   ];
 
   const startX = 0.7;
   const startY = 1.25;
   const colW = 4.4;
-  const rowH = 0.95;
+  const rowH = 0.82;
   const gapX = 0.4;
 
   toc.forEach((item, i) => {
@@ -31,26 +31,26 @@ function createSlide(pres, theme) {
 
     // Number badge
     slide.addShape(pres.shapes.RECTANGLE, {
-      x: x, y: y + 0.22, w: 0.45, h: 0.45,
+      x: x, y: y + 0.18, w: 0.42, h: 0.42,
       fill: { color: theme.accent }, line: { type: 'none' },
       rectRadius: 0.08,
     });
     slide.addText(item.num, {
-      x: x, y: y + 0.22, w: 0.45, h: 0.45,
-      fontSize: 14, fontFace: 'Liberation Sans',
+      x: x, y: y + 0.18, w: 0.42, h: 0.42,
+      fontSize: 13, fontFace: 'Liberation Sans',
       color: 'FFFFFF', bold: true, align: 'center', valign: 'middle',
     });
 
     // Text
     slide.addText(item.text, {
-      x: x + 0.6, y: y, w: colW - 0.6, h: rowH,
+      x: x + 0.58, y: y, w: colW - 0.58, h: rowH,
       fontSize: 15, fontFace: 'Noto Sans CJK SC',
       color: theme.primary, align: 'left', valign: 'middle',
     });
 
     // Underline accent
     slide.addShape(pres.shapes.RECTANGLE, {
-      x: x + 0.6, y: y + rowH - 0.12, w: 0.8, h: 0.02,
+      x: x + 0.58, y: y + rowH - 0.12, w: 0.8, h: 0.02,
       fill: { color: theme.light }, line: { type: 'none' },
     });
   });

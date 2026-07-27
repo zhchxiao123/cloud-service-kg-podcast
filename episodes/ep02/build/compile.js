@@ -4,7 +4,7 @@ const path = require('path');
 const pptxgen = require('pptxgenjs');
 
 const projectName = 'ontology-basics-02';
-const outputPath = path.resolve(__dirname, `../v1/presentation.pptx`);
+const outputPath = path.resolve(__dirname, `../assets/presentation.pptx`);
 
 const theme = {
   primary: 'FFFFFF',

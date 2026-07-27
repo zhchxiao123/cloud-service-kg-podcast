@@ -11,15 +11,15 @@ function createSlide(pres, theme) {
 
   bulletList(slide, pres, theme, [
     'URI：Uniform Resource Identifier，全球唯一地址',
-    '同一个“苹果”可能指公司、水果、乐队——URI 区分它们',
+    '同一个“苹果”可能指公司、水果、乐队',
     '示例：dbpedia:Leonardo_da_Vinci',
-  ], { y: 1.40, lineH: 0.58, fontSize: 17, w: 5.0 });
+  ], { y: 1.35, lineH: 0.44, fontSize: 16, w: 5.0 });
 
   // ID card visual
   const cardX = 0.8;
-  const cardY = 3.25;
+  const cardY = 3.00;
   const cardW = 4.4;
-  const cardH = 1.35;
+  const cardH = 1.25;
   slide.addShape(pres.shapes.RECTANGLE, {
     x: cardX, y: cardY, w: cardW, h: cardH,
     fill: { color: '0B1426' }, line: { color: theme.accent, width: 2 },
@@ -28,44 +28,44 @@ function createSlide(pres, theme) {
 
   // ID photo placeholder
   slide.addShape(pres.shapes.OVAL, {
-    x: cardX + 0.25, y: cardY + 0.30, w: 0.75, h: 0.75,
+    x: cardX + 0.25, y: cardY + 0.25, w: 0.70, h: 0.70,
     fill: { color: theme.light }, line: { type: 'none' },
   });
   slide.addText('ID', {
-    x: cardX + 0.25, y: cardY + 0.30, w: 0.75, h: 0.75,
+    x: cardX + 0.25, y: cardY + 0.25, w: 0.70, h: 0.70,
     fontSize: 14, fontFace: 'Liberation Sans',
     color: '000814', bold: true, align: 'center', valign: 'middle',
   });
 
   // ID fields
   slide.addText('Name: Leonardo da Vinci', {
-    x: cardX + 1.2, y: cardY + 0.25, w: 2.9, h: 0.30,
+    x: cardX + 1.15, y: cardY + 0.20, w: 2.9, h: 0.28,
     fontSize: 13, fontFace: 'Liberation Sans',
     color: theme.primary, align: 'left', valign: 'middle',
   });
   slide.addText('URI:', {
-    x: cardX + 1.2, y: cardY + 0.60, w: 0.5, h: 0.25,
+    x: cardX + 1.15, y: cardY + 0.52, w: 0.5, h: 0.22,
     fontSize: 11, fontFace: 'Liberation Sans',
     color: theme.light, align: 'left', valign: 'middle',
   });
   slide.addText('http://dbpedia.org/resource/Leonardo_da_Vinci', {
-    x: cardX + 1.2, y: cardY + 0.85, w: 2.9, h: 0.30,
+    x: cardX + 1.15, y: cardY + 0.74, w: 2.9, h: 0.28,
     fontSize: 10, fontFace: 'Liberation Sans',
     color: theme.secondary, align: 'left', valign: 'middle',
   });
 
   // Ambiguity disambiguation panel
   const ambX = 5.7;
-  const ambY = 1.40;
+  const ambY = 1.35;
   const ambW = 3.9;
-  const ambH = 3.20;
+  const ambH = 2.90;
   slide.addShape(pres.shapes.RECTANGLE, {
     x: ambX, y: ambY, w: ambW, h: ambH,
     fill: { color: '0B1426' }, line: { color: theme.light, width: 1 },
     rectRadius: 0.08,
   });
   slide.addText('同名歧义怎么破？', {
-    x: ambX, y: ambY + 0.15, w: ambW, h: 0.35,
+    x: ambX, y: ambY + 0.12, w: ambW, h: 0.32,
     fontSize: 15, fontFace: 'Noto Sans CJK SC',
     color: theme.secondary, bold: true, align: 'center', valign: 'middle',
   });
@@ -76,19 +76,19 @@ function createSlide(pres, theme) {
     { label: '苹果乐队', uri: 'dbpedia:The_Beatles' },
   ];
   examples.forEach((ex, i) => {
-    const y = ambY + 0.65 + i * 0.75;
+    const y = ambY + 0.58 + i * 0.68;
     slide.addShape(pres.shapes.RECTANGLE, {
-      x: ambX + 0.25, y: y, w: 3.4, h: 0.55,
+      x: ambX + 0.25, y: y, w: 3.4, h: 0.52,
       fill: { color: '000814' }, line: { color: theme.accent, width: 1 },
       rectRadius: 0.05,
     });
     slide.addText(ex.label, {
-      x: ambX + 0.35, y: y, w: 1.2, h: 0.55,
+      x: ambX + 0.35, y: y, w: 1.2, h: 0.52,
       fontSize: 13, fontFace: 'Noto Sans CJK SC',
       color: theme.primary, align: 'left', valign: 'middle',
     });
     slide.addText(ex.uri, {
-      x: ambX + 1.65, y: y, w: 2.0, h: 0.55,
+      x: ambX + 1.65, y: y, w: 2.0, h: 0.52,
       fontSize: 11, fontFace: 'Liberation Sans',
       color: theme.light, align: 'left', valign: 'middle',
     });

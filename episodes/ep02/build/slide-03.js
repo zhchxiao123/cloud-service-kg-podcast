@@ -11,16 +11,16 @@ function createSlide(pres, theme) {
 
   bulletList(slide, pres, theme, [
     '本体是概念层：定义类、属性、关系',
-    'RDF 是数据层：资源描述框架（Resource Description Framework）',
-    'W3C 标准，1999 年发布，让机器能交换和解析知识',
-    'JSON 没有全局唯一标识和显式关系语义',
-  ], { y: 1.45, lineH: 0.60, fontSize: 17 });
+    'RDF 是数据层：资源描述框架',
+    'W3C 标准，1999 年发布，机器可交换知识',
+    'JSON 缺乏全局唯一标识与显式关系语义',
+  ], { y: 1.35, lineH: 0.46, fontSize: 16, w: 5.3 });
 
   // Conceptual layered stack diagram
   const stackX = 6.4;
-  const stackY = 1.45;
+  const stackY = 1.35;
   const stackW = 3.2;
-  const stackH = 0.65;
+  const stackH = 0.60;
   const layers = [
     { label: '应用层', color: theme.primary, text: 'FFFFFF' },
     { label: '本体层', color: theme.light, text: '000814' },
@@ -36,18 +36,18 @@ function createSlide(pres, theme) {
     });
     slide.addText(layer.label, {
       x: stackX, y: y, w: stackW, h: stackH,
-      fontSize: 15, fontFace: 'Noto Sans CJK SC',
+      fontSize: 14, fontFace: 'Noto Sans CJK SC',
       color: layer.text, bold: true, align: 'center', valign: 'middle',
     });
   });
 
   // Arrow pointing up
   slide.addShape(pres.shapes.RIGHT_TRIANGLE, {
-    x: stackX + stackW / 2 - 0.15, y: stackY - 0.35, w: 0.30, h: 0.25,
+    x: stackX + stackW / 2 - 0.15, y: stackY - 0.32, w: 0.30, h: 0.22,
     fill: { color: theme.accent }, line: { type: 'none' },
   });
   slide.addText('越具体', {
-    x: stackX + stackW / 2 + 0.25, y: stackY - 0.35, w: 0.8, h: 0.25,
+    x: stackX + stackW / 2 + 0.25, y: stackY - 0.32, w: 0.8, h: 0.22,
     fontSize: 10, fontFace: 'Noto Sans CJK SC',
     color: theme.light, align: 'left', valign: 'middle',
   });
