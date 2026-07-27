@@ -1,0 +1,89 @@
+name: 单集制作跟踪
+about: 跟踪某一集的研究、脚本、录制、剪辑、发布进度
+title: "[EPxx] 标题"
+labels: ["episode", "tracking"]
+body:
+  - type: input
+    id: episode
+    attributes:
+      label: 集数
+      placeholder: "例如：EP01 或 E03"
+    validations:
+      required: true
+
+  - type: input
+    id: title
+    attributes:
+      label: 标题
+      placeholder: "例如：本体到底解决什么问题？"
+    validations:
+      required: true
+
+  - type: input
+    id: target_date
+    attributes:
+      label: 预计发布日期
+      placeholder: "YYYY-MM-DD"
+
+  - type: input
+    id: target_duration
+    attributes:
+      label: 目标时长
+      placeholder: "例如：10 分钟"
+
+  - type: checkboxes
+    id: research
+    attributes:
+      label: 阶段 1：研究
+      options:
+        - label: 验证技术/论文真实性
+        - label: 列出关键引用（≥3 条）
+        - label: 确认演示工具版本
+
+  - type: checkboxes
+    id: script
+    attributes:
+      label: 阶段 2：脚本与素材
+      options:
+        - label: 完成讲稿（1500–2500 字）
+        - label: 设计 ≥3 个演示点
+        - label: 生成/收集插图
+        - label: 完成 PPT / Marp 幻灯片
+
+  - type: checkboxes
+    id: code
+    attributes:
+      label: 阶段 3：代码/演示
+      options:
+        - label: 准备可运行代码
+        - label: 本地测试通过
+        - label: 录制屏幕演示（如需要）
+
+  - type: checkboxes
+    id: production
+    attributes:
+      label: 阶段 4：配音与剪辑
+      options:
+        - label: 配音完成（ollx / 备选 TTS）
+        - label: 视频剪辑完成
+        - label: 字幕 SRT 导出
+        - label: 封面制作完成
+
+  - type: checkboxes
+    id: publish
+    attributes:
+      label: 阶段 5：发布
+      options:
+        - label: B站上传
+        - label: YouTube 上传（含英文字幕）
+        - label: 视频号预告/金句
+        - label: 公众号文章
+        - label: 知乎专栏
+        - label: 掘金技术文
+        - label: GitHub 合并当集代码
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 备注/阻塞项
+      placeholder: "记录当前阻塞、待确认的工具版本、对抗验证结论等"

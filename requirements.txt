@@ -1,0 +1,40 @@
+# Core Python libraries for the podcast series and cloud-service-kg project
+
+# RDF / OWL
+rdflib>=7.0.0
+pyshacl>=0.26.0
+
+# NLP / IE
+spacy>=3.7.0
+# Uncomment after downloading models:
+# https://spacy.io/models
+# - en-core-web-sm @ https://github.com/explosion/spacy-models/releases/download/en_core_web_sm-3.7.1/en_core_web_sm-3.7.1-py3-none-any.whl
+
+# Data processing
+pandas>=2.0.0
+numpy>=1.25.0
+requests>=2.31.0
+python-dotenv>=1.0.0
+
+# Jupyter / notebooks
+jupyterlab>=4.0.0
+ipykernel>=6.25.0
+
+# Testing / linting
+pytest>=8.0.0
+black>=24.0.0
+flake8>=7.0.0
+mypy>=1.8.0
+
+# Neo4j driver (optional, for direct interaction)
+neo4j>=5.15.0
+
+# LLM integration (optional, pick one or more)
+# openai>=1.0.0
+# anthropic>=0.20.0
+# litellm>=1.0.0
+
+# Utilities
+pyyaml>=6.0.1
+tqdm>=4.66.0
+typer>=0.12.0

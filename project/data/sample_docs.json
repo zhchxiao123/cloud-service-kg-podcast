@@ -1,0 +1,29 @@
+[
+  {
+    "id": "aws-ec2-001",
+    "provider": "AWS",
+    "service": "Amazon EC2",
+    "text_en": "Amazon EC2 P5 instances are powered by NVIDIA H100 Tensor Core GPUs and are ideal for training generative AI models.",
+    "text_zh": "Amazon EC2 P5 实例由 NVIDIA H100 Tensor Core GPU 提供支持，非常适合训练生成式 AI 模型。",
+    "source": "https://aws.amazon.com/ec2/instance-types/p5/",
+    "last_updated": "2026-07-27"
+  },
+  {
+    "id": "azure-blob-001",
+    "provider": "Azure",
+    "service": "Azure Blob Storage",
+    "text_en": "Azure Blob Storage is available in multiple regions. It supports hot, cool, and archive access tiers.",
+    "text_zh": "Azure Blob Storage 在多个区域可用，支持热、冷和存档访问层级。",
+    "source": "https://azure.microsoft.com/products/storage/blobs/",
+    "last_updated": "2026-07-27"
+  },
+  {
+    "id": "aws-rds-001",
+    "provider": "AWS",
+    "service": "Amazon RDS",
+    "text_en": "Amazon RDS is a managed relational database service. It supports MySQL, PostgreSQL, MariaDB, Oracle, and SQL Server.",
+    "text_zh": "Amazon RDS 是一项托管关系型数据库服务，支持 MySQL、PostgreSQL、MariaDB、Oracle 和 SQL Server。",
+    "source": "https://aws.amazon.com/rds/",
+    "last_updated": "2026-07-27"
+  }
+]

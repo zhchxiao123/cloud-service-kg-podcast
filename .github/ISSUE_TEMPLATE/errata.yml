@@ -1,0 +1,42 @@
+name: 纠错
+about: 报告视频、文章或代码中的技术错误
+title: "[errata] EPxx: 简短描述"
+labels: ["errata"]
+body:
+  - type: input
+    id: episode
+    attributes:
+      label: 涉及集数/文件
+      placeholder: "例如：EP03、project/ontology/cloud_service.ttl"
+    validations:
+      required: true
+
+  - type: textarea
+    id: current
+    attributes:
+      label: 当前内容（错误之处）
+      placeholder: "请粘贴原文、代码或给出视频时间戳"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: 应修正为
+      placeholder: "给出你的建议或正确表述"
+    validations:
+      required: true
+
+  - type: textarea
+    id: source
+    attributes:
+      label: 依据/来源
+      placeholder: "论文链接、官方文档、规范章节等"
+    validations:
+      required: true
+
+  - type: textarea
+    id: impact
+    attributes:
+      label: 影响范围
+      placeholder: "是否影响代码运行、是否需要在下一版视频中订正"

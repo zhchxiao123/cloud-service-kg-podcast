@@ -1,0 +1,24 @@
+Creative Commons Attribution 4.0 International License
+
+This work is licensed under the Creative Commons Attribution 4.0 International License.
+
+To view a copy of this license, visit:
+    https://creativecommons.org/licenses/by/4.0/
+
+or send a letter to:
+    Creative Commons, PO Box 1866, Mountain View, CA 94042, USA.
+
+---
+
+APPLIES TO:
+- Data files under project/data/
+- Ontology files under project/ontology/
+- Text scripts, transcripts, and notes under episodes/
+- Presentation source files under assets/ppt/
+- Documentation files under docs/
+- Any other non-code creative content in this repository.
+
+EXCEPTIONS:
+- Cloud provider names, product names, and trademarks are the property of their
+  respective owners. Their use here is for educational and academic purposes only
+  and does not imply endorsement.

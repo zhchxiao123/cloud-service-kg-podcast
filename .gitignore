@@ -1,0 +1,78 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+venv/
+.env
+.venv
+env/
+
+# Jupyter
+.ipynb_checkpoints
+*.ipynb_checkpoints
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Data / Models (large files should use Git LFS or external links)
+*.db
+*.sqlite
+*.sqlite3
+*.h5
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.safetensors
+*.onnx
+
+# Neo4j local data
+project/data/neo4j/
+neo4j_data/
+
+# Output / temp
+*.ttl.tmp
+*.rdf.tmp
+*.log
+*.out
+*.bak
+tmp/
+temp/
+
+# Video / audio / rendered assets (use Git LFS if needed)
+*.mp4
+*.mov
+*.mp3
+*.wav
+*.aiff
+*.srt.rendered
+
+# OS
+Thumbs.db
+desktop.ini
+
+# Secrets
+secrets.yml
+.env.local

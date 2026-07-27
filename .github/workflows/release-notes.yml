@@ -1,0 +1,27 @@
+name: Release Notes Helper
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  zenodo-reminder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check Zenodo metadata
+        run: |
+          if ! grep -q '"doi"' .zenodo.json; then
+            echo "⚠️  .zenodo.json 尚未填入真实 DOI。"
+            echo "请在 Zenodo–GitHub 同步后更新 .zenodo.json 与 CITATION.cff。"
+          fi
+
+      - name: Post release checklist
+        run: |
+          echo "🎉 Release published!"
+          echo "请检查以下事项："
+          echo "1. Zenodo 是否已自动同步并生成 DOI"
+          echo "2. 更新 .zenodo.json 与 CITATION.cff 中的 DOI"
+          echo "3. 在 README 顶部添加 DOI badge"
+          echo "4. 发布动态到 B站/YouTube/公众号/知乎/掘金"

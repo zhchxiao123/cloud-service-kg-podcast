@@ -1,0 +1,31 @@
+@prefix : <https://example.org/cloud-service-kg#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+:CloudServiceShape a sh:NodeShape ;
+    sh:targetClass :CloudService ;
+    sh:property [
+        sh:path :hasProvider ;
+        sh:minCount 1 ;
+        sh:maxCount 1 ;
+        sh:class :CloudProvider ;
+        sh:message "Each CloudService must have exactly one provider."
+    ], [
+        sh:path rdfs:label ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Each CloudService must have at least one label."
+    ], [
+        sh:path :serviceCode ;
+        sh:minCount 1 ;
+        sh:datatype xsd:string ;
+        sh:message "Each CloudService should have a service code."
+    ] .
+
+:ComputeServiceShape a sh:NodeShape ;
+    sh:targetClass :ComputeService ;
+    sh:property [
+        sh:path :hasGPU ;
+        sh:datatype xsd:boolean ;
+        sh:message "hasGPU on ComputeService must be a boolean."
+    ] .

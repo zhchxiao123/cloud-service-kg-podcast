@@ -1,0 +1,32 @@
+name: 提交 Competency Question
+about: 为本体/项目提交一个希望它能回答的问题
+title: "[cq] 简短问题"
+labels: ["competency-question"]
+body:
+  - type: textarea
+    id: question
+    attributes:
+      label: Competency Question
+      placeholder: "例如：哪些 GPU 计算服务在亚太地区可用？"
+    validations:
+      required: true
+
+  - type: input
+    id: domain
+    attributes:
+      label: 所属领域
+      placeholder: "例如：云服务选型"
+
+  - type: textarea
+    id: ontology_mapping
+    attributes:
+      label: 希望映射到的本体元素
+      placeholder: |
+        - 类：ComputeService, GPUInstance, Region
+        - 属性：hasRegion, hasGPU
+
+  - type: textarea
+    id: source
+    attributes:
+      label: 来源/背景
+      placeholder: "这个问题来自什么真实场景？"

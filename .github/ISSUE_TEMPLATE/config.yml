@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 讨论区（Discussions）
+    url: https://github.com/YOUR_ORG/cloud-service-kg-podcast/discussions
+    about: 提交 Competency Question、分享案例或一般性讨论请去 Discussions。
