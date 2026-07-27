@@ -1,0 +1,1052 @@
+[
+  {
+    "index": 0,
+    "turn_index": 0,
+    "role": "host",
+    "duration": 4.08,
+    "start": 0.0,
+    "slide": 1,
+    "sentence_index": 0,
+    "text": "大家好，欢迎来到《本体工程与知识图谱实战》第二集。"
+  },
+  {
+    "index": 1,
+    "turn_index": 0,
+    "role": "host",
+    "duration": 5.973,
+    "start": 4.08,
+    "slide": 1,
+    "sentence_index": 1,
+    "text": "上一集我们聊了为什么企业需要本体，今天进入硬骨头：本体到底用什么语言来表达？"
+  },
+  {
+    "index": 2,
+    "turn_index": 0,
+    "role": "host",
+    "duration": 1.6,
+    "start": 10.053,
+    "slide": 1,
+    "sentence_index": 2,
+    "text": "答案就是 RDF。"
+  },
+  {
+    "index": 3,
+    "turn_index": 1,
+    "role": "guest",
+    "duration": 4.72,
+    "start": 11.653,
+    "slide": 1,
+    "sentence_index": 0,
+    "text": "RDF 这个词听起来很学术，但其实可以理解为知识图谱的普通话。"
+  },
+  {
+    "index": 4,
+    "turn_index": 1,
+    "role": "guest",
+    "duration": 2.24,
+    "start": 16.373,
+    "slide": 1,
+    "sentence_index": 1,
+    "text": "everybody 都用它，机器也能读懂。"
+  },
+  {
+    "index": 5,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 3.04,
+    "start": 18.613,
+    "slide": 2,
+    "sentence_index": 0,
+    "text": "本期我们会回答四个问题：三元组长什么样？"
+  },
+  {
+    "index": 6,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 2.16,
+    "start": 21.653,
+    "slide": 2,
+    "sentence_index": 1,
+    "text": "URI 为什么是本体的身份证？"
+  },
+  {
+    "index": 7,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 2.8,
+    "start": 23.813,
+    "slide": 2,
+    "sentence_index": 2,
+    "text": "图模型怎么把零散事实连成网络？"
+  },
+  {
+    "index": 8,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 3.68,
+    "start": 26.613,
+    "slide": 2,
+    "sentence_index": 3,
+    "text": "以及 Turtle 这种写法为什么对开发者最友好？"
+  },
+  {
+    "index": 9,
+    "turn_index": 3,
+    "role": "guest",
+    "duration": 7.92,
+    "start": 30.293,
+    "slide": 2,
+    "sentence_index": 0,
+    "text": "我建议听众准备一杯水，因为接下来十分钟，我们会从一句话「Bob 认识 Alice」出发，一路走到一张全球可链接的知识图。"
+  },
+  {
+    "index": 10,
+    "turn_index": 4,
+    "role": "host",
+    "duration": 1.12,
+    "start": 38.213,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "先说大背景。"
+  },
+  {
+    "index": 11,
+    "turn_index": 4,
+    "role": "host",
+    "duration": 8.128,
+    "start": 39.333,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "上一集讲的是本体在概念层长什么样，但概念不能只停留在 PPT 上，它需要一种能被机器解析和交换的数据格式。"
+  },
+  {
+    "index": 12,
+    "turn_index": 4,
+    "role": "host",
+    "duration": 7.04,
+    "start": 47.461,
+    "slide": 3,
+    "sentence_index": 2,
+    "text": "RDF 就是 W3C 定的标准，全称 Resource Description Framework，1999 年就发布了。"
+  },
+  {
+    "index": 13,
+    "turn_index": 5,
+    "role": "guest",
+    "duration": 3.76,
+    "start": 54.501,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "我有个疑问：现在都 2026 年了，为什么不用 JSON 呢？"
+  },
+  {
+    "index": 14,
+    "turn_index": 5,
+    "role": "guest",
+    "duration": 2.48,
+    "start": 58.261,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "JSON 多轻量，大家都会写。"
+  },
+  {
+    "index": 15,
+    "turn_index": 6,
+    "role": "host",
+    "duration": 0.64,
+    "start": 60.741,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "好问题。"
+  },
+  {
+    "index": 16,
+    "turn_index": 6,
+    "role": "host",
+    "duration": 4.96,
+    "start": 61.381,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "JSON 能存数据，但它没有全局唯一标识，也没有显式的关系语义。"
+  },
+  {
+    "index": 17,
+    "turn_index": 6,
+    "role": "host",
+    "duration": 8.8,
+    "start": 66.341,
+    "slide": 3,
+    "sentence_index": 2,
+    "text": "比如你在 JSON 里写 customer_id 等于 1001，另一个系统里也叫 1001，但这两个 1001 是不是同一个人，JSON 本身不回答。"
+  },
+  {
+    "index": 18,
+    "turn_index": 6,
+    "role": "host",
+    "duration": 5.92,
+    "start": 75.141,
+    "slide": 3,
+    "sentence_index": 3,
+    "text": "RDF 用 URI 强制给每件事物一个全球身份证，关系也是显式声明的。"
+  },
+  {
+    "index": 19,
+    "turn_index": 7,
+    "role": "guest",
+    "duration": 0.72,
+    "start": 81.061,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "明白了。"
+  },
+  {
+    "index": 20,
+    "turn_index": 7,
+    "role": "guest",
+    "duration": 4.32,
+    "start": 81.781,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "所以本体是图纸，RDF 是按图纸浇筑出来的混凝土。"
+  },
+  {
+    "index": 21,
+    "turn_index": 8,
+    "role": "host",
+    "duration": 0.88,
+    "start": 86.101,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "进入核心。"
+  },
+  {
+    "index": 22,
+    "turn_index": 8,
+    "role": "host",
+    "duration": 3.68,
+    "start": 86.981,
+    "slide": 4,
+    "sentence_index": 1,
+    "text": "RDF 最小的单位叫三元组，就像化学里的原子。"
+  },
+  {
+    "index": 23,
+    "turn_index": 8,
+    "role": "host",
+    "duration": 3.76,
+    "start": 90.661,
+    "slide": 4,
+    "sentence_index": 2,
+    "text": "一个三元组只有三个位置：主语、谓语、宾语。"
+  },
+  {
+    "index": 24,
+    "turn_index": 8,
+    "role": "host",
+    "duration": 6.08,
+    "start": 94.421,
+    "slide": 4,
+    "sentence_index": 3,
+    "text": "拿自然语言来说，「Bob 认识 Alice」，主语是 Bob，谓语是认识，宾语是 Alice。"
+  },
+  {
+    "index": 25,
+    "turn_index": 9,
+    "role": "guest",
+    "duration": 6.48,
+    "start": 100.501,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "放到图里看，就是两个节点 Bob 和 Alice，中间有一条带标签的边 knows，箭头从 Bob 指向 Alice。"
+  },
+  {
+    "index": 26,
+    "turn_index": 10,
+    "role": "host",
+    "duration": 0.32,
+    "start": 106.981,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "对。"
+  },
+  {
+    "index": 27,
+    "turn_index": 10,
+    "role": "host",
+    "duration": 3.76,
+    "start": 107.301,
+    "slide": 4,
+    "sentence_index": 1,
+    "text": "单个三元组很渺小，但每个三元组都是一条带语义的边。"
+  },
+  {
+    "index": 28,
+    "turn_index": 10,
+    "role": "host",
+    "duration": 3.92,
+    "start": 111.061,
+    "slide": 4,
+    "sentence_index": 2,
+    "text": "成千上万个这样的边连在一起，知识图谱就长出来了。"
+  },
+  {
+    "index": 29,
+    "turn_index": 10,
+    "role": "host",
+    "duration": 3.76,
+    "start": 114.981,
+    "slide": 4,
+    "sentence_index": 3,
+    "text": "RDF 不搞表，不搞行列，它直接描述关系本身。"
+  },
+  {
+    "index": 30,
+    "turn_index": 11,
+    "role": "guest",
+    "duration": 6.08,
+    "start": 118.741,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "这让我想到，如果关系就是数据，那新增一种关系是不是比关系型数据库加字段灵活得多？"
+  },
+  {
+    "index": 31,
+    "turn_index": 12,
+    "role": "host",
+    "duration": 0.8,
+    "start": 124.821,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "正是如此。"
+  },
+  {
+    "index": 32,
+    "turn_index": 12,
+    "role": "host",
+    "duration": 1.52,
+    "start": 125.621,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "接下来讲 URI。"
+  },
+  {
+    "index": 33,
+    "turn_index": 12,
+    "role": "host",
+    "duration": 5.2,
+    "start": 127.141,
+    "slide": 5,
+    "sentence_index": 2,
+    "text": "URI 是统一资源标识符，你可以理解为 RDF 世界的全球身份证。"
+  },
+  {
+    "index": 34,
+    "turn_index": 12,
+    "role": "host",
+    "duration": 3.6,
+    "start": 132.341,
+    "slide": 5,
+    "sentence_index": 3,
+    "text": "每一个实体、每一个属性、每一个类，都有一个 URI。"
+  },
+  {
+    "index": 35,
+    "turn_index": 13,
+    "role": "guest",
+    "duration": 2.0,
+    "start": 135.941,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "但 URI 不是 URL 吗？"
+  },
+  {
+    "index": 36,
+    "turn_index": 13,
+    "role": "guest",
+    "duration": 9.04,
+    "start": 137.941,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "长得像网址，比如 http 冒号斜杠斜杠 dbpedia 点 org 斜杠 resource 斜杠 Leonardo_da_Vinci，读起来累死人。"
+  },
+  {
+    "index": 37,
+    "turn_index": 14,
+    "role": "host",
+    "duration": 4.857,
+    "start": 146.981,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "URI 是标识符，URL 是定位符，两者有交集但不是一回事。"
+  },
+  {
+    "index": 38,
+    "turn_index": 14,
+    "role": "host",
+    "duration": 3.04,
+    "start": 151.838,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "URI 负责说「这是谁」，不一定要能打开。"
+  },
+  {
+    "index": 39,
+    "turn_index": 14,
+    "role": "host",
+    "duration": 8.846,
+    "start": 154.878,
+    "slide": 5,
+    "sentence_index": 2,
+    "text": "人类读的时候，我们会用命名空间前缀缩写，比如写成 dbpedia 冒号 Leonardo_da_Vinci，机器会自动展开成完整 URI。"
+  },
+  {
+    "index": 40,
+    "turn_index": 15,
+    "role": "guest",
+    "duration": 2.88,
+    "start": 163.724,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "那为什么不用简单 ID，比如整数 1、2、3？"
+  },
+  {
+    "index": 41,
+    "turn_index": 15,
+    "role": "guest",
+    "duration": 1.84,
+    "start": 166.604,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "数据库表不是一直这么干吗？"
+  },
+  {
+    "index": 42,
+    "turn_index": 16,
+    "role": "host",
+    "duration": 3.84,
+    "start": 168.444,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "简单 ID 在单个数据库里没问题，但跨系统就崩了。"
+  },
+  {
+    "index": 43,
+    "turn_index": 16,
+    "role": "host",
+    "duration": 3.76,
+    "start": 172.284,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "你的 1001 和我的 1001 可能完全不是同一个人。"
+  },
+  {
+    "index": 44,
+    "turn_index": 16,
+    "role": "host",
+    "duration": 5.04,
+    "start": 176.044,
+    "slide": 5,
+    "sentence_index": 2,
+    "text": "URI 的全球唯一性让不同来源的数据可以安全地合并，而不会撞车。"
+  },
+  {
+    "index": 45,
+    "turn_index": 17,
+    "role": "guest",
+    "duration": 0.56,
+    "start": 181.084,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "懂了。"
+  },
+  {
+    "index": 46,
+    "turn_index": 17,
+    "role": "guest",
+    "duration": 3.92,
+    "start": 181.644,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "URI 看着长，其实是买了一份跨系统不撞车的保险。"
+  },
+  {
+    "index": 47,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 2.32,
+    "start": 185.564,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "三元组多了之后，就形成图模型。"
+  },
+  {
+    "index": 48,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 2.32,
+    "start": 187.884,
+    "slide": 6,
+    "sentence_index": 1,
+    "text": "节点可以是资源，也可以是字面量。"
+  },
+  {
+    "index": 49,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 1.04,
+    "start": 190.204,
+    "slide": 6,
+    "sentence_index": 2,
+    "text": "边就是谓语。"
+  },
+  {
+    "index": 50,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 4.32,
+    "start": 191.244,
+    "slide": 6,
+    "sentence_index": 3,
+    "text": "当多个三元组共享同一个 URI 时，图就自动连起来了。"
+  },
+  {
+    "index": 51,
+    "turn_index": 19,
+    "role": "guest",
+    "duration": 0.88,
+    "start": 195.564,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "能举个例子吗？"
+  },
+  {
+    "index": 52,
+    "turn_index": 20,
+    "role": "host",
+    "duration": 3.52,
+    "start": 196.444,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "比如 Bob knows Alice，Alice worksAt Company。"
+  },
+  {
+    "index": 53,
+    "turn_index": 20,
+    "role": "host",
+    "duration": 5.84,
+    "start": 199.964,
+    "slide": 6,
+    "sentence_index": 1,
+    "text": "两个三元组共享了 Alice 这个节点，于是 Bob 和 Company 通过 Alice 间接连接。"
+  },
+  {
+    "index": 54,
+    "turn_index": 20,
+    "role": "host",
+    "duration": 6.48,
+    "start": 205.804,
+    "slide": 6,
+    "sentence_index": 2,
+    "text": "你不需要额外写一个「Bob 与 Company 有关」的三元组，图结构 itself 就在表达这种可达性。"
+  },
+  {
+    "index": 55,
+    "turn_index": 21,
+    "role": "guest",
+    "duration": 2.88,
+    "start": 212.284,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "这比关系型数据库的外键查询更直观。"
+  },
+  {
+    "index": 56,
+    "turn_index": 21,
+    "role": "guest",
+    "duration": 3.84,
+    "start": 215.164,
+    "slide": 6,
+    "sentence_index": 1,
+    "text": "数据库里你需要写 join，但 RDF 图里关系是直接可见的。"
+  },
+  {
+    "index": 57,
+    "turn_index": 22,
+    "role": "host",
+    "duration": 1.2,
+    "start": 219.004,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "接下来讲字面量。"
+  },
+  {
+    "index": 58,
+    "turn_index": 22,
+    "role": "host",
+    "duration": 5.6,
+    "start": 220.204,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "字面量是三元组里那些不能继续链接的值，比如字符串、数字、日期。"
+  },
+  {
+    "index": 59,
+    "turn_index": 22,
+    "role": "host",
+    "duration": 6.08,
+    "start": 225.804,
+    "slide": 7,
+    "sentence_index": 2,
+    "text": "Bob 的年龄是 30，生日是 1990 年 7 月 4 日，名字是 Bob，这些都是字面量。"
+  },
+  {
+    "index": 60,
+    "turn_index": 23,
+    "role": "guest",
+    "duration": 2.64,
+    "start": 231.884,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "字面量只能做宾语，不能做主语，对吧？"
+  },
+  {
+    "index": 61,
+    "turn_index": 24,
+    "role": "host",
+    "duration": 0.32,
+    "start": 234.524,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "对。"
+  },
+  {
+    "index": 62,
+    "turn_index": 24,
+    "role": "host",
+    "duration": 1.84,
+    "start": 234.844,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "因为它不是可链接的实体。"
+  },
+  {
+    "index": 63,
+    "turn_index": 24,
+    "role": "host",
+    "duration": 7.09,
+    "start": 236.684,
+    "slide": 7,
+    "sentence_index": 2,
+    "text": "但有时候你想给字符串本身加属性，比如「这个名字是英文名」或者「这个名字来自维基百科」。"
+  },
+  {
+    "index": 64,
+    "turn_index": 24,
+    "role": "host",
+    "duration": 4.72,
+    "start": 243.774,
+    "slide": 7,
+    "sentence_index": 3,
+    "text": "这时候就不能把字符串当字面量，而要把它提升成一个资源节点。"
+  },
+  {
+    "index": 65,
+    "turn_index": 25,
+    "role": "guest",
+    "duration": 1.84,
+    "start": 248.494,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "这样做不是让图更复杂了吗？"
+  },
+  {
+    "index": 66,
+    "turn_index": 26,
+    "role": "host",
+    "duration": 2.8,
+    "start": 250.334,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "确实复杂一点，但换来的是可链接性。"
+  },
+  {
+    "index": 67,
+    "turn_index": 26,
+    "role": "host",
+    "duration": 4.16,
+    "start": 253.134,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "你可以给这个资源节点加来源、加语言、加置信度。"
+  },
+  {
+    "index": 68,
+    "turn_index": 26,
+    "role": "host",
+    "duration": 3.68,
+    "start": 257.294,
+    "slide": 7,
+    "sentence_index": 2,
+    "text": "本体工程经常要在「简单」和「可扩展」之间做权衡。"
+  },
+  {
+    "index": 69,
+    "turn_index": 27,
+    "role": "host",
+    "duration": 3.28,
+    "start": 260.974,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "再往下就是 Turtle，这是最友好的 RDF 写法。"
+  },
+  {
+    "index": 70,
+    "turn_index": 27,
+    "role": "host",
+    "duration": 1.12,
+    "start": 264.254,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "来看一段代码。"
+  },
+  {
+    "index": 71,
+    "turn_index": 28,
+    "role": "guest",
+    "duration": 1.28,
+    "start": 265.374,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "终于要敲代码了吗？"
+  },
+  {
+    "index": 72,
+    "turn_index": 29,
+    "role": "host",
+    "duration": 0.32,
+    "start": 266.654,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "对。"
+  },
+  {
+    "index": 73,
+    "turn_index": 29,
+    "role": "host",
+    "duration": 10.0,
+    "start": 266.974,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "PREFIX 声明命名空间，a 是 rdf:type 的简写，分号表示同一主语的多个谓语，逗号表示同一谓语的多个宾语。"
+  },
+  {
+    "index": 74,
+    "turn_index": 29,
+    "role": "host",
+    "duration": 9.564,
+    "start": 276.974,
+    "slide": 8,
+    "sentence_index": 2,
+    "text": "看这段：PREFIX foaf 小于 http 冒号斜杠斜杠 xmlns 点 com 斜杠 foaf 斜杠 0 点 1 斜杠 大于 。"
+  },
+  {
+    "index": 75,
+    "turn_index": 29,
+    "role": "host",
+    "duration": 10.08,
+    "start": 286.539,
+    "slide": 8,
+    "sentence_index": 3,
+    "text": "ex 冒号 Bob a foaf 冒号 Person 分号 foaf 冒号 name 双引号 Bob 双引号 分号 foaf 冒号 knows ex 冒号 Alice 句号。"
+  },
+  {
+    "index": 76,
+    "turn_index": 30,
+    "role": "guest",
+    "duration": 2.08,
+    "start": 296.619,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "语法糖确实省了不少字符。"
+  },
+  {
+    "index": 77,
+    "turn_index": 30,
+    "role": "guest",
+    "duration": 4.4,
+    "start": 298.699,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "但我听说 JSON-LD 也很流行，为什么不直接学 JSON-LD？"
+  },
+  {
+    "index": 78,
+    "turn_index": 31,
+    "role": "host",
+    "duration": 3.84,
+    "start": 303.099,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "JSON-LD 适合 Web 开发者，因为它披着 JSON 的皮。"
+  },
+  {
+    "index": 79,
+    "turn_index": 31,
+    "role": "host",
+    "duration": 3.36,
+    "start": 306.939,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "但 Turtle 更紧凑，更适合写本体和看本体。"
+  },
+  {
+    "index": 80,
+    "turn_index": 31,
+    "role": "host",
+    "duration": 3.2,
+    "start": 310.299,
+    "slide": 8,
+    "sentence_index": 2,
+    "text": "两者可以互转，学一个就能迁移到另一个。"
+  },
+  {
+    "index": 81,
+    "turn_index": 32,
+    "role": "guest",
+    "duration": 1.12,
+    "start": 313.499,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "那 N-Triples 呢？"
+  },
+  {
+    "index": 82,
+    "turn_index": 33,
+    "role": "host",
+    "duration": 5.2,
+    "start": 314.619,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "N-Triples 是 RDF 的原始形态，每条三元组一行，没有语法糖。"
+  },
+  {
+    "index": 83,
+    "turn_index": 33,
+    "role": "host",
+    "duration": 2.626,
+    "start": 319.819,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "它适合机器处理，但人读起来冗长。"
+  },
+  {
+    "index": 84,
+    "turn_index": 33,
+    "role": "host",
+    "duration": 3.12,
+    "start": 322.444,
+    "slide": 8,
+    "sentence_index": 2,
+    "text": "Turtle 是 N-Triples 加语法糖的更友好版本。"
+  },
+  {
+    "index": 85,
+    "turn_index": 34,
+    "role": "host",
+    "duration": 3.2,
+    "start": 325.564,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "最后澄清一个误区：RDF 不是数据库表。"
+  },
+  {
+    "index": 86,
+    "turn_index": 34,
+    "role": "host",
+    "duration": 4.64,
+    "start": 328.764,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "关系型数据库有固定 schema，行和列，擅长事务和强类型。"
+  },
+  {
+    "index": 87,
+    "turn_index": 34,
+    "role": "host",
+    "duration": 6.133,
+    "start": 333.404,
+    "slide": 9,
+    "sentence_index": 2,
+    "text": "RDF 是灵活的图模型，关系本身就是数据，擅长语义集成和不断演化的关系。"
+  },
+  {
+    "index": 88,
+    "turn_index": 35,
+    "role": "guest",
+    "duration": 2.96,
+    "start": 339.537,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "那企业用了 RDF，是不是要把数据库全换掉？"
+  },
+  {
+    "index": 89,
+    "turn_index": 36,
+    "role": "host",
+    "duration": 0.8,
+    "start": 342.497,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "通常不是。"
+  },
+  {
+    "index": 90,
+    "turn_index": 36,
+    "role": "host",
+    "duration": 6.053,
+    "start": 343.297,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "RDF 作为语义层盖在数据库之上，把各系统的数据映射成统一的 URI 和关系。"
+  },
+  {
+    "index": 91,
+    "turn_index": 36,
+    "role": "host",
+    "duration": 2.0,
+    "start": 349.35,
+    "slide": 9,
+    "sentence_index": 2,
+    "text": "底层事务还是数据库负责。"
+  },
+  {
+    "index": 92,
+    "turn_index": 37,
+    "role": "guest",
+    "duration": 3.04,
+    "start": 351.35,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "但我听说 RDF 查询比数据库慢很多？"
+  },
+  {
+    "index": 93,
+    "turn_index": 38,
+    "role": "host",
+    "duration": 2.32,
+    "start": 354.39,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "直接解析 Turtle 文件查询当然慢。"
+  },
+  {
+    "index": 94,
+    "turn_index": 38,
+    "role": "host",
+    "duration": 4.32,
+    "start": 356.71,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "所以生产环境会用 Triple Store 或图数据库比如 Neo4j。"
+  },
+  {
+    "index": 95,
+    "turn_index": 38,
+    "role": "host",
+    "duration": 4.24,
+    "start": 361.03,
+    "slide": 9,
+    "sentence_index": 2,
+    "text": "RDF 是数据交换和建模语言，不是高性能查询引擎。"
+  },
+  {
+    "index": 96,
+    "turn_index": 38,
+    "role": "host",
+    "duration": 2.96,
+    "start": 365.27,
+    "slide": 9,
+    "sentence_index": 3,
+    "text": "SPARQL 是我们下一季会讲的查询语言。"
+  },
+  {
+    "index": 97,
+    "turn_index": 39,
+    "role": "guest",
+    "duration": 4.56,
+    "start": 368.23,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "所以 RDF 的定位是「统一的语义表达层」，而不是「高性能存储层」。"
+  },
+  {
+    "index": 98,
+    "turn_index": 40,
+    "role": "host",
+    "duration": 1.84,
+    "start": 372.79,
+    "slide": 10,
+    "sentence_index": 0,
+    "text": "总结今天的四个关键认知。"
+  },
+  {
+    "index": 99,
+    "turn_index": 40,
+    "role": "host",
+    "duration": 4.8,
+    "start": 374.63,
+    "slide": 10,
+    "sentence_index": 1,
+    "text": "第一，RDF 三元组由主谓宾组成，是知识的最小表达单位。"
+  },
+  {
+    "index": 100,
+    "turn_index": 40,
+    "role": "host",
+    "duration": 3.44,
+    "start": 379.43,
+    "slide": 10,
+    "sentence_index": 2,
+    "text": "第二，URI 给每件事物全球唯一身份证。"
+  },
+  {
+    "index": 101,
+    "turn_index": 40,
+    "role": "host",
+    "duration": 3.84,
+    "start": 382.87,
+    "slide": 10,
+    "sentence_index": 3,
+    "text": "第三，图模型通过共享节点把关系连成网络。"
+  },
+  {
+    "index": 102,
+    "turn_index": 40,
+    "role": "host",
+    "duration": 3.92,
+    "start": 386.71,
+    "slide": 10,
+    "sentence_index": 4,
+    "text": "第四，Turtle 是开发者入门 RDF 最友好的格式。"
+  },
+  {
+    "index": 103,
+    "turn_index": 41,
+    "role": "guest",
+    "duration": 6.16,
+    "start": 390.63,
+    "slide": 10,
+    "sentence_index": 0,
+    "text": "课后作业：用 Turtle 写 5 个关于你身边事物的三元组，比如你的手机、你的城市、你常用的 App。"
+  },
+  {
+    "index": 104,
+    "turn_index": 41,
+    "role": "guest",
+    "duration": 3.6,
+    "start": 396.79,
+    "slide": 10,
+    "sentence_index": 1,
+    "text": "下一集我们会把这些三元组放进 Protégé，画出第一个本体。"
+  }
+]

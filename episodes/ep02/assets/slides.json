@@ -1,0 +1,136 @@
+{
+  "meta": {
+    "topic": "《本体工程与知识图谱实战》第 02 集：RDF 三元组：知识的原子单位",
+    "suggested_title": "RDF 三元组：知识的原子单位",
+    "total_slides": 10,
+    "estimated_duration_min": 10
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "type": "cover",
+      "title": "RDF 三元组：知识的原子单位",
+      "subtitle": "从主谓宾到图模型，理解本体的数据语言",
+      "key_points": [],
+      "speaker_notes": "开场：上一集我们聊了为什么需要本体。这一集进入技术基础：RDF 三元组。它就像化学里的原子，是构成知识图谱的最小单元。",
+      "depth": "short"
+    },
+    {
+      "slide": 2,
+      "type": "toc",
+      "title": "本期要聊什么",
+      "subtitle": "",
+      "key_points": [],
+      "speaker_notes": "主持人带节奏：三元组长什么样？URI 为什么重要？图模型怎么连起来？Turtle 怎么写？RDF 和数据库表有什么区别？",
+      "depth": "short"
+    },
+    {
+      "slide": 3,
+      "type": "content",
+      "title": "从本体到 RDF：我们需要一种通用语言",
+      "subtitle": "",
+      "key_points": [
+        "本体是概念层，RDF 是数据层",
+        "RDF 资源描述框架",
+        "W3C 标准，1999 年发布"
+      ],
+      "speaker_notes": "解释上一集讲的是为什么和是什么，这一集讲怎么写。RDF 是本体的数据语言，让机器能交换和解析知识。嘉宾可以追问：直接用 JSON 不行吗？主持人回应：JSON 没有全局唯一标识和显式关系语义。",
+      "depth": "medium"
+    },
+    {
+      "slide": 4,
+      "type": "content",
+      "title": "三元组：知识的最小表达单位",
+      "subtitle": "",
+      "key_points": [
+        "主语 + 谓语 + 宾语",
+        "对应图中的一条有向边",
+        "Bob knows Alice 一例说明"
+      ],
+      "speaker_notes": "用自然语言句子Bob认识Alice切入：主语是 Bob，谓语是认识，宾语是 Alice。RDF 把它变成 <Bob> <knows> <Alice>。每个三元组就是图中的一条带标签的边。",
+      "depth": "medium"
+    },
+    {
+      "slide": 5,
+      "type": "content",
+      "title": "URI：给每个事物一张全球身份证",
+      "subtitle": "",
+      "key_points": [
+        "URI = 统一资源标识符",
+        "避免同名歧义",
+        "示例：dbpedia:达芬奇"
+      ],
+      "speaker_notes": "解释 URI 的重要性。同一个苹果可能指公司、水果、乐队，URI 通过全局唯一地址消除歧义。嘉宾提出反驳：URI 那么长，人类怎么读？主持人回应：用前缀缩写，比如 dbpedia:。",
+      "depth": "long"
+    },
+    {
+      "slide": 6,
+      "type": "content",
+      "title": "图模型：三元组连成的知识网络",
+      "subtitle": "",
+      "key_points": [
+        "节点 = 资源或字面量",
+        "边 = 谓语",
+        "共享 URI 让图连接"
+      ],
+      "speaker_notes": "展示多个三元组如何连成图。如果 Bob knows Alice，Alice worksAt Company，那么 Bob 和 Company 通过 Alice 间接连接。这就是图模型的力量：关系本身就在创造新的可达性。",
+      "depth": "medium"
+    },
+    {
+      "slide": 7,
+      "type": "content",
+      "title": "字面量：当知识需要具体数值",
+      "subtitle": "",
+      "key_points": [
+        "字面量只能做宾语",
+        "字符串 / 数字 / 日期",
+        "可带类型和语言标签"
+      ],
+      "speaker_notes": "解释字面量的作用。例如 Bob 的名字是 Bob，年龄是 30，生日是 1990-07-04。字面量只能出现在宾语位置，因为它不是可链接的实体。嘉宾追问：那我想给字符串做主体怎么办？主持人回应：把它提升为一个资源节点。嘉宾反驳：这样不是让图更复杂吗？主持人解释：复杂性换的是可链接性，比如可以给名字本身加来源、加语言标签。",
+
+      "depth": "long"
+    },
+    {
+      "slide": 8,
+      "type": "content",
+      "title": "Turtle：最友好的 RDF 写法",
+      "subtitle": "",
+      "key_points": [
+        "PREFIX 声明命名空间",
+        "a = rdf:type",
+        "; 同一主语，, 同一谓语"
+      ],
+      "speaker_notes": "展示 Turtle 语法。用 Bob 的例子写出一段 Turtle 代码，解释 PREFIX、a、;、, 四个最常用的语法糖。嘉宾可以扮演 skeptic：这些语法能不能少一点？主持人回应：N-Triples 更原始但冗长，Turtle 是平衡点。嘉宾反驳：JSON-LD 不是更现代吗？主持人回应：JSON-LD 适合 Web 开发者，Turtle 适合本体工程师，两者可以互转。",
+
+      "depth": "long"
+    },
+    {
+      "slide": 9,
+      "type": "content",
+      "title": "RDF 不是数据库表",
+      "subtitle": "",
+      "key_points": [
+        "无固定 schema，关系即数据",
+        "适合表达 evolving 的语义",
+        "查询用 SPARQL"
+      ],
+      "speaker_notes": "澄清一个常见误区：RDF 不是关系数据库的替代品，而是不同建模范式。数据库表擅长事务和强 schema，RDF 擅长关系和语义集成。嘉宾追问：那企业用 RDF 是不是要把数据库全换掉？主持人回应：通常是共存，RDF 作为语义层盖在数据库之上。嘉宾反驳：RDF 性能不是比数据库差很多吗？主持人回应：确实差，所以大规模查询会用图数据库如 Neo4j 或 Triple Store，而不是直接解析 Turtle 文件。",
+
+      "depth": "long"
+    },
+    {
+      "slide": 10,
+      "type": "summary",
+      "title": "关键洞察：RDF 三元组是知识图谱的原子",
+      "subtitle": "",
+      "key_points": [
+        "三元组 = 主谓宾 = 一条带标签的边",
+        "URI 让事物在全球唯一可识别",
+        "图模型天然适合表达关系知识",
+        "Turtle 是开发者入门首选格式"
+      ],
+      "speaker_notes": "收尾：总结三个核心认知。行动建议：打开 W3C RDF Primer，用 Turtle 手写 5 个关于你身边事物的三元组。预告下一集：Protégé 入门，画出你的第一个本体。",
+      "depth": "short"
+    }
+  ]
+}

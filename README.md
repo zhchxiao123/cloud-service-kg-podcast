@@ -133,7 +133,7 @@ python src/build_kg.py \
 | 集数 | 标题 | 视频 | 代码 |
 |------|------|------|------|
 | EP01 | 本体到底解决什么问题？ | ✅ 已发布 · [B站] · [YouTube] · [音频](./episodes/ep01/assets/podcast.mp3) | [`episodes/ep01/`](./episodes/ep01) |
-| EP02 | RDF 三元组：知识的原子单位 | [B站] · [YouTube] | [`episodes/ep02/`](./episodes/ep02) |
+| EP02 | RDF 三元组：知识的原子单位 | ✅ 已发布 · [B站] · [YouTube] · [音频](./episodes/ep02/assets/podcast.mp3) | [`episodes/ep02/`](./episodes/ep02) |
 | EP03 | Protégé 入门：画出你的第一个本体 | [B站] · [YouTube] | [`episodes/ep03/`](./episodes/ep03) |
 | EP04 | OWL 与推理机：让知识自己说话 | [B站] · [YouTube] | [`episodes/ep04/`](./episodes/ep04) |
 | EP05 | 从需求到 Competency Question | [B站] · [YouTube] | [`episodes/ep05/`](./episodes/ep05) |
