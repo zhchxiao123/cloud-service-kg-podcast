@@ -61,8 +61,8 @@ EP01 笔记：本体到底解决什么问题？（附 3 个真实案例）
 - 知识点 2
 - 知识点 3
 
-代码与 PPT：https://github.com/YOUR_ORG/cloud-service-kg-podcast/tree/main/episodes/ep0X
-系列总方案：https://github.com/YOUR_ORG/cloud-service-kg-podcast/blob/main/docs/master-plan.md
+代码与 PPT：https://github.com/zhchxiao123/cloud-service-kg-podcast/tree/main/episodes/ep0X
+系列总方案：https://github.com/zhchxiao123/cloud-service-kg-podcast/blob/main/docs/master-plan.md
 
 订阅本频道，每周更新一集。
 ```
@@ -77,8 +77,8 @@ In this episode:
 - Point 2
 - Point 3
 
-Code & slides: https://github.com/YOUR_ORG/cloud-service-kg-podcast/tree/main/episodes/ep0X
-Series plan: https://github.com/YOUR_ORG/cloud-service-kg-podcast/blob/main/docs/master-plan.md
+Code & slides: https://github.com/zhchxiao123/cloud-service-kg-podcast/tree/main/episodes/ep0X
+Series plan: https://github.com/zhchxiao123/cloud-service-kg-podcast/blob/main/docs/master-plan.md
 
 Subscribe for weekly updates.
 ```

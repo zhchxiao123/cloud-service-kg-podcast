@@ -4,7 +4,7 @@ set -euo pipefail
 # Helper script to initialize a local git repo and push to GitHub.
 # Run this after creating a new empty repo on GitHub named cloud-service-kg-podcast.
 
-REPO_URL="https://github.com/YOUR_ORG/cloud-service-kg-podcast.git"
+REPO_URL="https://github.com/zhchxiao123/cloud-service-kg-podcast.git"
 
 cd "$(dirname "$0")/.."
 

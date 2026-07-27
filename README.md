@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](./LICENSE-data)
-[![CI](https://github.com/YOUR_ORG/cloud-service-kg-podcast/actions/workflows/ci.yml/badge.svg)](https://github.com/YOUR_ORG/cloud-service-kg-podcast/actions/workflows/ci.yml)
+[![CI](https://github.com/zhchxiao123/cloud-service-kg-podcast/actions/workflows/ci.yml/badge.svg)](https://github.com/zhchxiao123/cloud-service-kg-podcast/actions/workflows/ci.yml)
 
 > 中文技术播客/视频系列《本体工程与知识图谱实战》的官方仓库。  
 > 这里存放每集脚本、代码、数据、PPT 源文件，以及核心项目载体：**云服务选型知识图谱**。
@@ -58,7 +58,7 @@ cloud-service-kg-podcast/
 ### 1. 克隆仓库
 
 ```bash
-git clone https://github.com/YOUR_ORG/cloud-service-kg-podcast.git
+git clone https://github.com/zhchxiao123/cloud-service-kg-podcast.git
 cd cloud-service-kg-podcast
 ```
 
@@ -173,9 +173,9 @@ python src/build_kg.py \
 ```bibtex
 @software{cloud_service_kg_podcast,
   title = {本体工程与知识图谱实战 · 播客/视频系列},
-  author = {YOUR_NAME},
+  author = {zhchxiao123},
   year = {2026},
-  url = {https://github.com/YOUR_ORG/cloud-service-kg-podcast},
+  url = {https://github.com/zhchxiao123/cloud-service-kg-podcast},
   note = {Zenodo DOI will be minted at v1.0.0 release}
 }
 ```

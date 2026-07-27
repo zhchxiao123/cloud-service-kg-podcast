@@ -3,11 +3,11 @@ message: "If you use this podcast series or the cloud-service-kg project, please
 title: "本体工程与知识图谱实战 · 播客/视频系列"
 abstract: "A Chinese podcast/video series on ontology engineering and knowledge graphs, with a reproducible hands-on project: a cloud service selection knowledge graph."
 authors:
-  - family-names: "YOUR_FAMILY_NAME"
-    given-names: "YOUR_GIVEN_NAME"
+  - family-names: "zhchxiao123"
+    given-names: ""
     orcid: "https://orcid.org/0000-0000-0000-0000"
 type: software
-repository-code: "https://github.com/YOUR_ORG/cloud-service-kg-podcast"
+repository-code: "https://github.com/zhchxiao123/cloud-service-kg-podcast"
 license:
   - MIT
   - CC-BY-4.0

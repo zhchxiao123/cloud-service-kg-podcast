@@ -3,8 +3,8 @@
   "description": "中文技术播客/视频系列《本体工程与知识图谱实战》的官方仓库，包含每集脚本、代码、数据、PPT 源文件，以及核心项目载体：云服务选型知识图谱。",
   "creators": [
     {
-      "name": "YOUR_NAME",
-      "affiliation": "YOUR_AFFILIATION",
+      "name": "zhchxiao123",
+      "affiliation": "Independent",
       "orcid": "0000-0000-0000-0000"
     }
   ],
@@ -31,7 +31,7 @@
   "related_identifiers": [
     {
       "relation": "isSupplementTo",
-      "identifier": "https://github.com/YOUR_ORG/cloud-service-kg-podcast",
+      "identifier": "https://github.com/zhchxiao123/cloud-service-kg-podcast",
       "resource_type": "software"
     }
   ]
