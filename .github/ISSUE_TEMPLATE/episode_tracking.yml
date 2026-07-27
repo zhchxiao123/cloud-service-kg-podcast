@@ -1,5 +1,5 @@
 name: 单集制作跟踪
-about: 跟踪某一集的研究、脚本、录制、剪辑、发布进度
+about: 跟踪某一集的研究、脚本、录制、剪辑、发布进度（与本地播客 skills 对齐）
 title: "[EPxx] 标题"
 labels: ["episode", "tracking"]
 body:
@@ -20,6 +20,15 @@ body:
       required: true
 
   - type: input
+    id: project_name
+    attributes:
+      label: 本地播客项目名
+      description: 用于 podcast-projects/ 目录，例如 ontology-basics-02
+      placeholder: "例如：ontology-basics-02"
+    validations:
+      required: true
+
+  - type: input
     id: target_date
     attributes:
       label: 预计发布日期
@@ -34,56 +43,82 @@ body:
   - type: checkboxes
     id: research
     attributes:
-      label: 阶段 1：研究
+      label: 阶段 1：研究 / 大纲
+      description: 输入可以是文章、关键词、URL 或已有内容
       options:
         - label: 验证技术/论文真实性
         - label: 列出关键引用（≥3 条）
-        - label: 确认演示工具版本
+        - label: 确定本集要回答的核心问题
+        - label: 运行 `/podcast-outline` 生成 `slide-outline.json`
+        - label: 校验大纲格式（total_slides、slides 数组、depth、key_points）
+
+  - type: checkboxes
+    id: slides
+    attributes:
+      label: 阶段 2：幻灯片 / PPT（`/slide-deck`）
+      options:
+        - label: 准备视觉风格锚（style_anchor）
+        - label: 运行 `prebuild_images.py` 自动生成插图
+        - label: 生成 `_build/slide-*.js` 和 `compile.js`
+        - label: 运行 `node compile.js` 输出 `presentation.pptx`
+        - label: 用 `markitdown` 校验幻灯片数 = `meta.total_slides`
+        - label: 视频模式布局审计通过（非字幕区元素 y+height ≤ 4.65"）
 
   - type: checkboxes
     id: script
     attributes:
-      label: 阶段 2：脚本与素材
+      label: 阶段 3：播客脚本（`/podcast-script`）
       options:
-        - label: 完成讲稿（1500–2500 字）
-        - label: 设计 ≥3 个演示点
-        - label: 生成/收集插图
-        - label: 完成 PPT / Marp 幻灯片
+        - label: 根据 `slide-outline.json` 生成 `podcast-script.json`
+        - label: 双人对话覆盖所有 speaker_notes
+        - label: TTS 归一化：版本号/IP/域名中的 `.` →「点」；ASCII 引号 →「」
+        - label: 校验 slide 编号严格递增、不超过 total_slides
+        - label: 校验 `depth: long` 的幻灯片有 ≥5 轮对话或真实交锋
 
   - type: checkboxes
-    id: code
+    id: voice
     attributes:
-      label: 阶段 3：代码/演示
+      label: 阶段 4：配音（`/omlx-podcast-tts`）
       options:
-        - label: 准备可运行代码
-        - label: 本地测试通过
-        - label: 录制屏幕演示（如需要）
+        - label: 准备 host.wav / guest.wav 参考音频（5–30 秒，单声道，干净）
+        - label: 配置 `OMLX_BASE_URL`、`OMLX_API_KEY`、`OMLX_REF_AUDIO_*` 环境变量
+        - label: 运行 `prepare_voice.py` 提取 ref_text 并缓存
+        - label: 运行 `generate_audio.py --sentence-mode --concurrency 1` 生成 MP3
+        - label: 检查输出 `podcast.mp3` + `podcast_durations.json`
 
   - type: checkboxes
-    id: production
+    id: video
     attributes:
-      label: 阶段 4：配音与剪辑
+      label: 阶段 5：视频合成（`/podcast-video`）
       options:
-        - label: 配音完成（ollx / 备选 TTS）
-        - label: 视频剪辑完成
-        - label: 字幕 SRT 导出
-        - label: 封面制作完成
+        - label: 校验 `presentation.pptx` / `podcast.mp3` / `podcast-script.json` 三者幻灯片数一致
+        - label: 安装/检查依赖：ffmpeg、libreoffice、PyMuPDF
+        - label: 运行 `assemble.py` 合成 `final.mp4`
+        - label: 校验视频时长与音频误差 < 2 秒
+        - label: 校验分辨率为 1920×1080
 
   - type: checkboxes
     id: publish
     attributes:
-      label: 阶段 5：发布
+      label: 阶段 6：发布与归档
       options:
+        - label: 把当集产物复制到 `episodes/epXX/assets/`（Git LFS）
+        - label: 把 `_build/` 脚本复制到 `episodes/epXX/build/` 以保留可复现性
+        - label: 更新 `episodes/epXX/README.md`（含讲稿摘要、参考来源、课后作业）
+        - label: 运行 `/wechat-tech-article` 生成公众号文章（可选）
         - label: B站上传
         - label: YouTube 上传（含英文字幕）
         - label: 视频号预告/金句
-        - label: 公众号文章
+        - label: 公众号文章发布
         - label: 知乎专栏
         - label: 掘金技术文
-        - label: GitHub 合并当集代码
+        - label: 更新主 README 中的 EP 状态与链接
+        - label: 提交 GitHub 并关闭本 Issue
 
   - type: textarea
     id: notes
     attributes:
       label: 备注/阻塞项
-      placeholder: "记录当前阻塞、待确认的工具版本、对抗验证结论等"
+      placeholder: |
+        记录当前阻塞、待确认的工具版本、对抗验证结论、skill 运行问题等。
+        例如：ollx TTS 503 → 改用备选 Piper；prebuild_images 失败 → 改用静态图。

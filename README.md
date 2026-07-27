@@ -111,6 +111,21 @@ python src/build_kg.py \
 
 ---
 
+## 🎙️ 播客视频制作流水线
+
+本系列使用本地播客 skills 流水线制作每集视频：
+
+1. `/podcast-outline` → `slide-outline.json`
+2. `/slide-deck` → `presentation.pptx`
+3. `/podcast-script` → 双人对话脚本
+4. `/omlx-podcast-tts` → `podcast.mp3`
+5. `/podcast-video` → `final.mp4`
+6. `/wechat-tech-article`（可选）→ 公众号文章
+
+详细流程见 [`docs/podcast-skills-pipeline.md`](./docs/podcast-skills-pipeline.md)。
+
+---
+
 ## 🎬 每集内容索引
 
 ### 主线课程
