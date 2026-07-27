@@ -58,6 +58,7 @@
 | `assets/script.json` | 完整讲稿（按 slide 分段） |
 | `assets/slides.json` | 幻灯片大纲与讲者备注 |
 | `assets/durations.json` | 句子级时间戳 |
+| `src/rdflib_demo.py` | 可运行的 rdflib Turtle 示例 |
 | `notes.md` | 研究包：RDF 概念、Turtle 示例、参考来源 |
 | `build/` | PPT 生成脚本（pptxgenjs） |
 
