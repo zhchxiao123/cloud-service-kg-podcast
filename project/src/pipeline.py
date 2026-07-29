@@ -5,16 +5,13 @@ It reads raw text documents, extracts entities/relations, maps them to the
 ontology, and writes RDF/Turtle.
 """
 
-import json
 from pathlib import Path
-from typing import Optional
 
 import typer
 from rdflib import Graph, Literal, Namespace, URIRef
 from rdflib.namespace import RDF, RDFS, XSD
 
 from src.ontology import load_ontology
-
 
 app = typer.Typer(help="Cloud service KG construction pipeline")
 CSKG = Namespace("https://example.org/cloud-service-kg#")
@@ -32,14 +29,24 @@ def create_minimal_kg(ontology_path: Path) -> Graph:
     g.add((svc, CSKG.hasProvider, CSKG.Azure))
     g.add((svc, CSKG.hasGPU, Literal(True, datatype=XSD.boolean)))
     g.add((svc, CSKG.serviceCode, Literal("NC24ads_A100_v4")))
-    g.add((svc, CSKG.dataSource, Literal("https://learn.microsoft.com/azure/virtual-machines/nc-a100-v4-series")))
+    g.add(
+        (
+            svc,
+            CSKG.dataSource,
+            Literal(
+                "https://learn.microsoft.com/azure/virtual-machines/nc-a100-v4-series"
+            ),
+        )
+    )
     g.add((svc, CSKG.lastUpdated, Literal("2026-07-27", datatype=XSD.date)))
     return g
 
 
 @app.command()
 def build(
-    ontology: Path = typer.Option(..., "--ontology", "-o", help="Path to ontology TTL file"),
+    ontology: Path = typer.Option(
+        ..., "--ontology", "-o", help="Path to ontology TTL file"
+    ),
     output: Path = typer.Option("kg.ttl", "--output", help="Output KG file"),
 ):
     """Build a minimal knowledge graph from the ontology and sample data."""

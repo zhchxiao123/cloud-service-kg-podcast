@@ -1,4 +1,4 @@
-// Slide 9: Content - RDF 不是数据库表
+// Slide 9: Content - RDF 是模型，不是存储引擎
 const pptxgen = require('pptxgenjs');
 const { pageBadge, titleBlock, subtitleLine } = require('./helpers');
 
@@ -6,98 +6,54 @@ function createSlide(pres, theme) {
   const slide = pres.addSlide();
   slide.background = { color: theme.bg };
 
-  titleBlock(slide, pres, theme, 'RDF 不是数据库表');
-  subtitleLine(slide, theme, '两种建模范式，各有所长');
+  titleBlock(slide, pres, theme, 'RDF 是模型，不是存储引擎');
+  subtitleLine(slide, theme, '不要把数据模型、文件格式和数据库产品混在一起');
 
-  const rows = [
-    { dim: 'Schema', rdf: '无固定 Schema，关系即数据', db: '强 Schema，表结构预先定义' },
-    { dim: '灵活性', rdf: '适合 evolving 的语义', db: '适合稳定的业务实体' },
-    { dim: '查询语言', rdf: 'SPARQL', db: 'SQL' },
-    { dim: '最佳场景', rdf: '语义集成、知识图谱', db: '事务、报表、强一致性' },
+  const boxes = [
+    { x: 0.45, w: 1.95, color: theme.light, text: 'Turtle／JSON-LD', sub: '写出 RDF' },
+    { x: 2.75, w: 1.55, color: theme.accent, text: 'RDF 图', sub: '数据模型' },
+    { x: 4.75, w: 1.95, color: theme.secondary, text: 'Triple Store', sub: '存储 RDF' },
+    { x: 7.15, w: 1.55, color: theme.primary, text: 'SPARQL', sub: '查询 RDF' },
   ];
 
-  const tblX = 0.6;
-  const tblY = 1.25;
-  const colW1 = 1.8;
-  const colW2 = 3.4;
-  const colW3 = 3.4;
-  const rowH = 0.50;
-  const hdrH = 0.42;
-
-  // Header
-  slide.addShape(pres.shapes.RECTANGLE, {
-    x: tblX, y: tblY, w: colW1, h: hdrH,
-    fill: { color: theme.accent }, line: { color: theme.accent, width: 1 },
-    rectRadius: 0.05,
-  });
-  slide.addText('维度', {
-    x: tblX, y: tblY, w: colW1, h: hdrH,
-    fontSize: 13, fontFace: 'Noto Sans CJK SC',
-    color: 'FFFFFF', bold: true, align: 'center', valign: 'middle',
-  });
-  slide.addShape(pres.shapes.RECTANGLE, {
-    x: tblX + colW1, y: tblY, w: colW2, h: hdrH,
-    fill: { color: theme.secondary }, line: { color: theme.secondary, width: 1 },
-    rectRadius: 0.05,
-  });
-  slide.addText('RDF / 知识图谱', {
-    x: tblX + colW1, y: tblY, w: colW2, h: hdrH,
-    fontSize: 13, fontFace: 'Noto Sans CJK SC',
-    color: '000814', bold: true, align: 'center', valign: 'middle',
-  });
-  slide.addShape(pres.shapes.RECTANGLE, {
-    x: tblX + colW1 + colW2, y: tblY, w: colW3, h: hdrH,
-    fill: { color: theme.light }, line: { color: theme.light, width: 1 },
-    rectRadius: 0.05,
-  });
-  slide.addText('关系型数据库', {
-    x: tblX + colW1 + colW2, y: tblY, w: colW3, h: hdrH,
-    fontSize: 13, fontFace: 'Noto Sans CJK SC',
-    color: '000814', bold: true, align: 'center', valign: 'middle',
+  boxes.forEach((box, index) => {
+    const textColor = box.color === theme.accent ? theme.primary : theme.bg;
+    slide.addShape(pres.shapes.RECTANGLE, {
+      x: box.x, y: 1.70, w: box.w, h: 1.05,
+      fill: { color: box.color }, line: { type: 'none' },
+    });
+    slide.addText(box.text, {
+      x: box.x, y: 1.88, w: box.w, h: 0.32,
+      fontSize: index === 0 ? 13 : 16, fontFace: 'Noto Sans CJK SC',
+      color: textColor, bold: true, align: 'center', valign: 'middle', margin: 0,
+      fit: 'shrink',
+    });
+    slide.addText(box.sub, {
+      x: box.x, y: 2.28, w: box.w, h: 0.24,
+      fontSize: 12, fontFace: 'Noto Sans CJK SC',
+      color: textColor, align: 'center', valign: 'middle', margin: 0,
+    });
+    if (index < boxes.length - 1) {
+      slide.addShape(pres.shapes.CHEVRON, {
+        x: box.x + box.w + 0.20, y: 2.02, w: 0.32, h: 0.36,
+        fill: { color: theme.primary }, line: { type: 'none' },
+      });
+    }
   });
 
-  rows.forEach((row, i) => {
-    const y = tblY + hdrH + i * rowH;
-    const fill = i % 2 === 0 ? '0B1426' : '061026';
-    slide.addShape(pres.shapes.RECTANGLE, {
-      x: tblX, y: y, w: colW1, h: rowH,
-      fill: { color: fill }, line: { color: theme.light, width: 0.5 },
-    });
-    slide.addText(row.dim, {
-      x: tblX, y: y, w: colW1, h: rowH,
-      fontSize: 12, fontFace: 'Noto Sans CJK SC',
-      color: theme.secondary, bold: true, align: 'center', valign: 'middle',
-    });
-    slide.addShape(pres.shapes.RECTANGLE, {
-      x: tblX + colW1, y: y, w: colW2, h: rowH,
-      fill: { color: fill }, line: { color: theme.light, width: 0.5 },
-    });
-    slide.addText(row.rdf, {
-      x: tblX + colW1 + 0.1, y: y, w: colW2 - 0.2, h: rowH,
-      fontSize: 12, fontFace: 'Noto Sans CJK SC',
-      color: theme.primary, align: 'center', valign: 'middle',
-    });
-    slide.addShape(pres.shapes.RECTANGLE, {
-      x: tblX + colW1 + colW2, y: y, w: colW3, h: rowH,
-      fill: { color: fill }, line: { color: theme.light, width: 0.5 },
-    });
-    slide.addText(row.db, {
-      x: tblX + colW1 + colW2 + 0.1, y: y, w: colW3 - 0.2, h: rowH,
-      fontSize: 12, fontFace: 'Noto Sans CJK SC',
-      color: theme.primary, align: 'center', valign: 'middle',
-    });
-  });
-
-  // Bottom insight band (inside safe area: y=3.85, h=0.55 → bottom=4.40)
   slide.addShape(pres.shapes.RECTANGLE, {
-    x: 0.6, y: 3.85, w: 8.8, h: 0.55,
-    fill: { color: theme.primary }, line: { type: 'none' },
-    rectRadius: 0.06,
+    x: 1.10, y: 3.30, w: 7.80, h: 0.86,
+    fill: { color: theme.bg }, line: { color: theme.light, width: 1.5 },
   });
-  slide.addText('企业通常共存：RDF 作为语义层盖在数据库之上', {
-    x: 0.6, y: 3.85, w: 8.8, h: 0.55,
+  slide.addText('Neo4j 是属性图数据库', {
+    x: 1.35, y: 3.45, w: 2.20, h: 0.28,
+    fontSize: 16, fontFace: 'Noto Sans CJK SC',
+    color: theme.secondary, bold: true, align: 'left', valign: 'middle', margin: 0,
+  });
+  slide.addText('导入 RDF 需要模型映射，不会自动保留全部 OWL 语义', {
+    x: 3.62, y: 3.43, w: 4.98, h: 0.34,
     fontSize: 14, fontFace: 'Noto Sans CJK SC',
-    color: '000814', bold: true, align: 'center', valign: 'middle',
+    color: theme.primary, align: 'left', valign: 'middle', margin: 0,
   });
 
   pageBadge(slide, pres, theme, 9);

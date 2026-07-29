@@ -1,3 +1,6 @@
 episodes/**/assets/*.mp4 filter=lfs diff=lfs merge=lfs -text
 episodes/**/assets/*.mp3 filter=lfs diff=lfs merge=lfs -text
 episodes/**/assets/*.pptx filter=lfs diff=lfs merge=lfs -text
+podcast-projects/**/*.mp4 filter=lfs diff=lfs merge=lfs -text
+podcast-projects/**/*.mp3 filter=lfs diff=lfs merge=lfs -text
+podcast-projects/**/*.pptx filter=lfs diff=lfs merge=lfs -text

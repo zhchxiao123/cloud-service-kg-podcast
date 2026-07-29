@@ -41,7 +41,7 @@ function createSlide(pres, theme) {
   });
 
   // Subtitle
-  slide.addText('从主谓宾到图模型，理解本体的数据语言', {
+  slide.addText('机器怎样把知识写成一张图？', {
     x: 0.7, y: 2.95, w: 8.6, h: 0.5,
     fontSize: 22, fontFace: 'Noto Sans CJK SC',
     color: theme.secondary, align: 'left', valign: 'middle',

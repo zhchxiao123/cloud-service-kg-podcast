@@ -3,8 +3,12 @@ const fs = require('fs');
 const path = require('path');
 const pptxgen = require('pptxgenjs');
 
-const projectName = 'ontology-basics-02';
-const outputPath = path.resolve(__dirname, `../assets/presentation.pptx`);
+const projectRoot = path.resolve(
+  __dirname,
+  '../../../podcast-projects/ep02-rdf',
+);
+const version = fs.readFileSync(path.join(projectRoot, 'current.txt'), 'utf8').trim();
+const outputPath = path.join(projectRoot, version, 'presentation.pptx');
 
 const theme = {
   primary: 'FFFFFF',
@@ -16,7 +20,7 @@ const theme = {
 
 const pres = new pptxgen();
 pres.layout = 'LAYOUT_16x9';
-pres.title = '《本体工程与知识图谱实战》第 02 集：RDF 三元组：知识的原子单位';
+pres.title = 'EP02｜RDF 三元组：机器怎样把知识写成一张图？';
 pres.author = 'Podcast Generator';
 
 // Font setup: rely on system-installed Noto Sans CJK SC and Liberation Sans

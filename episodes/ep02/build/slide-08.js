@@ -1,57 +1,60 @@
-// Slide 8: Content - Turtle：最友好的 RDF 写法
+// Slide 8: Content - Turtle：把 RDF 写得像代码一样清楚
 const pptxgen = require('pptxgenjs');
-const { pageBadge, titleBlock, subtitleLine, bulletList } = require('./helpers');
+const { pageBadge, titleBlock, subtitleLine } = require('./helpers');
 
 function createSlide(pres, theme) {
   const slide = pres.addSlide();
   slide.background = { color: theme.bg };
 
-  titleBlock(slide, pres, theme, 'Turtle：最友好的 RDF 写法');
-  subtitleLine(slide, theme, 'Terse RDF Triple Language');
+  titleBlock(slide, pres, theme, 'Turtle：把 RDF 写得像代码一样清楚');
+  subtitleLine(slide, theme, '@prefix、a、分号和逗号，都是可读性的语法糖');
 
-  bulletList(slide, pres, theme, [
-    'PREFIX 声明命名空间，避免每次都写长 URI',
-    'a 是 rdf:type 的语法糖',
-    '; 同一主语继续陈述，, 同一谓语并列宾语',
-  ], { y: 1.35, lineH: 0.42, fontSize: 16, w: 8.8 });
-
-  // Code block card
-  const codeX = 0.7;
-  const codeY = 2.85;
-  const codeW = 8.6;
-  const codeH = 1.55;
-  slide.addShape(pres.shapes.RECTANGLE, {
-    x: codeX, y: codeY, w: codeW, h: codeH,
-    fill: { color: '0B1426' }, line: { color: theme.accent, width: 1.5 },
-    rectRadius: 0.08,
-  });
-
-  // Window dots
-  ['FF5F56', 'FFBD2E', '27C93F'].forEach((c, i) => {
-    slide.addShape(pres.shapes.OVAL, {
-      x: codeX + 0.25 + i * 0.22, y: codeY + 0.12, w: 0.12, h: 0.12,
-      fill: { color: c }, line: { type: 'none' },
+  const tags = [
+    '@prefix 缩短长 IRI',
+    'a 是 rdf:type 的缩写',
+    '分号延续同一主语',
+    '逗号并列多个宾语',
+  ];
+  tags.forEach((text, index) => {
+    const x = 0.65 + (index % 2) * 4.50;
+    const y = 1.18 + Math.floor(index / 2) * 0.48;
+    slide.addShape(pres.shapes.RECTANGLE, {
+      x, y, w: 4.18, h: 0.34,
+      fill: { color: index % 2 === 0 ? theme.light : theme.accent },
+      line: { type: 'none' },
+    });
+    slide.addText(text, {
+      x: x + 0.16, y, w: 3.86, h: 0.34,
+      fontSize: 13, fontFace: 'Noto Sans CJK SC',
+      color: index % 2 === 0 ? theme.bg : theme.primary,
+      align: 'left', valign: 'middle', margin: 0,
     });
   });
 
-  const code = [
-    'PREFIX ex:   <http://example.org/>',
-    'PREFIX foaf: <http://xmlns.com/foaf/0.1/>',
-    '',
-    'ex:Bob a foaf:Person ;',
-    '  foaf:name "Bob"@en ;',
-    '  foaf:knows ex:Alice ;',
-    '  ex:age 30 .',
-    'ex:Alice a foaf:Person ;',
-    '  ex:worksAt ex:Company .',
-  ];
+  const codeX = 0.65;
+  const codeY = 2.25;
+  const codeW = 8.70;
+  const codeH = 2.10;
+  slide.addShape(pres.shapes.RECTANGLE, {
+    x: codeX, y: codeY, w: codeW, h: codeH,
+    fill: { color: theme.bg }, line: { color: theme.secondary, width: 1.5 },
+  });
 
-  code.forEach((line, i) => {
+  const code = [
+    '@prefix cskg: <https://example.org/cloud#> .',
+    '',
+    'cskg:EC2 a cskg:ComputeService ;',
+    '    cskg:hasGPU true ;',
+    '    cskg:hasRegion cskg:Tokyo, cskg:Singapore .',
+  ];
+  code.forEach((line, index) => {
     slide.addText(line, {
-      x: codeX + 0.25, y: codeY + 0.35 + i * 0.135,
-      w: codeW - 0.5, h: 0.16,
-      fontSize: 12, fontFace: 'Liberation Sans',
-      color: theme.primary, align: 'left', valign: 'middle',
+      x: codeX + 0.34, y: codeY + 0.22 + index * 0.34,
+      w: codeW - 0.68, h: 0.30,
+      fontSize: 16, fontFace: 'Liberation Sans',
+      color: index === 0 ? theme.secondary : theme.primary,
+      align: 'left', valign: 'middle', margin: 0,
+      fit: 'shrink',
     });
   });
 

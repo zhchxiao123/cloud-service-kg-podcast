@@ -3,9 +3,8 @@
 from pathlib import Path
 from typing import Union
 
-from rdflib import Graph, Namespace, URIRef
+from rdflib import Graph, Namespace
 from pyshacl import validate
-
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 ONTOLOGY_DIR = PROJECT_ROOT / "ontology"

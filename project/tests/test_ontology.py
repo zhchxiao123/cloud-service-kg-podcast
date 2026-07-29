@@ -7,7 +7,6 @@ from rdflib import Graph, Namespace, URIRef
 
 from src.ontology import load_ontology, load_shapes, validate_ontology_with_shacl
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -22,9 +21,14 @@ def test_cloud_service_class_exists():
     cskg = Namespace("https://example.org/cloud-service-kg#")
     # A class should appear as the subject of owl:Class or object of rdfs:subClassOf
     assert (
-        (cskg.CloudService, URIRef("http://www.w3.org/2002/07/owl#Class"), None) in g
-        or (None, URIRef("http://www.w3.org/2000/01/rdf-schema#subClassOf"), cskg.CloudService) in g
-    )
+        cskg.CloudService,
+        URIRef("http://www.w3.org/2002/07/owl#Class"),
+        None,
+    ) in g or (
+        None,
+        URIRef("http://www.w3.org/2000/01/rdf-schema#subClassOf"),
+        cskg.CloudService,
+    ) in g
 
 
 def test_sample_data_passes_shacl():

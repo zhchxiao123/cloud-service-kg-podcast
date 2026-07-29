@@ -1,0 +1,1162 @@
+[
+  {
+    "index": 0,
+    "turn_index": 0,
+    "role": "host",
+    "duration": 3.657,
+    "start": 0.0,
+    "slide": 1,
+    "sentence_index": 0,
+    "text": "大家好，欢迎来到《本体工程与知识图谱实战》第二集。"
+  },
+  {
+    "index": 1,
+    "turn_index": 0,
+    "role": "host",
+    "duration": 6.4,
+    "start": 3.657,
+    "slide": 1,
+    "sentence_index": 1,
+    "text": "上一集我们解释了，企业数据真正难统一的，往往不是文件格式，而是概念和关系的含义。"
+  },
+  {
+    "index": 2,
+    "turn_index": 0,
+    "role": "host",
+    "duration": 6.676,
+    "start": 10.057,
+    "slide": 1,
+    "sentence_index": 2,
+    "text": "今天我们继续追问：这些事物和关系，怎样才能写成机器可处理、也能跨系统交换的一张图？"
+  },
+  {
+    "index": 3,
+    "turn_index": 1,
+    "role": "guest",
+    "duration": 1.524,
+    "start": 16.733,
+    "slide": 1,
+    "sentence_index": 0,
+    "text": "这就轮到 RDF 登场了。"
+  },
+  {
+    "index": 4,
+    "turn_index": 1,
+    "role": "guest",
+    "duration": 4.724,
+    "start": 18.257,
+    "slide": 1,
+    "sentence_index": 1,
+    "text": "不过先把边界说清楚：RDF 是一种图数据模型，不是完整的本体语言。"
+  },
+  {
+    "index": 5,
+    "turn_index": 1,
+    "role": "guest",
+    "duration": 5.536,
+    "start": 22.981,
+    "slide": 1,
+    "sentence_index": 2,
+    "text": "后面我们还会在它之上使用 RDFS 和 OWL，表达类、属性和更丰富的逻辑语义。"
+  },
+  {
+    "index": 6,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 1.752,
+    "start": 28.518,
+    "slide": 2,
+    "sentence_index": 0,
+    "text": "这一集只解决四个问题。"
+  },
+  {
+    "index": 7,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 2.362,
+    "start": 30.27,
+    "slide": 2,
+    "sentence_index": 1,
+    "text": "第一，三元组怎样表达一条事实？"
+  },
+  {
+    "index": 8,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 3.81,
+    "start": 32.632,
+    "slide": 2,
+    "sentence_index": 2,
+    "text": "第二，IRI 为什么能减少跨系统的标识冲突？"
+  },
+  {
+    "index": 9,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 3.352,
+    "start": 36.442,
+    "slide": 2,
+    "sentence_index": 3,
+    "text": "第三，数字、日期和多语言名称怎样进入图？"
+  },
+  {
+    "index": 10,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 3.81,
+    "start": 39.794,
+    "slide": 2,
+    "sentence_index": 4,
+    "text": "第四，Turtle 到底是数据模型、文件格式，还是数据库？"
+  },
+  {
+    "index": 11,
+    "turn_index": 3,
+    "role": "guest",
+    "duration": 4.19,
+    "start": 43.604,
+    "slide": 2,
+    "sentence_index": 0,
+    "text": "听完以后，你应该能读懂一段最小的 Turtle，并且知道每一部分在做什么。"
+  },
+  {
+    "index": 12,
+    "turn_index": 3,
+    "role": "guest",
+    "duration": 5.232,
+    "start": 47.794,
+    "slide": 2,
+    "sentence_index": 1,
+    "text": "我们不会一口气塞进推理、查询和数据库配置，那些会在后面的章节逐步展开。"
+  },
+  {
+    "index": 13,
+    "turn_index": 4,
+    "role": "host",
+    "duration": 2.197,
+    "start": 53.027,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "先把几个经常混在一起的词拆开。"
+  },
+  {
+    "index": 14,
+    "turn_index": 4,
+    "role": "host",
+    "duration": 4.267,
+    "start": 55.224,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "RDF 定义的是图数据模型：知识由一组三元组组成。"
+  },
+  {
+    "index": 15,
+    "turn_index": 4,
+    "role": "host",
+    "duration": 3.942,
+    "start": 59.49,
+    "slide": 3,
+    "sentence_index": 2,
+    "text": "RDFS 提供描述类、属性和层次关系的基础模式词汇；"
+  },
+  {
+    "index": 16,
+    "turn_index": 4,
+    "role": "host",
+    "duration": 3.2,
+    "start": 63.432,
+    "slide": 3,
+    "sentence_index": 3,
+    "text": "OWL 是表达更丰富公理的本体语言。"
+  },
+  {
+    "index": 17,
+    "turn_index": 4,
+    "role": "host",
+    "duration": 5.638,
+    "start": 66.632,
+    "slide": 3,
+    "sentence_index": 4,
+    "text": "Turtle 与 JSON-LD，是把 RDF 图或数据集写成文档或网络消息的不同方式。"
+  },
+  {
+    "index": 18,
+    "turn_index": 5,
+    "role": "guest",
+    "duration": 1.829,
+    "start": 72.27,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "那为什么不用大家都会的 JSON？"
+  },
+  {
+    "index": 19,
+    "turn_index": 5,
+    "role": "guest",
+    "duration": 2.667,
+    "start": 74.099,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "是不是 RDF 只是更学术、更复杂的 JSON？"
+  },
+  {
+    "index": 20,
+    "turn_index": 6,
+    "role": "host",
+    "duration": 7.695,
+    "start": 76.766,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "如果说的是普通 JSON，它擅长组织树状数据，但字段叫什么、标识符在哪个系统有效，通常由应用自己约定。"
+  },
+  {
+    "index": 21,
+    "turn_index": 6,
+    "role": "host",
+    "duration": 2.971,
+    "start": 84.461,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "RDF 把标识和关系放进统一模型。"
+  },
+  {
+    "index": 22,
+    "turn_index": 6,
+    "role": "host",
+    "duration": 4.952,
+    "start": 87.432,
+    "slide": 3,
+    "sentence_index": 2,
+    "text": "如果团队更喜欢 JSON 语法，也可以使用 JSON-LD 来承载 RDF 语义。"
+  },
+  {
+    "index": 23,
+    "turn_index": 6,
+    "role": "host",
+    "duration": 4.267,
+    "start": 92.385,
+    "slide": 3,
+    "sentence_index": 3,
+    "text": "所以不是二选一，而是数据模型和序列化方式属于不同层次。"
+  },
+  {
+    "index": 24,
+    "turn_index": 7,
+    "role": "guest",
+    "duration": 0.61,
+    "start": 96.651,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "明白了。"
+  },
+  {
+    "index": 25,
+    "turn_index": 7,
+    "role": "guest",
+    "duration": 8.956,
+    "start": 97.261,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "RDF 回答“这张图由什么构成”，RDFS 和 OWL 回答“这些概念和关系意味着什么”，Turtle 与 JSON-LD 回答“具体怎样写出来”。"
+  },
+  {
+    "index": 26,
+    "turn_index": 7,
+    "role": "guest",
+    "duration": 1.905,
+    "start": 106.217,
+    "slide": 3,
+    "sentence_index": 2,
+    "text": "这三个层次不能混为一谈。"
+  },
+  {
+    "index": 27,
+    "turn_index": 8,
+    "role": "host",
+    "duration": 6.933,
+    "start": 108.122,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "还有一个容易误解的地方：这三层是帮助理解的概念关系，不代表部署系统时一定要搭出三层服务器。"
+  },
+  {
+    "index": 28,
+    "turn_index": 8,
+    "role": "host",
+    "duration": 4.648,
+    "start": 115.055,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "一个 Turtle 文件里，完全可以同时出现实例数据和 OWL 公理。"
+  },
+  {
+    "index": 29,
+    "turn_index": 9,
+    "role": "guest",
+    "duration": 4.419,
+    "start": 119.703,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "这个补充很重要，否则初学者很容易把概念图当成固定的软件架构。"
+  },
+  {
+    "index": 30,
+    "turn_index": 10,
+    "role": "host",
+    "duration": 3.276,
+    "start": 124.122,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "现在看 RDF 的基本陈述单位：三元组。"
+  },
+  {
+    "index": 31,
+    "turn_index": 10,
+    "role": "host",
+    "duration": 2.819,
+    "start": 127.398,
+    "slide": 4,
+    "sentence_index": 1,
+    "text": "比如“Amazon EC2 由 AWS 提供”。"
+  },
+  {
+    "index": 32,
+    "turn_index": 10,
+    "role": "host",
+    "duration": 5.105,
+    "start": 130.217,
+    "slide": 4,
+    "sentence_index": 2,
+    "text": "主语是 Amazon EC2，谓语是“由谁提供”，宾语是 AWS。"
+  },
+  {
+    "index": 33,
+    "turn_index": 10,
+    "role": "host",
+    "duration": 4.876,
+    "start": 135.322,
+    "slide": 4,
+    "sentence_index": 3,
+    "text": "画成图，就是从 EC2 节点指向 AWS 节点的一条有标签的边。"
+  },
+  {
+    "index": 34,
+    "turn_index": 11,
+    "role": "guest",
+    "duration": 1.371,
+    "start": 140.198,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "为什么说是有方向的？"
+  },
+  {
+    "index": 35,
+    "turn_index": 11,
+    "role": "guest",
+    "duration": 2.743,
+    "start": 141.57,
+    "slide": 4,
+    "sentence_index": 1,
+    "text": "如果把箭头反过来，不还是在说同一件事吗？"
+  },
+  {
+    "index": 36,
+    "turn_index": 12,
+    "role": "host",
+    "duration": 5.105,
+    "start": 144.312,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "自然语言里我们可以换一种说法，但 RDF 中谓语方向属于模型本身。"
+  },
+  {
+    "index": 37,
+    "turn_index": 12,
+    "role": "host",
+    "duration": 8.272,
+    "start": 149.417,
+    "slide": 4,
+    "sentence_index": 1,
+    "text": "“服务由厂商提供”和“厂商提供服务”可以设计成两个方向相反的属性，也可以只保留其中一个，再通过规则描述逆关系。"
+  },
+  {
+    "index": 38,
+    "turn_index": 12,
+    "role": "host",
+    "duration": 1.905,
+    "start": 157.69,
+    "slide": 4,
+    "sentence_index": 2,
+    "text": "不能随手把主语和宾语交换。"
+  },
+  {
+    "index": 39,
+    "turn_index": 13,
+    "role": "guest",
+    "duration": 1.829,
+    "start": 159.595,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "所以一个节点还不算完整知识。"
+  },
+  {
+    "index": 40,
+    "turn_index": 13,
+    "role": "guest",
+    "duration": 4.343,
+    "start": 161.423,
+    "slide": 4,
+    "sentence_index": 1,
+    "text": "一条能够判断真假的陈述，需要主语、谓语和宾语三个位置都齐全。"
+  },
+  {
+    "index": 41,
+    "turn_index": 14,
+    "role": "host",
+    "duration": 3.352,
+    "start": 165.766,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "接下来是 IRI，也就是国际化资源标识符。"
+  },
+  {
+    "index": 42,
+    "turn_index": 14,
+    "role": "host",
+    "duration": 5.181,
+    "start": 169.119,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "假设两个系统里都有一个叫“Apple”的字符串，它可能是公司、水果，也可能是别的概念。"
+  },
+  {
+    "index": 43,
+    "turn_index": 14,
+    "role": "host",
+    "duration": 2.362,
+    "start": 174.299,
+    "slide": 5,
+    "sentence_index": 2,
+    "text": "只看名字无法判断它们是否相同。"
+  },
+  {
+    "index": 44,
+    "turn_index": 14,
+    "role": "host",
+    "duration": 3.276,
+    "start": 176.661,
+    "slide": 5,
+    "sentence_index": 3,
+    "text": "IRI 通过命名空间给标识一个全局作用域。"
+  },
+  {
+    "index": 45,
+    "turn_index": 15,
+    "role": "guest",
+    "duration": 1.905,
+    "start": 179.937,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "以前的资料经常写 URI。"
+  },
+  {
+    "index": 46,
+    "turn_index": 15,
+    "role": "guest",
+    "duration": 1.6,
+    "start": 181.842,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "现在为什么改成 IRI？"
+  },
+  {
+    "index": 47,
+    "turn_index": 16,
+    "role": "host",
+    "duration": 3.429,
+    "start": 183.442,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "URI 是历史资料和日常表达中很常见的术语。"
+  },
+  {
+    "index": 48,
+    "turn_index": 16,
+    "role": "host",
+    "duration": 4.952,
+    "start": 186.87,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "现代 RDF 规范更正式地使用 IRI，因为它支持更广泛的国际字符。"
+  },
+  {
+    "index": 49,
+    "turn_index": 16,
+    "role": "host",
+    "duration": 4.724,
+    "start": 191.823,
+    "slide": 5,
+    "sentence_index": 2,
+    "text": "入门时可以把两者理解成同一家族，但我们在课程里尽量使用 IRI。"
+  },
+  {
+    "index": 50,
+    "turn_index": 17,
+    "role": "guest",
+    "duration": 3.638,
+    "start": 196.547,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "那有了 IRI，是不是就绝对不会撞车，也不需要实体治理了？"
+  },
+  {
+    "index": 51,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 0.457,
+    "start": 200.185,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "不是。"
+  },
+  {
+    "index": 52,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 5.257,
+    "start": 200.642,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "IRI 提供的是可管理的全局标识机制，不会自动保证组织永远命名正确。"
+  },
+  {
+    "index": 53,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 3.411,
+    "start": 205.899,
+    "slide": 5,
+    "sentence_index": 2,
+    "text": "团队仍要管理命名空间、版本和实体映射。"
+  },
+  {
+    "index": 54,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 7.01,
+    "start": 209.31,
+    "slide": 5,
+    "sentence_index": 3,
+    "text": "另外，RDF 也允许空白节点表示匿名资源，所以并不是每个资源都被强制赋予公开 IRI。"
+  },
+  {
+    "index": 55,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 4.19,
+    "start": 216.32,
+    "slide": 5,
+    "sentence_index": 4,
+    "text": "不过谓语必须使用 IRI，因为关系本身也需要明确身份。"
+  },
+  {
+    "index": 56,
+    "turn_index": 19,
+    "role": "guest",
+    "duration": 2.59,
+    "start": 220.51,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "这样说比“全球唯一身份证”更准确。"
+  },
+  {
+    "index": 57,
+    "turn_index": 19,
+    "role": "guest",
+    "duration": 4.19,
+    "start": 223.101,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "身份证只是比喻，真正能不能避免冲突，还取决于命名空间治理。"
+  },
+  {
+    "index": 58,
+    "turn_index": 20,
+    "role": "host",
+    "duration": 3.81,
+    "start": 227.291,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "三元组多起来以后，共享节点会让事实连接成图。"
+  },
+  {
+    "index": 59,
+    "turn_index": 20,
+    "role": "host",
+    "duration": 5.333,
+    "start": 231.101,
+    "slide": 6,
+    "sentence_index": 1,
+    "text": "比如第一条说 EC2 由 AWS 提供，第二条说 EC2 在 Tokyo 区域可用。"
+  },
+  {
+    "index": 60,
+    "turn_index": 20,
+    "role": "host",
+    "duration": 5.562,
+    "start": 236.434,
+    "slide": 6,
+    "sentence_index": 2,
+    "text": "两条事实共享同一个 EC2 IRI，于是厂商、服务和区域形成一个小型知识网络。"
+  },
+  {
+    "index": 61,
+    "turn_index": 21,
+    "role": "guest",
+    "duration": 4.038,
+    "start": 241.996,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "听起来只要大家都用 RDF，来自不同系统的数据就能自动合并？"
+  },
+  {
+    "index": 62,
+    "turn_index": 22,
+    "role": "host",
+    "duration": 0.99,
+    "start": 246.034,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "还差关键一步。"
+  },
+  {
+    "index": 63,
+    "turn_index": 22,
+    "role": "host",
+    "duration": 5.992,
+    "start": 247.025,
+    "slide": 6,
+    "sentence_index": 1,
+    "text": "只有两个来源真的指向同一个 IRI，或者经过实体链接确认它们是同一对象，合并才有意义。"
+  },
+  {
+    "index": 64,
+    "turn_index": 22,
+    "role": "host",
+    "duration": 5.943,
+    "start": 253.017,
+    "slide": 6,
+    "sentence_index": 2,
+    "text": "如果一边把 EC2 当服务族，另一边把具体实例规格也叫 EC2，机械合并反而会制造错误。"
+  },
+  {
+    "index": 65,
+    "turn_index": 22,
+    "role": "host",
+    "duration": 3.962,
+    "start": 258.96,
+    "slide": 6,
+    "sentence_index": 3,
+    "text": "RDF 让合并更有结构，但不会替你完成语义判断。"
+  },
+  {
+    "index": 66,
+    "turn_index": 23,
+    "role": "guest",
+    "duration": 4.571,
+    "start": 262.922,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "也就是说，图能够自动连接，连接是否正确仍然要靠建模和数据治理。"
+  },
+  {
+    "index": 67,
+    "turn_index": 24,
+    "role": "host",
+    "duration": 4.19,
+    "start": 267.493,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "图里不只有资源节点，还要表达具体的值，这就是字面量。"
+  },
+  {
+    "index": 68,
+    "turn_index": 24,
+    "role": "host",
+    "duration": 6.476,
+    "start": 271.684,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "服务代码可以是字符串，GPU 数量可以是整数，更新时间可以是日期，名称还可以带语言标签。"
+  },
+  {
+    "index": 69,
+    "turn_index": 25,
+    "role": "guest",
+    "duration": 3.886,
+    "start": 278.16,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "字符串“30”和整数 30，看起来内容一样，为什么要区分？"
+  },
+  {
+    "index": 70,
+    "turn_index": 26,
+    "role": "host",
+    "duration": 1.363,
+    "start": 282.046,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "因为机器的解释不同。"
+  },
+  {
+    "index": 71,
+    "turn_index": 26,
+    "role": "host",
+    "duration": 4.495,
+    "start": 283.41,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "整数可以比较大小、排序和计算，普通字符串只能按文本处理。"
+  },
+  {
+    "index": 72,
+    "turn_index": 26,
+    "role": "host",
+    "duration": 7.695,
+    "start": 287.905,
+    "slide": 7,
+    "sentence_index": 2,
+    "text": "语言标签也类似，“对象存储”的中文标签和“Object Storage”的英文标签可以同时存在，查询时还能按语言选择。"
+  },
+  {
+    "index": 73,
+    "turn_index": 27,
+    "role": "guest",
+    "duration": 2.057,
+    "start": 295.6,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "字面量只能放在宾语位置，对吧？"
+  },
+  {
+    "index": 74,
+    "turn_index": 27,
+    "role": "guest",
+    "duration": 2.895,
+    "start": 297.657,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "如果以后要给一条价格加来源和置信度怎么办？"
+  },
+  {
+    "index": 75,
+    "turn_index": 28,
+    "role": "host",
+    "duration": 3.124,
+    "start": 300.552,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "对，普通 RDF 字面量出现在宾语位置。"
+  },
+  {
+    "index": 76,
+    "turn_index": 28,
+    "role": "host",
+    "duration": 5.638,
+    "start": 303.676,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "给语句本身增加来源、时间和置信度，会涉及语句级溯源或更复杂的建模。"
+  },
+  {
+    "index": 77,
+    "turn_index": 28,
+    "role": "host",
+    "duration": 5.233,
+    "start": 309.314,
+    "slide": 7,
+    "sentence_index": 2,
+    "text": "我们先把类型和语言标签用对，溯源问题留到项目数据模型章节再展开。"
+  },
+  {
+    "index": 78,
+    "turn_index": 29,
+    "role": "host",
+    "duration": 2.971,
+    "start": 314.548,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "理解了模型，再来看最常用的文本写法 Turtle。"
+  },
+  {
+    "index": 79,
+    "turn_index": 29,
+    "role": "host",
+    "duration": 6.069,
+    "start": 317.519,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "屏幕上的例子描述一个计算服务：它属于 ComputeService，支持 GPU，并且在两个区域可用。"
+  },
+  {
+    "index": 80,
+    "turn_index": 30,
+    "role": "guest",
+    "duration": 1.752,
+    "start": 323.588,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "第一行的 at prefix 是什么？"
+  },
+  {
+    "index": 81,
+    "turn_index": 31,
+    "role": "host",
+    "duration": 5.562,
+    "start": 325.34,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "它给一段较长的 IRI 绑定短前缀，后面就可以写 cskg 冒号 EC2。"
+  },
+  {
+    "index": 82,
+    "turn_index": 31,
+    "role": "host",
+    "duration": 3.581,
+    "start": 330.902,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "字母 a 是 rdf type 的缩写，表示“属于某个类型”。"
+  },
+  {
+    "index": 83,
+    "turn_index": 31,
+    "role": "host",
+    "duration": 6.705,
+    "start": 334.483,
+    "slide": 8,
+    "sentence_index": 2,
+    "text": "分号表示继续描述同一个主语，逗号表示同一个谓语后面并列多个宾语，最后用句号结束这组陈述。"
+  },
+  {
+    "index": 84,
+    "turn_index": 32,
+    "role": "guest",
+    "duration": 1.524,
+    "start": 341.188,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "这些都是写法上的语法糖。"
+  },
+  {
+    "index": 85,
+    "turn_index": 32,
+    "role": "guest",
+    "duration": 3.81,
+    "start": 342.711,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "换成每行一条完整三元组，得到的 RDF 图仍然可以相同。"
+  },
+  {
+    "index": 86,
+    "turn_index": 33,
+    "role": "host",
+    "duration": 0.381,
+    "start": 346.521,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "没错。"
+  },
+  {
+    "index": 87,
+    "turn_index": 33,
+    "role": "host",
+    "duration": 4.19,
+    "start": 346.902,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "Turtle 的价值是让人更容易阅读和维护，它不是另一种知识模型。"
+  },
+  {
+    "index": 88,
+    "turn_index": 33,
+    "role": "host",
+    "duration": 5.613,
+    "start": 351.092,
+    "slide": 8,
+    "sentence_index": 2,
+    "text": "写完以后不要靠肉眼猜语法是否正确，应该交给 RDFLib 或其他解析器验证。"
+  },
+  {
+    "index": 89,
+    "turn_index": 34,
+    "role": "guest",
+    "duration": 4.267,
+    "start": 356.706,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "那 JSON-LD 和 Turtle 之间，也可以在不改变图语义的前提下转换？"
+  },
+  {
+    "index": 90,
+    "turn_index": 35,
+    "role": "host",
+    "duration": 5.081,
+    "start": 360.972,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "在表达同一组 RDF 数据时可以这样理解，不过具体序列化细节可能不同。"
+  },
+  {
+    "index": 91,
+    "turn_index": 35,
+    "role": "host",
+    "duration": 4.952,
+    "start": 366.053,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "判断是否等价，要看解析后得到的 RDF 图，而不是文件长得像不像。"
+  },
+  {
+    "index": 92,
+    "turn_index": 36,
+    "role": "host",
+    "duration": 4.571,
+    "start": 371.006,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "最后澄清一个常见误区：RDF 是数据模型，不是存储引擎；"
+  },
+  {
+    "index": 93,
+    "turn_index": 36,
+    "role": "host",
+    "duration": 2.362,
+    "start": 375.577,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "Turtle 是文本序列化，也不是数据库。"
+  },
+  {
+    "index": 94,
+    "turn_index": 36,
+    "role": "host",
+    "duration": 4.876,
+    "start": 377.939,
+    "slide": 9,
+    "sentence_index": 2,
+    "text": "生产环境通常把 RDF 存入 Triple Store，再使用 SPARQL 查询。"
+  },
+  {
+    "index": 95,
+    "turn_index": 37,
+    "role": "guest",
+    "duration": 0.838,
+    "start": 382.815,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "那 Neo4j 呢？"
+  },
+  {
+    "index": 96,
+    "turn_index": 37,
+    "role": "guest",
+    "duration": 1.905,
+    "start": 383.653,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "很多知识图谱项目也在用它。"
+  },
+  {
+    "index": 97,
+    "turn_index": 38,
+    "role": "host",
+    "duration": 2.362,
+    "start": 385.558,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "Neo4j 使用的是属性图模型。"
+  },
+  {
+    "index": 98,
+    "turn_index": 38,
+    "role": "host",
+    "duration": 9.067,
+    "start": 387.92,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "它可以导入从 RDF 映射来的节点、关系和属性，但这个过程是模型转换，不代表所有 RDFS 或 OWL 语义都会自动保留。"
+  },
+  {
+    "index": 99,
+    "turn_index": 38,
+    "role": "host",
+    "duration": 5.029,
+    "start": 396.987,
+    "slide": 9,
+    "sentence_index": 2,
+    "text": "我们会在后面的存储章节，专门比较 SPARQL 与 Cypher 对同一个问题的表达。"
+  },
+  {
+    "index": 100,
+    "turn_index": 39,
+    "role": "guest",
+    "duration": 7.208,
+    "start": 402.015,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "所以也不能笼统地说 RDF 比数据库慢，因为一边是数据模型，另一边可能是具体产品，比较维度根本没对齐。"
+  },
+  {
+    "index": 101,
+    "turn_index": 40,
+    "role": "host",
+    "duration": 0.838,
+    "start": 409.223,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "正是如此。"
+  },
+  {
+    "index": 102,
+    "turn_index": 40,
+    "role": "host",
+    "duration": 3.962,
+    "start": 410.061,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "性能要结合存储引擎、数据规模、索引和查询来讨论。"
+  },
+  {
+    "index": 103,
+    "turn_index": 40,
+    "role": "host",
+    "duration": 7.467,
+    "start": 414.023,
+    "slide": 9,
+    "sentence_index": 2,
+    "text": "本集只需要记住这张地图：RDF 定义图，Turtle 写出图，Triple Store 存储图，SPARQL 查询图；"
+  },
+  {
+    "index": 104,
+    "turn_index": 40,
+    "role": "host",
+    "duration": 2.895,
+    "start": 421.49,
+    "slide": 9,
+    "sentence_index": 3,
+    "text": "Neo4j 则是需要映射的另一种图模型。"
+  },
+  {
+    "index": 105,
+    "turn_index": 41,
+    "role": "guest",
+    "duration": 5.257,
+    "start": 424.385,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "这样一来，工具之间的关系就清楚了，也不会把文件格式、数据模型和数据库混在一起。"
+  },
+  {
+    "index": 106,
+    "turn_index": 42,
+    "role": "host",
+    "duration": 1.829,
+    "start": 429.642,
+    "slide": 10,
+    "sentence_index": 0,
+    "text": "总结今天的四个核心认知。"
+  },
+  {
+    "index": 107,
+    "turn_index": 42,
+    "role": "host",
+    "duration": 3.505,
+    "start": 431.47,
+    "slide": 10,
+    "sentence_index": 1,
+    "text": "第一，RDF 三元组是一条有方向的事实。"
+  },
+  {
+    "index": 108,
+    "turn_index": 42,
+    "role": "host",
+    "duration": 3.2,
+    "start": 434.975,
+    "slide": 10,
+    "sentence_index": 2,
+    "text": "第二，IRI 提供可治理的全局标识。"
+  },
+  {
+    "index": 109,
+    "turn_index": 42,
+    "role": "host",
+    "duration": 3.79,
+    "start": 438.175,
+    "slide": 10,
+    "sentence_index": 3,
+    "text": "第三，字面量用数据类型和语言标签保存具体值。"
+  },
+  {
+    "index": 110,
+    "turn_index": 42,
+    "role": "host",
+    "duration": 3.429,
+    "start": 441.966,
+    "slide": 10,
+    "sentence_index": 4,
+    "text": "第四，Turtle 只是 RDF 的一种可读写法。"
+  },
+  {
+    "index": 111,
+    "turn_index": 43,
+    "role": "guest",
+    "duration": 7.39,
+    "start": 445.394,
+    "slide": 10,
+    "sentence_index": 0,
+    "text": "课后任务是运行仓库里的 RDFLib 示例，再用 Turtle 写五条关于一个云服务的三元组，并让解析器成功读取。"
+  },
+  {
+    "index": 112,
+    "turn_index": 43,
+    "role": "guest",
+    "duration": 5.029,
+    "start": 452.785,
+    "slide": 10,
+    "sentence_index": 1,
+    "text": "只要能解析，还不算全部完成，你还要解释每条三元组的主语、谓语和宾语。"
+  },
+  {
+    "index": 113,
+    "turn_index": 44,
+    "role": "host",
+    "duration": 5.867,
+    "start": 457.813,
+    "slide": 10,
+    "sentence_index": 0,
+    "text": "下一集我们先不急着打开 Protégé，而是回答一个更重要的问题：这个本体究竟应该回答什么？"
+  },
+  {
+    "index": 114,
+    "turn_index": 44,
+    "role": "host",
+    "duration": 5.486,
+    "start": 463.68,
+    "slide": 10,
+    "sentence_index": 1,
+    "text": "我们会使用 Competency Questions，把模糊需求变成可以查询、也可以验收的问题。"
+  },
+  {
+    "index": 115,
+    "turn_index": 44,
+    "role": "host",
+    "duration": 1.742,
+    "start": 469.166,
+    "slide": 10,
+    "sentence_index": 2,
+    "text": "谢谢收听，我们下一集见。"
+  }
+]

@@ -1,0 +1,139 @@
+{
+  "meta": {
+    "topic": "用 RDF 三元组、IRI、字面量和 Turtle 把知识写成机器可交换的图",
+    "suggested_title": "EP02｜RDF 三元组：机器怎样把知识写成一张图？",
+    "total_slides": 10,
+    "estimated_duration_min": 10
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "type": "cover",
+      "title": "RDF 三元组：知识的原子单位",
+      "subtitle": "机器怎样把知识写成一张图？",
+      "key_points": [],
+      "speaker_notes": "承接 EP01：上一集解释为什么需要共享语义，本集解决如何把事物和关系写成机器可处理、可交换的图。明确 RDF 是基础数据模型，不把它说成本体语言；预告后续会在 RDF 上使用 RDFS 和 OWL 表达本体语义。",
+      "depth": "short"
+    },
+    {
+      "slide": 2,
+      "type": "toc",
+      "title": "本期要回答四个问题",
+      "subtitle": "三元组、IRI、字面量、Turtle",
+      "key_points": [],
+      "speaker_notes": "快速建立路线：三元组如何表达事实，IRI 如何跨系统标识事物，字面量怎样表达值，Turtle 与存储系统是什么关系。强调听完要能读懂并手写一段最小 Turtle。",
+      "depth": "short"
+    },
+    {
+      "slide": 3,
+      "type": "content",
+      "title": "RDF 是数据模型，不是本体语言",
+      "subtitle": "",
+      "key_points": [
+        "RDFS／OWL：模式与本体层",
+        "RDF：数据模型层",
+        "Turtle／JSON-LD：序列化层"
+      ],
+      "speaker_notes": "用三层关系澄清术语：RDFS 是描述类、属性与层次关系的基础模式词汇，OWL 是表达更丰富公理的本体语言；它们都可以表示为 RDF 图。RDF 是由三元组构成的图数据模型；Turtle、JSON-LD 是把 RDF 图或数据集写成文档或网络消息的方式。回应“为什么不用 JSON”：普通 JSON 的字段含义通常由应用约定，JSON-LD 则可以承载 RDF 语义。避免把三层说成必须部署的运行时技术栈。",
+      "depth": "long"
+    },
+    {
+      "slide": 4,
+      "type": "content",
+      "title": "一个三元组，就是一条有方向的边",
+      "subtitle": "",
+      "key_points": [
+        "主语：从谁出发",
+        "谓语：什么关系",
+        "宾语：指向谁或什么值",
+        "三元组集合构成 RDF 图"
+      ],
+      "speaker_notes": "从“某云服务由某厂商提供”映射到主语、谓语、宾语，再画成两个节点和一条有标签的有向边。指出谓语方向是模型的一部分，反过来会成为另一条事实。回应“知识最小单位是不是一个节点”：孤立节点没有表达关系，RDF 的基本陈述单位是完整三元组。",
+      "depth": "medium"
+    },
+    {
+      "slide": 5,
+      "type": "content",
+      "title": "IRI：给标识一个全局作用域",
+      "subtitle": "",
+      "key_points": [
+        "IRI 标识资源与关系",
+        "命名空间减少冲突",
+        "前缀只是可读缩写",
+        "空白节点表示匿名资源"
+      ],
+      "speaker_notes": "用同名“苹果”说明仅靠字符串会歧义，IRI 通过命名空间提供全局作用域。谨慎说明：IRI 不会神奇地保证组织治理正确，它只是给出可管理的标识机制。正式术语使用 IRI，顺带解释 URI 是历史资料中常见的说法。补充 RDF 允许空白节点，所以不是每个资源都被强制赋予公开 IRI；谓语则必须是 IRI。",
+      "depth": "long"
+    },
+    {
+      "slide": 6,
+      "type": "content",
+      "title": "共享节点，让事实自动连成图",
+      "subtitle": "",
+      "key_points": [
+        "相同 IRI 指向相同节点",
+        "多个事实可独立增加",
+        "跨来源合并依赖标识治理",
+        "图连接不等于自动正确"
+      ],
+      "speaker_notes": "用 EC2、AWS 和 Tokyo 三个节点展示两条事实如何共享 EC2 并形成小图。强调 RDF 图易合并，但只有在来源真的使用同一 IRI 或完成实体链接后，合并才有意义。反驳“用了 RDF 就自动解决数据集成”：标识、映射和数据质量仍需治理。",
+      "depth": "medium"
+    },
+    {
+      "slide": 7,
+      "type": "content",
+      "title": "字面量：值也要带上类型和语言",
+      "subtitle": "",
+      "key_points": [
+        "字符串",
+        "整数",
+        "日期",
+        "语言标签"
+      ],
+      "speaker_notes": "对比普通字符串、带语言标签的标签、整数和日期。解释“30”作为文本和 30 作为整数在查询和比较中的差异。明确字面量不能继续作为普通 RDF 节点向外链接；语句级来源、置信度和复杂溯源留到后续课程，不在本集引入自定义 name1 或伪标准属性。",
+      "depth": "medium"
+    },
+    {
+      "slide": 8,
+      "type": "content",
+      "title": "Turtle：把 RDF 写得像代码一样清楚",
+      "subtitle": "",
+      "key_points": [
+        "@prefix 缩短长 IRI",
+        "a 是 rdf:type 的缩写",
+        "分号延续同一主语",
+        "逗号并列多个宾语"
+      ],
+      "speaker_notes": "逐行阅读一个六行以内的云服务 Turtle 示例，不在音频中朗读完整网址。解释 @prefix、a、分号、逗号和句号；强调 Turtle 只是 RDF 的一种文本序列化，同一张图也可以写成 JSON-LD 等格式。提醒代码必须交给解析器验证。",
+      "depth": "long"
+    },
+    {
+      "slide": 9,
+      "type": "content",
+      "title": "RDF 是模型，不是存储引擎",
+      "subtitle": "",
+      "key_points": [
+        "Turtle／JSON-LD",
+        "RDF 图",
+        "Triple Store",
+        "SPARQL"
+      ],
+      "speaker_notes": "澄清性能误区：不能把一个数据模型直接和某种数据库产品比较。生产环境通常把 RDF 放入 Triple Store 并使用 SPARQL；Neo4j 是属性图数据库，可以承载映射后的 RDF 数据，但并不因此自动保留全部 OWL 语义。性能取决于引擎、数据和查询。本集只建立地图，SPARQL 在 EP06 单独学习。",
+      "depth": "long"
+    },
+    {
+      "slide": 10,
+      "type": "summary",
+      "title": "从一句事实，走到一张可交换的图",
+      "subtitle": "",
+      "key_points": [
+        "三元组是一条有方向的事实",
+        "IRI 提供可治理的全局标识",
+        "字面量保存类型与语言",
+        "Turtle 只是 RDF 的一种写法"
+      ],
+      "speaker_notes": "回顾四个核心认知。行动任务：运行仓库中的 RDFLib 示例，再写五条关于一个云服务的 Turtle 并通过解析。预告 EP03：先不急着打开 Protégé，而是用 Competency Questions 写清这个本体究竟要回答什么。",
+      "depth": "medium"
+    }
+  ]
+}

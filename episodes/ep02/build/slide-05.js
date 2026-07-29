@@ -1,4 +1,4 @@
-// Slide 5: Content - URI：给每个事物一张全球身份证
+// Slide 5: Content - IRI：给标识一个全局作用域
 const pptxgen = require('pptxgenjs');
 const { pageBadge, titleBlock, subtitleLine, bulletList } = require('./helpers');
 
@@ -6,92 +6,59 @@ function createSlide(pres, theme) {
   const slide = pres.addSlide();
   slide.background = { color: theme.bg };
 
-  titleBlock(slide, pres, theme, 'URI：给每个事物一张全球身份证');
-  subtitleLine(slide, theme, 'URI = 统一资源标识符，消除同名歧义');
+  titleBlock(slide, pres, theme, 'IRI：给标识一个全局作用域');
+  subtitleLine(slide, theme, '标识机制需要命名空间治理');
 
   bulletList(slide, pres, theme, [
-    'URI：Uniform Resource Identifier，全球唯一地址',
-    '同一个“苹果”可能指公司、水果、乐队',
-    '示例：dbpedia:Leonardo_da_Vinci',
-  ], { y: 1.35, lineH: 0.44, fontSize: 16, w: 5.0 });
+    'IRI 标识资源与关系',
+    '命名空间减少冲突',
+    '前缀只是可读缩写',
+    '空白节点表示匿名资源',
+  ], { x: 0.65, y: 1.35, w: 4.2, lineH: 0.56, fontSize: 16 });
 
-  // ID card visual
-  const cardX = 0.8;
-  const cardY = 3.00;
-  const cardW = 4.4;
-  const cardH = 1.25;
-  slide.addShape(pres.shapes.RECTANGLE, {
-    x: cardX, y: cardY, w: cardW, h: cardH,
-    fill: { color: '0B1426' }, line: { color: theme.accent, width: 2 },
-    rectRadius: 0.10,
-  });
-
-  // ID photo placeholder
-  slide.addShape(pres.shapes.OVAL, {
-    x: cardX + 0.25, y: cardY + 0.25, w: 0.70, h: 0.70,
-    fill: { color: theme.light }, line: { type: 'none' },
-  });
-  slide.addText('ID', {
-    x: cardX + 0.25, y: cardY + 0.25, w: 0.70, h: 0.70,
-    fontSize: 14, fontFace: 'Liberation Sans',
-    color: '000814', bold: true, align: 'center', valign: 'middle',
-  });
-
-  // ID fields
-  slide.addText('Name: Leonardo da Vinci', {
-    x: cardX + 1.15, y: cardY + 0.20, w: 2.9, h: 0.28,
-    fontSize: 13, fontFace: 'Liberation Sans',
-    color: theme.primary, align: 'left', valign: 'middle',
-  });
-  slide.addText('URI:', {
-    x: cardX + 1.15, y: cardY + 0.52, w: 0.5, h: 0.22,
-    fontSize: 11, fontFace: 'Liberation Sans',
-    color: theme.light, align: 'left', valign: 'middle',
-  });
-  slide.addText('http://dbpedia.org/resource/Leonardo_da_Vinci', {
-    x: cardX + 1.15, y: cardY + 0.74, w: 2.9, h: 0.28,
-    fontSize: 10, fontFace: 'Liberation Sans',
-    color: theme.secondary, align: 'left', valign: 'middle',
-  });
-
-  // Ambiguity disambiguation panel
-  const ambX = 5.7;
-  const ambY = 1.35;
-  const ambW = 3.9;
-  const ambH = 2.90;
-  slide.addShape(pres.shapes.RECTANGLE, {
-    x: ambX, y: ambY, w: ambW, h: ambH,
-    fill: { color: '0B1426' }, line: { color: theme.light, width: 1 },
-    rectRadius: 0.08,
-  });
-  slide.addText('同名歧义怎么破？', {
-    x: ambX, y: ambY + 0.12, w: ambW, h: 0.32,
-    fontSize: 15, fontFace: 'Noto Sans CJK SC',
-    color: theme.secondary, bold: true, align: 'center', valign: 'middle',
-  });
-
-  const examples = [
-    { label: '苹果公司', uri: 'dbpedia:Apple_Inc.' },
-    { label: '水果苹果', uri: 'dbpedia:Apple' },
-    { label: '苹果乐队', uri: 'dbpedia:The_Beatles' },
+  const rows = [
+    { pos: '主语', allowed: 'IRI 或空白节点', color: theme.light, text: theme.bg },
+    { pos: '谓语', allowed: '必须是 IRI', color: theme.accent, text: theme.primary },
+    { pos: '宾语', allowed: 'IRI、空白节点或字面量', color: theme.secondary, text: theme.bg },
   ];
-  examples.forEach((ex, i) => {
-    const y = ambY + 0.58 + i * 0.68;
+
+  slide.addText('三元组各位置允许什么？', {
+    x: 5.05, y: 1.25, w: 4.15, h: 0.36,
+    fontSize: 16, fontFace: 'Noto Sans CJK SC',
+    color: theme.primary, bold: true, align: 'left', valign: 'middle', margin: 0,
+  });
+
+  rows.forEach((row, index) => {
+    const y = 1.75 + index * 0.72;
     slide.addShape(pres.shapes.RECTANGLE, {
-      x: ambX + 0.25, y: y, w: 3.4, h: 0.52,
-      fill: { color: '000814' }, line: { color: theme.accent, width: 1 },
-      rectRadius: 0.05,
+      x: 5.05, y, w: 1.05, h: 0.54,
+      fill: { color: row.color }, line: { type: 'none' },
     });
-    slide.addText(ex.label, {
-      x: ambX + 0.35, y: y, w: 1.2, h: 0.52,
-      fontSize: 13, fontFace: 'Noto Sans CJK SC',
-      color: theme.primary, align: 'left', valign: 'middle',
+    slide.addText(row.pos, {
+      x: 5.05, y, w: 1.05, h: 0.54,
+      fontSize: 14, fontFace: 'Noto Sans CJK SC',
+      color: row.text, bold: true, align: 'center', valign: 'middle', margin: 0,
     });
-    slide.addText(ex.uri, {
-      x: ambX + 1.65, y: y, w: 2.0, h: 0.52,
-      fontSize: 11, fontFace: 'Liberation Sans',
-      color: theme.light, align: 'left', valign: 'middle',
+    slide.addShape(pres.shapes.RECTANGLE, {
+      x: 6.20, y, w: 3.05, h: 0.54,
+      fill: { color: theme.bg, transparency: 0 },
+      line: { color: row.color, width: 1.2 },
     });
+    slide.addText(row.allowed, {
+      x: 6.38, y, w: 2.70, h: 0.54,
+      fontSize: 14, fontFace: 'Noto Sans CJK SC',
+      color: theme.primary, align: 'left', valign: 'middle', margin: 0,
+    });
+  });
+
+  slide.addShape(pres.shapes.RECTANGLE, {
+    x: 5.05, y: 4.00, w: 4.20, h: 0.42,
+    fill: { color: theme.primary }, line: { type: 'none' },
+  });
+  slide.addText('IRI 提供机制，不自动保证命名正确', {
+    x: 5.05, y: 4.00, w: 4.20, h: 0.42,
+    fontSize: 13, fontFace: 'Noto Sans CJK SC',
+    color: theme.bg, bold: true, align: 'center', valign: 'middle', margin: 0,
   });
 
   pageBadge(slide, pres, theme, 5);

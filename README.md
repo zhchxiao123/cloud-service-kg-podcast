@@ -203,6 +203,7 @@ python src/build_kg.py \
 
 ## 🔗 相关链接
 
+- 优化版课程蓝图：[`docs/course-blueprint.md`](./docs/course-blueprint.md)
 - 系列总方案：[`docs/master-plan.md`](./docs/master-plan.md)
 - 多平台分发模板：[`docs/distribution-template.md`](./docs/distribution-template.md)
 - 项目评估报告：[`project/eval/README.md`](./project/eval/README.md)

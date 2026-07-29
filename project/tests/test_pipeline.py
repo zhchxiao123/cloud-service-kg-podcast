@@ -6,7 +6,6 @@ from rdflib import Graph, Namespace
 
 from src.pipeline import create_minimal_kg
 
-
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 
 

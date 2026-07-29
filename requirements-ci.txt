@@ -1,0 +1,9 @@
+# Runtime dependencies exercised by project/src and project/tests
+rdflib>=7.0.0
+pyshacl>=0.26.0
+typer>=0.12.0
+
+# CI quality tools
+pytest>=8.0.0
+black>=24.0.0
+flake8>=7.0.0
