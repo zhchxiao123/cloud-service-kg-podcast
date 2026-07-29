@@ -3,7 +3,7 @@
 from pathlib import Path
 from typing import Union
 
-from rdflib import Graph, Namespace, URIRef
+from rdflib import Graph, Namespace
 from pyshacl import validate
 
 

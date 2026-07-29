@@ -5,9 +5,7 @@ It reads raw text documents, extracts entities/relations, maps them to the
 ontology, and writes RDF/Turtle.
 """
 
-import json
 from pathlib import Path
-from typing import Optional
 
 import typer
 from rdflib import Graph, Literal, Namespace, URIRef
@@ -32,7 +30,9 @@ def create_minimal_kg(ontology_path: Path) -> Graph:
     g.add((svc, CSKG.hasProvider, CSKG.Azure))
     g.add((svc, CSKG.hasGPU, Literal(True, datatype=XSD.boolean)))
     g.add((svc, CSKG.serviceCode, Literal("NC24ads_A100_v4")))
-    g.add((svc, CSKG.dataSource, Literal("https://learn.microsoft.com/azure/virtual-machines/nc-a100-v4-series")))
+    g.add((svc, CSKG.dataSource, Literal(
+        "https://learn.microsoft.com/azure/virtual-machines/nc-a100-v4-series"
+    )))
     g.add((svc, CSKG.lastUpdated, Literal("2026-07-27", datatype=XSD.date)))
     return g
 
