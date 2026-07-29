@@ -1,4 +1,4 @@
-// Slide 4: Content - 三元组：知识的最小表达单位
+// Slide 4: Content - 一个三元组，就是一条有方向的边
 const pptxgen = require('pptxgenjs');
 const { pageBadge, titleBlock, subtitleLine, bulletList } = require('./helpers');
 
@@ -6,13 +6,14 @@ function createSlide(pres, theme) {
   const slide = pres.addSlide();
   slide.background = { color: theme.bg };
 
-  titleBlock(slide, pres, theme, '三元组：知识的最小表达单位');
+  titleBlock(slide, pres, theme, '一个三元组，就是一条有方向的边');
   subtitleLine(slide, theme, '主语 + 谓语 + 宾语 = 一条带标签的边');
 
   bulletList(slide, pres, theme, [
-    '每个三元组 = 主语 + 谓语 + 宾语',
-    '对应图中的一条有向边',
-    '例：Bob knows Alice',
+    '主语：从谁出发',
+    '谓语：什么关系',
+    '宾语：指向谁或什么值',
+    '三元组集合构成 RDF 图',
   ], { y: 1.35, lineH: 0.44, fontSize: 16, w: 5.0 });
 
   // Diagram: subject —predicate→ object
@@ -71,12 +72,12 @@ function createSlide(pres, theme) {
     fill: { color: '0B1426' }, line: { color: theme.accent, width: 1.5 },
     rectRadius: 0.08,
   });
-  slide.addText('例句 → 三元组', {
+  slide.addText('云服务事实 → 三元组', {
     x: exX, y: exY + 0.15, w: exW, h: 0.32,
     fontSize: 14, fontFace: 'Noto Sans CJK SC',
     color: theme.secondary, bold: true, align: 'center', valign: 'middle',
   });
-  slide.addText('“Bob 认识 Alice”', {
+  slide.addText('“EC2 由 AWS 提供”', {
     x: exX, y: exY + 0.52, w: exW, h: 0.32,
     fontSize: 15, fontFace: 'Noto Sans CJK SC',
     color: theme.primary, align: 'center', valign: 'middle',
@@ -85,7 +86,7 @@ function createSlide(pres, theme) {
     x: exX + 0.5, y: exY + 0.95, w: 2.0, h: 0.04,
     fill: { color: theme.accent }, line: { type: 'none' },
   });
-  slide.addText('<Bob>  <knows>  <Alice>', {
+  slide.addText('cskg:EC2  cskg:hasProvider  cskg:AWS', {
     x: exX, y: exY + 1.12, w: exW, h: 0.36,
     fontSize: 14, fontFace: 'Liberation Sans',
     color: theme.light, bold: true, align: 'center', valign: 'middle',

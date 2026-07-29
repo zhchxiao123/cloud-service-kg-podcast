@@ -4,6 +4,7 @@
 
 ## 快速入口
 
+- [优化版课程蓝图](course-blueprint.md)
 - [系列总方案](master-plan.md)
 - [多平台分发模板](distribution-template.md)
 - [云服务选型知识图谱项目](../project/docs/README.md)

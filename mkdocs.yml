@@ -22,6 +22,7 @@ theme:
 
 nav:
   - 首页: index.md
+  - 优化版课程蓝图: course-blueprint.md
   - 系列总方案: master-plan.md
   - 分发模板: distribution-template.md
   - 项目文档:

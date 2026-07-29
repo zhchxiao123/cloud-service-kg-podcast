@@ -1,104 +1,60 @@
-// Slide 7: Content - 字面量：当知识需要具体数值
+// Slide 7: Content - 字面量：值也要带上类型和语言
 const pptxgen = require('pptxgenjs');
-const { pageBadge, titleBlock, subtitleLine, bulletList } = require('./helpers');
+const { pageBadge, titleBlock, subtitleLine } = require('./helpers');
 
 function createSlide(pres, theme) {
   const slide = pres.addSlide();
   slide.background = { color: theme.bg };
 
-  titleBlock(slide, pres, theme, '字面量：当知识需要具体数值');
-  subtitleLine(slide, theme, 'Literal 只能做宾语，带类型和语言标签');
+  titleBlock(slide, pres, theme, '字面量：值也要带上类型和语言');
+  subtitleLine(slide, theme, '同样的字符，不同类型会有不同含义');
 
-  bulletList(slide, pres, theme, [
-    '字面量只能出现在宾语位置',
-    '支持字符串、数字、日期等',
-    '可附带数据类型或语言标签',
-    '字符串想变主体？提升为资源节点',
-  ], { y: 1.35, lineH: 0.44, fontSize: 16, w: 5.2 });
+  const cards = [
+    {
+      x: 0.65, y: 1.25, color: theme.light, textColor: theme.bg,
+      title: '字符串', code: '"ec2"', note: '服务代码',
+    },
+    {
+      x: 5.10, y: 1.25, color: theme.accent, textColor: theme.primary,
+      title: '整数', code: '30^^xsd:integer', note: '可比较与计算',
+    },
+    {
+      x: 0.65, y: 2.75, color: theme.secondary, textColor: theme.bg,
+      title: '日期', code: '"2026-07-29"^^xsd:date', note: '明确时间类型',
+    },
+    {
+      x: 5.10, y: 2.75, color: theme.primary, textColor: theme.bg,
+      title: '语言标签', code: '"对象存储"@zh', note: '保留语言信息',
+    },
+  ];
 
-  // Code-like examples card
-  const cardX = 0.7;
-  const cardY = 3.05;
-  const cardW = 5.0;
-  const cardH = 1.20;
-  slide.addShape(pres.shapes.RECTANGLE, {
-    x: cardX, y: cardY, w: cardW, h: cardH,
-    fill: { color: '0B1426' }, line: { color: theme.accent, width: 1.5 },
-    rectRadius: 0.08,
-  });
-  slide.addText('Bob 的名字  →  "Bob"^^xsd:string', {
-    x: cardX + 0.2, y: cardY + 0.16, w: cardW - 0.4, h: 0.26,
-    fontSize: 13, fontFace: 'Liberation Sans',
-    color: theme.primary, align: 'left', valign: 'middle',
-  });
-  slide.addText('Bob 的年龄  →  30^^xsd:integer', {
-    x: cardX + 0.2, y: cardY + 0.48, w: cardW - 0.4, h: 0.26,
-    fontSize: 13, fontFace: 'Liberation Sans',
-    color: theme.primary, align: 'left', valign: 'middle',
-  });
-  slide.addText('Bob 的生日  →  "1990-07-04"^^xsd:date', {
-    x: cardX + 0.2, y: cardY + 0.80, w: cardW - 0.4, h: 0.26,
-    fontSize: 13, fontFace: 'Liberation Sans',
-    color: theme.primary, align: 'left', valign: 'middle',
-  });
-
-  // Reification mini diagram
-  const diagX = 6.2;
-  const diagY = 1.35;
-  const diagW = 3.5;
-  const diagH = 2.85;
-  slide.addShape(pres.shapes.RECTANGLE, {
-    x: diagX, y: diagY, w: diagW, h: diagH,
-    fill: { color: '0B1426' }, line: { color: theme.light, width: 1 },
-    rectRadius: 0.08,
-  });
-  slide.addText('把字面量提升为资源', {
-    x: diagX, y: diagY + 0.10, w: diagW, h: 0.28,
-    fontSize: 14, fontFace: 'Noto Sans CJK SC',
-    color: theme.secondary, bold: true, align: 'center', valign: 'middle',
+  cards.forEach((card) => {
+    slide.addShape(pres.shapes.RECTANGLE, {
+      x: card.x, y: card.y, w: 4.25, h: 1.18,
+      fill: { color: card.color }, line: { type: 'none' },
+    });
+    slide.addText(card.title, {
+      x: card.x + 0.24, y: card.y + 0.16, w: 1.10, h: 0.28,
+      fontSize: 16, fontFace: 'Noto Sans CJK SC',
+      color: card.textColor, bold: true, align: 'left', valign: 'middle', margin: 0,
+    });
+    slide.addText(card.code, {
+      x: card.x + 1.35, y: card.y + 0.14, w: 2.65, h: 0.34,
+      fontSize: 15, fontFace: 'Liberation Sans',
+      color: card.textColor, bold: false, align: 'left', valign: 'middle', margin: 0,
+      fit: 'shrink',
+    });
+    slide.addText(card.note, {
+      x: card.x + 0.24, y: card.y + 0.69, w: 3.75, h: 0.28,
+      fontSize: 13, fontFace: 'Noto Sans CJK SC',
+      color: card.textColor, align: 'left', valign: 'middle', margin: 0,
+    });
   });
 
-  slide.addText('Before', {
-    x: diagX + 0.2, y: diagY + 0.50, w: 1.5, h: 0.22,
-    fontSize: 11, fontFace: 'Liberation Sans',
-    color: theme.light, align: 'left', valign: 'middle',
-  });
-  slide.addText('Bob  name  "Bob"', {
-    x: diagX + 0.2, y: diagY + 0.76, w: 3.1, h: 0.22,
-    fontSize: 12, fontFace: 'Liberation Sans',
-    color: theme.primary, align: 'left', valign: 'middle',
-  });
-
-  slide.addShape(pres.shapes.RECTANGLE, {
-    x: diagX + 0.2, y: diagY + 1.10, w: 3.1, h: 0.02,
-    fill: { color: theme.accent }, line: { type: 'none' },
-  });
-
-  slide.addText('After', {
-    x: diagX + 0.2, y: diagY + 1.22, w: 1.5, h: 0.22,
-    fontSize: 11, fontFace: 'Liberation Sans',
-    color: theme.light, align: 'left', valign: 'middle',
-  });
-  slide.addText(':name1  rdf:value  "Bob"', {
-    x: diagX + 0.2, y: diagY + 1.48, w: 3.1, h: 0.22,
-    fontSize: 12, fontFace: 'Liberation Sans',
-    color: theme.primary, align: 'left', valign: 'middle',
-  });
-  slide.addText(':name1  :language  "en"', {
-    x: diagX + 0.2, y: diagY + 1.74, w: 3.1, h: 0.22,
-    fontSize: 12, fontFace: 'Liberation Sans',
-    color: theme.primary, align: 'left', valign: 'middle',
-  });
-  slide.addText(':name1  :source  "HR"', {
-    x: diagX + 0.2, y: diagY + 2.00, w: 3.1, h: 0.22,
-    fontSize: 12, fontFace: 'Liberation Sans',
-    color: theme.primary, align: 'left', valign: 'middle',
-  });
-
-  slide.addText('复杂性换可链接性', {
-    x: diagX, y: diagY + 2.46, w: diagW, h: 0.24,
-    fontSize: 12, fontFace: 'Noto Sans CJK SC',
-    color: theme.secondary, bold: true, align: 'center', valign: 'middle',
+  slide.addText('字面量出现在宾语位置；复杂语句溯源留到后续项目建模。', {
+    x: 0.65, y: 4.12, w: 8.35, h: 0.30,
+    fontSize: 13, fontFace: 'Noto Sans CJK SC',
+    color: theme.light, align: 'left', valign: 'middle', margin: 0,
   });
 
   pageBadge(slide, pres, theme, 7);

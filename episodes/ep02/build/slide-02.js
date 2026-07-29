@@ -6,15 +6,13 @@ function createSlide(pres, theme) {
   const slide = pres.addSlide();
   slide.background = { color: theme.bg };
 
-  titleBlock(slide, pres, theme, '本期要聊什么', { fontSize: 28 });
+  titleBlock(slide, pres, theme, '本期要回答四个问题', { fontSize: 28 });
 
   const toc = [
-    { num: '01', text: '从本体到 RDF：通用语言' },
-    { num: '02', text: '三元组：知识的最小单位' },
-    { num: '03', text: 'URI：全球唯一身份证' },
-    { num: '04', text: '图模型：三元组连成网' },
-    { num: '05', text: '字面量：具体数值' },
-    { num: '06', text: 'Turtle：友好的 RDF 写法' },
+    { num: '01', text: '三元组怎样表达事实？' },
+    { num: '02', text: 'IRI 怎样标识事物？' },
+    { num: '03', text: '字面量怎样保存值？' },
+    { num: '04', text: 'Turtle 与数据库什么关系？' },
   ];
 
   const startX = 0.7;
@@ -48,11 +46,6 @@ function createSlide(pres, theme) {
       color: theme.primary, align: 'left', valign: 'middle',
     });
 
-    // Underline accent
-    slide.addShape(pres.shapes.RECTANGLE, {
-      x: x + 0.58, y: y + rowH - 0.12, w: 0.8, h: 0.02,
-      fill: { color: theme.light }, line: { type: 'none' },
-    });
   });
 
   pageBadge(slide, pres, theme, 2);
