@@ -1,0 +1,235 @@
+{
+  "title": "EP04｜Protégé 入门：从 CQ 到第一个本体",
+  "script": [
+    {
+      "role": "host",
+      "text": "大家好，欢迎来到《本体工程与知识图谱实战》第四集。上集我们写好了 Competency Questions，今天终于要打开 Protégé，但第一步不是点加号，而是把问题里的建模决定摆到桌面上。",
+      "slide": 1
+    },
+    {
+      "role": "guest",
+      "text": "对。今天的目标很具体：把 CQ-01 变成一个最小云服务本体，保存成 Turtle，关掉工具后再重新打开。能重现、能解释，才算真正交付。",
+      "slide": 1
+    },
+    {
+      "role": "host",
+      "text": "这条路要完成四次转换：从需求语言到概念表，从概念表到本体元素，从本体元素到 Protégé 操作，最后从界面里的修改到可维护的文件。",
+      "slide": 2
+    },
+    {
+      "role": "guest",
+      "text": "同时我们会处理两个最容易混淆的问题：Amazon EC2 到底是类还是个体，以及 Domain 和 Range 到底是不是输入校验。",
+      "slide": 2
+    },
+    {
+      "role": "host",
+      "text": "先看 CQ-01：哪些计算服务支持 GPU，并在东京或新加坡区域可用？如果先不打开工具，你会怎样拆这句话？",
+      "slide": 3
+    },
+    {
+      "role": "guest",
+      "text": "先看名词。计算服务对应 ComputeService，东京和新加坡属于 Region，答案还要给出厂商，所以需要 CloudProvider。再看动词和条件：服务由厂商提供、服务在区域可用、服务支持 GPU。",
+      "slide": 3
+    },
+    {
+      "role": "host",
+      "text": "于是关系候选是 hasProvider 和 hasRegion，布尔值候选是 hasGPU。产品文档地址和核验日期则更像维护信息，而不是业务世界里的对象关系。",
+      "slide": 3
+    },
+    {
+      "role": "guest",
+      "text": "这就是概念表的价值。团队可以先讨论名称、粒度、答案形式和证据，再决定怎样在工具里表达。如果直接点击界面，很多决定会悄悄藏在操作历史里，后面很难评审。",
+      "slide": 3
+    },
+    {
+      "role": "host",
+      "text": "进入 Protégé 之前，还要分清五种元素。第一种是类，它描述一组对象，例如 ComputeService；第二种是个体，例如 AWS_EC2，它是一个可识别的具体云产品。",
+      "slide": 4
+    },
+    {
+      "role": "guest",
+      "text": "第三种是对象属性，它连接对象和对象。AWS_EC2 hasProvider AWS，左右两端都是领域里的对象。第四种是数据属性，它把对象连接到字面量，例如 AWS_EC2 hasGPU true。",
+      "slide": 4
+    },
+    {
+      "role": "host",
+      "text": "第五种是注释属性。rdfs:label 提供界面可读名称，rdfs:comment 写定义，dataSource 和 lastUpdated 记录证据与维护时间。它们很重要，但不参与 OWL 的逻辑推理。",
+      "slide": 4
+    },
+    {
+      "role": "guest",
+      "text": "有人会反对：既然数据来源很重要，为什么不把它建成可以推理的普通属性？",
+      "slide": 4
+    },
+    {
+      "role": "host",
+      "text": "因为要先问它是不是领域事实。服务由哪个厂商提供，会改变我们对云服务世界的描述；一个术语由哪份文档解释，更多是对模型和证据的说明。把维护元数据混进业务关系，会让查询和推理边界变得模糊。",
+      "slide": 4
+    },
+    {
+      "role": "guest",
+      "text": "当然，未来如果要对来源本身建模，例如描述发布机构、许可证和证据版本，也可以把来源提升成领域对象。但那是新的 CQ 驱动的新范围，不是看到一条 URL 就自动升级。",
+      "slide": 4
+    },
+    {
+      "role": "host",
+      "text": "接着处理一个经典问题：ComputeService、Amazon EC2 和某个 GPU 实例规格，为什么不在同一层？",
+      "slide": 5
+    },
+    {
+      "role": "guest",
+      "text": "ComputeService 是类别，代表一组计算服务。Amazon EC2 是产品级对象，我们希望在 CQ 的答案列表中直接返回它，所以当前把它建成个体。具体 GPU 实例系列或 SKU 更细，只有做规格和价格比较时才需要。",
+      "slide": 5
+    },
+    {
+      "role": "host",
+      "text": "但产品名称也常被建成类。比如有人会说 Amazon EC2 下面还有很多实例，所以 EC2 应该是类，这个说法并非完全错误吧？",
+      "slide": 5
+    },
+    {
+      "role": "guest",
+      "text": "没错，类与个体不是只看现实世界里有没有下级。关键是当前模型怎样使用它。如果要把每个 EC2 实例配置当作个体，Amazon EC2 可能成为产品系列类；如果 CQ 只枚举产品目录里的服务，产品级个体更直接。",
+      "slide": 5
+    },
+    {
+      "role": "host",
+      "text": "也就是说，这不是靠首字母大写、单复数或个人直觉决定，而是由答案粒度决定。建模记录里还应该写清楚为什么暂时不展开 SKU。",
+      "slide": 5
+    },
+    {
+      "role": "guest",
+      "text": "对，而且这个决定可以演进。等 CQ-05 真正要求同规格、同区域比较价格，我们再引入实例规格、计费周期和价格观测，不必在第一版预先建完整个云市场。",
+      "slide": 5
+    },
+    {
+      "role": "host",
+      "text": "现在区分 TBox 和 ABox。可以把 TBox 想成这门领域语言的词典与语法：有哪些类、属性和结构关系。",
+      "slide": 6
+    },
+    {
+      "role": "guest",
+      "text": "例如 ComputeService 是 CloudService 的子类，hasProvider 的主体属于 CloudService，客体属于 CloudProvider。这些都在描述语言结构。",
+      "slide": 6
+    },
+    {
+      "role": "host",
+      "text": "ABox 则用这门语言写具体事实：AWS_EC2 是 ComputeService，AWS_EC2 由 AWS 提供，而且在东京区域可用。",
+      "slide": 6
+    },
+    {
+      "role": "guest",
+      "text": "要注意，TBox 和 ABox 是概念上的分工，不代表必须保存成两个文件。我们的最小项目把结构和样例事实放在同一个 Turtle 文件里，方便演示和测试；以后数据量变大再拆分。",
+      "slide": 6
+    },
+    {
+      "role": "host",
+      "text": "终于打开 Protégé。第一步选择 File、New，创建空本体，然后设置 Ontology IRI。我们的本体 IRI 是项目级标识，实体使用同一命名空间和 cskg 前缀。",
+      "slide": 7
+    },
+    {
+      "role": "guest",
+      "text": "第二步进入 Classes，先建 CloudService、CloudProvider 和 Region，再把 ComputeService、StorageService、DatabaseService 放到合适的子类位置。先有骨架，再填细节。",
+      "slide": 7
+    },
+    {
+      "role": "host",
+      "text": "第三步分别进入 Object properties、Data properties 和 Annotation properties。建立 hasProvider、hasRegion、hasGPU、dataSource 等属性，并补充标签、定义、Domain 和 Range。",
+      "slide": 7
+    },
+    {
+      "role": "guest",
+      "text": "第四步进入 Individuals，添加 AWS、Azure、AWS_EC2、Azure_VM、东京和新加坡区域，再写类型和属性断言。到这里，CQ-01 的查询所需元素才真正连起来。",
+      "slide": 7
+    },
+    {
+      "role": "host",
+      "text": "界面里如果选择用 rdfs:label 渲染实体，看到的可能是中文标签。有人因此以为修改显示名称就是修改实体本身。",
+      "slide": 7
+    },
+    {
+      "role": "guest",
+      "text": "这是很危险的误解。标签可以有多种语言，也可以随文案更新；IRI 才是稳定标识。最后用 File、Save As 保存成 Turtle，关闭后从本地文件重新打开，核对本体 IRI、前缀、实体和断言都还在。",
+      "slide": 7
+    },
+    {
+      "role": "host",
+      "text": "现在说 Domain 和 Range。我们为 hasProvider 声明 Domain 是 CloudService，Range 是 CloudProvider。很多人会把它理解成表单校验：左边只能填云服务，右边只能填厂商。",
+      "slide": 8
+    },
+    {
+      "role": "guest",
+      "text": "但 OWL 的核心含义是推理。如果出现 x hasProvider AWS，推理机会据此得到 x 属于 CloudService、AWS 属于 CloudProvider，即使我们此前没有显式写出这些类型。",
+      "slide": 8
+    },
+    {
+      "role": "host",
+      "text": "那如果我误把 Tokyo 写在 hasProvider 的右边，Protégé 为什么不一定马上拒绝？",
+      "slide": 8
+    },
+    {
+      "role": "guest",
+      "text": "因为在开放世界和 OWL 语义下，Range 会给 Tokyo 增加 CloudProvider 类型。只有当模型还声明 Region 与 CloudProvider 不相交时，推理机才可能发现矛盾。没有这些公理，它更可能接受新的类型推断。",
+      "slide": 8
+    },
+    {
+      "role": "host",
+      "text": "所以把 Domain 和 Range 当数据库字段类型会产生错觉。它们能帮助分类和发现某些矛盾，却不能代替完整的数据质量规则。",
+      "slide": 8
+    },
+    {
+      "role": "guest",
+      "text": "对。需要检查每条服务必须有一个厂商、日期格式是否合法、值是否来自允许列表时，更适合使用 SHACL 等验证语言。第四集先记住边界，后面的质量章节再真正执行验证。",
+      "slide": 8
+    },
+    {
+      "role": "host",
+      "text": "回到最终文件。当前骨架有十个类、五个对象属性、四个数据属性和两个注释属性，已经超过本集最低验收线。",
+      "slide": 9
+    },
+    {
+      "role": "guest",
+      "text": "CQ-01 的主链非常清楚：ComputeService 描述服务类型，CloudProvider 和 Region 描述答案中的厂商与区域；hasProvider、hasRegion 和 hasGPU 提供筛选与返回字段。",
+      "slide": 9
+    },
+    {
+      "role": "host",
+      "text": "ABox 里至少有 AWS 和 Azure 两个厂商，AWS_EC2 和 Azure_VM 两个计算服务，以及东京和新加坡两个区域。两个服务都带 GPU 支持和区域断言。",
+      "slide": 9
+    },
+    {
+      "role": "guest",
+      "text": "术语表还记录了中英文标签、定义和来源 CQ，命名约定固定了类用 UpperCamelCase、属性用 lowerCamelCase、产品个体使用下划线。这样脚本、查询和 Protégé 中的名称不会各写一套。",
+      "slide": 9
+    },
+    {
+      "role": "host",
+      "text": "有人可能说，既然只是最小本体，为什么要花时间写双语标签、定义和来源？这些不是等功能完整以后再补也行吗？",
+      "slide": 9
+    },
+    {
+      "role": "guest",
+      "text": "恰恰相反。最小不是随便，也不是元素越少越好，而是恰好支持当前 CQ，同时保留未来能理解和修改它的最低信息。没有定义和来源，团队很快就会忘记一个名称当初为何这样建。",
+      "slide": 9
+    },
+    {
+      "role": "host",
+      "text": "总结一下：CQ 决定第一版本体的范围；类、个体、对象属性、数据属性和注释属性各有职责；TBox 定义语言，ABox 写具体事实。",
+      "slide": 10
+    },
+    {
+      "role": "guest",
+      "text": "同时记住，Domain 和 Range 是推理公理，不是表单校验。一个 Protégé 项目只有保存成明确格式、关闭并重新打开后仍然完整，才算可交付文件。",
+      "slide": 10
+    },
+    {
+      "role": "host",
+      "text": "课后请从自己的一条 CQ 制作概念表，在 Protégé 中创建至少六个类、四个对象属性、四个数据属性和四个个体，补双语标签与定义，再保存为 Turtle 并重新打开。",
+      "slide": 10
+    },
+    {
+      "role": "guest",
+      "text": "下一集我们会启动推理机，亲眼观察这些显式事实产生哪些隐式结论，也会故意制造一个逻辑矛盾。谢谢收听，我们下一集见。",
+      "slide": 10
+    }
+  ]
+}

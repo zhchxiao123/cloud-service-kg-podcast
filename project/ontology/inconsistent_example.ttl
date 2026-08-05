@@ -1,0 +1,17 @@
+@prefix : <https://example.org/cloud-service-kg/inconsistent#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<https://example.org/cloud-service-kg/inconsistent> a owl:Ontology ;
+    rdfs:label "Cloud service inconsistency demo"@en ;
+    rdfs:comment "A minimal, intentionally inconsistent OWL 2 ontology for EP05."@en .
+
+:ComputeService a owl:Class ; rdfs:label "计算服务"@zh-CN .
+:StorageService a owl:Class ; rdfs:label "存储服务"@zh-CN .
+
+# Modeling decision: these two categories are mutually exclusive in this demo.
+:ComputeService owl:disjointWith :StorageService .
+
+# These two type assertions clash with the disjointness axiom above.
+:Broken_Service a owl:NamedIndividual, :ComputeService, :StorageService ;
+    rdfs:label "冲突服务"@zh-CN .

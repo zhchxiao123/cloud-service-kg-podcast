@@ -1,0 +1,142 @@
+{
+  "meta": {
+    "topic": "把 Competency Questions 中的概念和关系转成可维护的 OWL 本体骨架",
+    "suggested_title": "EP04｜Protégé 入门：从 CQ 到第一个本体",
+    "total_slides": 10,
+    "estimated_duration_min": 9
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "type": "cover",
+      "title": "从 CQ 到第一个本体",
+      "subtitle": "先想清楚模型，再打开 Protégé",
+      "key_points": [],
+      "speaker_notes": "用“很多人第一次打开 Protégé 就开始点加号”为反例开场。说明本集不做按钮导览，而是把 EP03 的 CQ-01 变成可保存、可重开的最小云服务本体。",
+      "depth": "short"
+    },
+    {
+      "slide": 2,
+      "type": "toc",
+      "title": "本期完成四次转换",
+      "subtitle": "需求语言 → 建模语言 → 工具操作 → 可维护文件",
+      "key_points": [],
+      "speaker_notes": "交代四个核心问题：CQ 如何变概念表；类、个体和三类属性怎样区分；TBox 与 ABox 如何协作；Domain/Range 和保存重开有哪些容易踩坑的地方。",
+      "depth": "short"
+    },
+    {
+      "slide": 3,
+      "type": "content",
+      "title": "先做概念表，再操作工具",
+      "subtitle": "",
+      "key_points": [
+        "名词先判定粒度",
+        "动词形成关系候选",
+        "值形成数据属性",
+        "来源进入注释"
+      ],
+      "speaker_notes": "从 CQ-01“哪些计算服务支持 GPU，并在东京或新加坡区域可用”逐词映射：ComputeService、Region、hasRegion、hasGPU、hasProvider。强调概念表是可评审的中间产物；如果直接点工具，建模决定会被藏进界面操作里。",
+      "depth": "medium"
+    },
+    {
+      "slide": 4,
+      "type": "content",
+      "title": "五种元素，各自回答不同问题",
+      "subtitle": "",
+      "key_points": [
+        "类：一组对象",
+        "个体：具体对象",
+        "对象属性：对象到对象",
+        "数据属性：对象到值",
+        "注释属性：说明与来源"
+      ],
+      "speaker_notes": "对比五种元素的职责并给出同一领域例子。讨论为什么 dataSource 和中文定义不应该建成普通业务关系；反驳“所有信息都应该成为可推理属性”的观点。注释不参与 OWL 的逻辑推理，但对维护和审计非常重要。",
+      "depth": "long"
+    },
+    {
+      "slide": 5,
+      "type": "content",
+      "title": "类、产品与 SKU 不在同一粒度",
+      "subtitle": "",
+      "key_points": [
+        "ComputeService 是类",
+        "AmazonEC2 是个体",
+        "具体 SKU 可后置",
+        "粒度由 CQ 决定"
+      ],
+      "speaker_notes": "用 ComputeService、AmazonEC2 和具体 GPU 实例 SKU 做三层对比。提出争议：产品名是否也可以建成类？承认不同用例可能有不同答案，但本项目的 CQ 询问可枚举服务，因此先将产品建成个体；不能只凭名称大写或直觉决定。",
+      "depth": "long"
+    },
+    {
+      "slide": 6,
+      "type": "content",
+      "title": "TBox 定义语言，ABox 记录事实",
+      "subtitle": "",
+      "key_points": [
+        "TBox：类、属性、结构",
+        "ABox：个体与断言",
+        "二者写在同一文件",
+        "修改结构先回看 CQ"
+      ],
+      "speaker_notes": "把本体分成“词典与语法”和“用这种语言写下的事实”。用 ComputeService 是 CloudService 子类作为 TBox，用 AWS_EC2 属于 ComputeService 且位于东京作为 ABox。说明两者可以保存在同一 Turtle 文件，区分是概念性的，不是必须拆成两个文件。",
+      "depth": "medium"
+    },
+    {
+      "slide": 7,
+      "type": "content",
+      "title": "在 Protégé 中按依赖顺序建模",
+      "subtitle": "",
+      "key_points": [
+        "先设 Ontology IRI",
+        "再建类与属性",
+        "然后加入个体",
+        "最后保存并重开"
+      ],
+      "speaker_notes": "给出可复现操作顺序：File New，设置本体 IRI 与前缀；在 Classes 建层级；在 Object properties、Data properties、Annotation properties 建属性；在 Individuals 加实例；以 Turtle 保存，关闭后从本地文件重开。反驳“界面显示名称就是实体标识”的误解：标签可以由 rdfs:label 渲染，但 IRI 才是稳定标识。",
+      "depth": "long"
+    },
+    {
+      "slide": 8,
+      "type": "content",
+      "title": "Domain 与 Range 不是输入校验",
+      "subtitle": "",
+      "key_points": [
+        "Domain 推断主体类型",
+        "Range 推断客体类型",
+        "错误值未必被拒绝",
+        "数据校验留给 SHACL"
+      ],
+      "speaker_notes": "用 hasProvider 的 Domain CloudService、Range CloudProvider 演示推理含义：如果 x hasProvider AWS，推理机会据此分类 x 和 AWS。反驳“Domain/Range 就像数据库字段类型”的直觉；错误关系可能增加意外类型或制造矛盾，而不是弹出表单错误。本集只建立边界，SHACL 在后续质量集展开。",
+      "depth": "long"
+    },
+    {
+      "slide": 9,
+      "type": "content",
+      "title": "CQ-01 落成最小本体骨架",
+      "subtitle": "",
+      "key_points": [
+        "10 个核心类",
+        "5 个对象属性",
+        "4 个数据属性",
+        "双语标签与定义",
+        "两个厂商与服务"
+      ],
+      "speaker_notes": "展示最终骨架和 CQ-01 的追踪链：ComputeService、CloudProvider、Region；hasProvider、hasRegion；hasGPU；AWS_EC2 与 Azure_VM。检查东京、新加坡区域和证据注释。反驳“最小就是元素越少越好”的观点：最小骨架应恰好支持当前 Must CQ，并保留命名和来源。",
+      "depth": "long"
+    },
+    {
+      "slide": 10,
+      "type": "summary",
+      "title": "先有可评审模型，再有可维护工具文件",
+      "subtitle": "",
+      "key_points": [
+        "CQ 决定建模范围",
+        "元素类型不要混用",
+        "TBox 与 ABox 要分清",
+        "保存重开才算交付"
+      ],
+      "speaker_notes": "用四条结论收束。课后任务：从一条自己的 CQ 制作概念表，在 Protégé 中至少创建六个类、四个对象属性、四个数据属性和四个个体，补双语标签与定义，保存为 Turtle 后重新打开。预告 EP05 将运行推理机，观察显式事实产生哪些隐式结论。",
+      "depth": "medium"
+    }
+  ]
+}

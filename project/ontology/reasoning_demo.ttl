@@ -1,0 +1,60 @@
+@prefix : <https://example.org/cloud-service-kg/reasoning-demo#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+<https://example.org/cloud-service-kg/reasoning-demo> a owl:Ontology ;
+    rdfs:label "Cloud service reasoning demo"@en ;
+    rdfs:comment "A self-contained OWL 2 demonstration for EP05."@en .
+
+:CloudService a owl:Class ; rdfs:label "云服务"@zh-CN .
+:ComputeService a owl:Class ;
+    rdfs:subClassOf :CloudService ;
+    rdfs:label "计算服务"@zh-CN .
+:Region a owl:Class ; rdfs:label "区域"@zh-CN .
+
+:hasRegion a owl:ObjectProperty ;
+    rdfs:domain :CloudService ;
+    rdfs:range :Region ;
+    rdfs:label "部署区域"@zh-CN .
+
+:hasGPU a owl:DatatypeProperty ;
+    rdfs:domain :ComputeService ;
+    rdfs:range xsd:boolean ;
+    rdfs:label "是否支持 GPU"@zh-CN .
+
+# Defined class 1: at least one hasRegion value belongs to Region.
+:RegionalComputeOffering a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :ComputeService
+            [ a owl:Restriction ;
+              owl:onProperty :hasRegion ;
+              owl:someValuesFrom :Region ]
+        )
+    ] ;
+    rdfs:label "有区域的计算产品"@zh-CN .
+
+# Defined class 2: boolean true must use hasValue; some xsd:boolean would also accept false.
+:GPUComputeOffering a owl:Class ;
+    owl:equivalentClass [
+        a owl:Class ;
+        owl:intersectionOf (
+            :ComputeService
+            [ a owl:Restriction ;
+              owl:onProperty :hasGPU ;
+              owl:hasValue true ]
+        )
+    ] ;
+    rdfs:label "GPU 计算产品"@zh-CN .
+
+:Tokyo a owl:NamedIndividual, :Region ; rdfs:label "东京"@zh-CN .
+
+# Only the three facts below are asserted for the service.
+# A DL reasoner can infer CloudService, RegionalComputeOffering and GPUComputeOffering.
+:Demo_GPU_Service a owl:NamedIndividual, :ComputeService ;
+    :hasRegion :Tokyo ;
+    :hasGPU true ;
+    rdfs:label "演示 GPU 服务"@zh-CN .

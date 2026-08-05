@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "topic": "用 Competency Questions 驱动云服务选型本体的需求、范围与验收",
+    "suggested_title": "EP03｜先问问题，再画本体：把模糊需求改写成可测试的 CQ",
+    "total_slides": 10,
+    "estimated_duration_min": 10
+  },
+  "slides": [
+    {
+      "slide": 1,
+      "type": "cover",
+      "title": "先问问题，再画本体",
+      "subtitle": "用 Competency Questions 定义范围与验收",
+      "key_points": [],
+      "speaker_notes": "从团队打开 Protégé 就急着建类的常见场景切入：如果没有先写清本体要回答什么问题，模型很容易越画越大。说明本集将把“帮我选择 GPU 云服务”改写为可验证的问题，并形成下一集可直接使用的建模输入。",
+      "depth": "short"
+    },
+    {
+      "slide": 2,
+      "type": "toc",
+      "title": "本期要回答四个问题",
+      "subtitle": "从一句模糊需求，走到一组可执行验收标准",
+      "key_points": [],
+      "speaker_notes": "快速建立路线：先解释 CQ 的职责，再识别坏问题，随后拆解句子并排优先级，最后把 CQ 映射到概念、数据和查询测试。提醒听众本集不操作 Protégé，目标是先把输入准备正确。",
+      "depth": "short"
+    },
+    {
+      "slide": 3,
+      "type": "content",
+      "title": "CQ 是本体的功能需求",
+      "subtitle": "",
+      "key_points": [
+        "需求：系统要回答什么",
+        "范围：哪些知识必须建模",
+        "验收：怎样判断已经完成",
+        "沟通：让业务与建模者对齐"
+      ],
+      "speaker_notes": "解释 Competency Question 是用自然语言表达的本体功能需求。结合云服务项目说明同一条 CQ 如何同时限制范围、暴露所需数据并成为后续测试依据。澄清 CQ 不是用户界面的固定文案，也不要求此刻已经能写出 SPARQL。",
+      "depth": "medium"
+    },
+    {
+      "slide": 4,
+      "type": "content",
+      "title": "“推荐最好的”不是合格问题",
+      "subtitle": "",
+      "key_points": [
+        "“最好”没有评价维度",
+        "“合适”没有使用场景",
+        "时间、区域与币种缺失",
+        "答案无法稳定复核"
+      ],
+      "speaker_notes": "以“推荐最好的 GPU 云服务”为反例，逐项追问最好是价格、区域、显存还是托管程度。讨论有人认为模糊问题更贴近真实用户，反方指出业务入口可以模糊，但本体需求必须把关键限定条件显式化。给出改写方向：固定服务类型、区域、GPU 条件、价格口径、时间点和输出字段。",
+      "depth": "long"
+    },
+    {
+      "slide": 5,
+      "type": "content",
+      "title": "好 CQ 有四个检查点",
+      "subtitle": "",
+      "key_points": [
+        "具体：对象与关系明确",
+        "有界：范围与口径明确",
+        "可答：所需数据能获得",
+        "可验：预期答案能比较"
+      ],
+      "speaker_notes": "逐一解释具体、有界、可答和可验。强调“数据能获得”不等于数据现在已经齐全，而是必须能列出数据来源和缺口；“可验”要求明确答案形态，例如列表、布尔值、排序或路径。用一条 GPU 区域 CQ 快速走完四项检查。",
+      "depth": "medium"
+    },
+    {
+      "slide": 6,
+      "type": "content",
+      "title": "把一句问题拆成四类信号",
+      "subtitle": "",
+      "key_points": [
+        "名词 → 候选类与实体",
+        "关系 → 候选对象属性",
+        "条件 → 属性与约束",
+        "输出 → 查询变量与排序"
+      ],
+      "speaker_notes": "拆解“哪些厂商提供在东京可用、支持 GPU 的计算服务”这句话：厂商、计算服务、东京是候选概念或实体；提供和可用区域是关系；支持 GPU 是过滤条件；输出需要服务与厂商。讨论名词不一定都成为类、数字条件不一定都成为 OWL 公理，最终建模要结合粒度与用途判断。",
+      "depth": "long"
+    },
+    {
+      "slide": 7,
+      "type": "content",
+      "title": "一条模糊需求，改成三条 CQ",
+      "subtitle": "",
+      "key_points": [
+        "CQ1：GPU + 亚太区域",
+        "CQ2：厂商 + 免费额度",
+        "CQ3：月费上限 + 数据日期",
+        "每条 CQ 只承担一个判断"
+      ],
+      "speaker_notes": "现场把“帮我选择 GPU 云服务”改写成三条：列出在东京或新加坡可用且支持 GPU 的计算服务及厂商；在这些服务中标出是否有免费额度；在指定日期和币种下列出月费低于预算的服务。讨论是否应该合并成一个超级问题，指出拆开更利于范围管理、缺口定位和回归测试，应用层仍可组合答案。",
+      "depth": "long"
+    },
+    {
+      "slide": 8,
+      "type": "content",
+      "title": "优先级决定先建什么",
+      "subtitle": "",
+      "key_points": [
+        "Must：没有它就无法交付",
+        "Should：价值高但可延期",
+        "Nice：探索性或高成本",
+        "优先级随证据与成本调整"
+      ],
+      "speaker_notes": "解释 Must-have、Should-have、Nice-to-have 不是重要、一般、不重要，而是交付依赖和成本权衡。用 GPU 区域查询作为 Must、免费额度作为 Should、跨云迁移路径作为 Nice。提醒不要把所有干系人的问题都标成 Must，并记录优先级负责人和复审条件。",
+      "depth": "medium"
+    },
+    {
+      "slide": 9,
+      "type": "content",
+      "title": "CQ 要落到模型、数据与测试",
+      "subtitle": "",
+      "key_points": [
+        "CQ → 概念与关系",
+        "CQ → 数据字段与来源",
+        "CQ → 查询与预期结果",
+        "失败时定位模型或数据缺口"
+      ],
+      "speaker_notes": "展示一条 CQ 的追踪链：自然语言问题映射到 ComputeService、CloudProvider、Region、hasProvider、hasRegion、hasGPU；再映射到厂商目录、区域清单和规格文档；后续写成 SPARQL 查询并保存预期答案。讨论“查询返回空集”不自动等于 CQ 答案是否定，还可能是模型或数据缺失。",
+      "depth": "long"
+    },
+    {
+      "slide": 10,
+      "type": "summary",
+      "title": "先定义验收，再开始建模",
+      "subtitle": "",
+      "key_points": [
+        "CQ 同时定义需求、范围与验收",
+        "删除未定义的“最好”和“合适”",
+        "每条 Must 都映射到数据需求",
+        "下一集：从 CQ 建立本体骨架"
+      ],
+      "speaker_notes": "回顾本集方法，并给出行动建议：为自己的领域写五条 CQ，标注优先级、答案形式和所需数据，再检查是否仍包含未定义词。说明仓库已经提供六条云服务核心 CQ；下一集将把其中的概念和关系带入 Protégé，建立第一个可维护本体骨架。",
+      "depth": "medium"
+    }
+  ]
+}
