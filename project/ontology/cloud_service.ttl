@@ -20,48 +20,68 @@
 
 :CloudProvider rdf:type owl:Class ;
     rdfs:label "Cloud Provider"@en ;
-    rdfs:label "云服务商"@zh .
+    rdfs:label "云服务商"@zh ;
+    rdfs:comment "An organization that publishes and operates one or more cloud services."@en ;
+    rdfs:comment "发布并运营一个或多个云服务的组织。"@zh .
 
 :CloudService rdf:type owl:Class ;
     rdfs:label "Cloud Service"@en ;
-    rdfs:label "云服务"@zh .
+    rdfs:label "云服务"@zh ;
+    rdfs:comment "An identifiable service offered through a cloud provider's public product catalog."@en ;
+    rdfs:comment "云服务商通过公开产品目录提供的可识别服务。"@zh .
 
 :ComputeService rdf:type owl:Class ;
     rdfs:subClassOf :CloudService ;
     rdfs:label "Compute Service"@en ;
-    rdfs:label "计算服务"@zh .
+    rdfs:label "计算服务"@zh ;
+    rdfs:comment "A cloud service that provides virtual machine, container, or accelerated computing capabilities."@en ;
+    rdfs:comment "提供虚拟机、容器或加速计算能力的云服务。"@zh .
 
 :StorageService rdf:type owl:Class ;
     rdfs:subClassOf :CloudService ;
     rdfs:label "Storage Service"@en ;
-    rdfs:label "存储服务"@zh .
+    rdfs:label "存储服务"@zh ;
+    rdfs:comment "A cloud service that provides persistent object, block, or file storage."@en ;
+    rdfs:comment "提供对象、块或文件数据持久化能力的云服务。"@zh .
 
 :DatabaseService rdf:type owl:Class ;
     rdfs:subClassOf :CloudService ;
     rdfs:label "Database Service"@en ;
-    rdfs:label "数据库服务"@zh .
+    rdfs:label "数据库服务"@zh ;
+    rdfs:comment "A cloud service that deploys, runs, or manages database systems."@en ;
+    rdfs:comment "提供数据库部署、运行或托管能力的云服务。"@zh .
 
 :NetworkingService rdf:type owl:Class ;
     rdfs:subClassOf :CloudService ;
     rdfs:label "Networking Service"@en ;
-    rdfs:label "网络服务"@zh .
+    rdfs:label "网络服务"@zh ;
+    rdfs:comment "A cloud service that connects, routes, protects, or delivers network traffic."@en ;
+    rdfs:comment "连接、路由、保护或分发网络流量的云服务。"@zh .
 
 :MLService rdf:type owl:Class ;
     rdfs:subClassOf :CloudService ;
     rdfs:label "Machine Learning Service"@en ;
-    rdfs:label "机器学习服务"@zh .
+    rdfs:label "机器学习服务"@zh ;
+    rdfs:comment "A cloud service that supports building, training, deploying, or operating machine learning models."@en ;
+    rdfs:comment "支持构建、训练、部署或运行机器学习模型的云服务。"@zh .
 
 :Region rdf:type owl:Class ;
     rdfs:label "Region"@en ;
-    rdfs:label "区域"@zh .
+    rdfs:label "区域"@zh ;
+    rdfs:comment "A named geographic scope used by a provider to describe service availability."@en ;
+    rdfs:comment "云服务商用于描述服务可用位置的命名地理范围。"@zh .
 
 :AccessTier rdf:type owl:Class ;
     rdfs:label "Access Tier"@en ;
-    rdfs:label "访问层级"@zh .
+    rdfs:label "访问层级"@zh ;
+    rdfs:comment "A storage service tier organized by access frequency, latency, or price."@en ;
+    rdfs:comment "对象存储按访问频率、延迟或价格组织的服务层级。"@zh .
 
 :ManagementModel rdf:type owl:Class ;
     rdfs:label "Management Model"@en ;
-    rdfs:label "托管模式"@zh .
+    rdfs:label "托管模式"@zh ;
+    rdfs:comment "A model describing how database infrastructure and operational responsibilities are allocated."@en ;
+    rdfs:comment "描述数据库基础设施和运维责任如何分配的模式。"@zh .
 
 
 #################################################################
@@ -72,31 +92,41 @@
     rdfs:domain :CloudService ;
     rdfs:range :CloudProvider ;
     rdfs:label "has provider"@en ;
-    rdfs:label "由...提供"@zh .
+    rdfs:label "由……提供"@zh ;
+    rdfs:comment "Relates a cloud service to the provider that offers it."@en ;
+    rdfs:comment "把云服务连接到提供该服务的云服务商。"@zh .
 
 :hasRegion rdf:type owl:ObjectProperty ;
     rdfs:domain :CloudService ;
     rdfs:range :Region ;
     rdfs:label "available in region"@en ;
-    rdfs:label "可用区域"@zh .
+    rdfs:label "可用区域"@zh ;
+    rdfs:comment "Relates a cloud service to a region in which it is available."@en ;
+    rdfs:comment "把云服务连接到其可用的云区域。"@zh .
 
 :hasAccessTier rdf:type owl:ObjectProperty ;
     rdfs:domain :StorageService ;
     rdfs:range :AccessTier ;
     rdfs:label "has access tier"@en ;
-    rdfs:label "访问层级"@zh .
+    rdfs:label "访问层级"@zh ;
+    rdfs:comment "Relates a storage service to an access tier it provides."@en ;
+    rdfs:comment "把存储服务连接到它提供的访问层级。"@zh .
 
 :hasManagementModel rdf:type owl:ObjectProperty ;
     rdfs:domain :DatabaseService ;
     rdfs:range :ManagementModel ;
     rdfs:label "has management model"@en ;
-    rdfs:label "托管模式"@zh .
+    rdfs:label "托管模式"@zh ;
+    rdfs:comment "Relates a database service to its management model."@en ;
+    rdfs:comment "把数据库服务连接到其托管模式。"@zh .
 
 :canMigrateTo rdf:type owl:ObjectProperty ;
     rdfs:domain :CloudService ;
     rdfs:range :CloudService ;
     rdfs:label "can migrate to"@en ;
-    rdfs:label "可迁移至"@zh .
+    rdfs:label "可迁移至"@zh ;
+    rdfs:comment "Indicates a documented directed migration path from one cloud service to another."@en ;
+    rdfs:comment "表示从一个云服务到另一个云服务的有公开证据支持的迁移路径。"@zh .
 
 
 #################################################################
@@ -107,33 +137,45 @@
     rdfs:domain :CloudService ;
     rdfs:range xsd:decimal ;
     rdfs:label "monthly price in USD"@en ;
-    rdfs:label "月费（美元）"@zh .
+    rdfs:label "月费（美元）"@zh ;
+    rdfs:comment "A comparable monthly reference price expressed in US dollars under a stated pricing baseline."@en ;
+    rdfs:comment "在明确计费口径下以美元表示的可比月度参考价格。"@zh .
 
 :hasGPU rdf:type owl:DatatypeProperty ;
     rdfs:domain :ComputeService ;
     rdfs:range xsd:boolean ;
     rdfs:label "has GPU support"@en ;
-    rdfs:label "支持 GPU"@zh .
+    rdfs:label "支持 GPU"@zh ;
+    rdfs:comment "Indicates whether a compute service publicly offers GPU computing capability."@en ;
+    rdfs:comment "表示计算服务是否公开提供 GPU 计算能力。"@zh .
 
 :hasFreeTier rdf:type owl:DatatypeProperty ;
     rdfs:domain :CloudService ;
     rdfs:range xsd:boolean ;
     rdfs:label "has free tier"@en ;
-    rdfs:label "有免费额度"@zh .
+    rdfs:label "有免费额度"@zh ;
+    rdfs:comment "Indicates whether a cloud service has a publicly documented free tier or free allowance."@en ;
+    rdfs:comment "表示云服务是否具有公开说明的免费层级或免费额度。"@zh .
 
 :serviceCode rdf:type owl:DatatypeProperty ;
     rdfs:domain :CloudService ;
     rdfs:range xsd:string ;
     rdfs:label "service code"@en ;
-    rdfs:label "服务代码"@zh .
+    rdfs:label "服务代码"@zh ;
+    rdfs:comment "A short provider-specific code used to identify a cloud service."@en ;
+    rdfs:comment "云服务商用于标识云服务的简短代码。"@zh .
 
 :dataSource rdf:type owl:AnnotationProperty ;
     rdfs:label "data source"@en ;
-    rdfs:label "数据来源"@zh .
+    rdfs:label "数据来源"@zh ;
+    rdfs:comment "Records the public evidence source for an ontology term or assertion."@en ;
+    rdfs:comment "记录本体术语或事实的公开证据来源。"@zh .
 
 :lastUpdated rdf:type owl:AnnotationProperty ;
     rdfs:label "last updated"@en ;
-    rdfs:label "最后更新"@zh .
+    rdfs:label "最后更新"@zh ;
+    rdfs:comment "Records the date on which an ontology term or assertion was last reviewed."@en ;
+    rdfs:comment "记录本体术语或事实最近一次核验的日期。"@zh .
 
 
 #################################################################
@@ -184,3 +226,13 @@
     :serviceCode "rds" ;
     :dataSource "https://aws.amazon.com/rds/" ;
     :lastUpdated "2026-07-27"^^xsd:date .
+
+:Azure_VM a :ComputeService ;
+    rdfs:label "Azure Virtual Machines"@en ;
+    rdfs:label "Azure 虚拟机"@zh ;
+    :hasProvider :Azure ;
+    :hasRegion :ap-northeast-1, :ap-southeast-1 ;
+    :hasGPU true ;
+    :serviceCode "azure-vm" ;
+    :dataSource "https://azure.microsoft.com/products/virtual-machines/" ;
+    :lastUpdated "2026-07-30"^^xsd:date .

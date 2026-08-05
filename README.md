@@ -134,9 +134,9 @@ python src/build_kg.py \
 |------|------|------|------|
 | EP01 | 本体到底解决什么问题？ | ✅ 已发布 · [B站] · [YouTube] · [音频](./episodes/ep01/assets/podcast.mp3) | [`episodes/ep01/`](./episodes/ep01) |
 | EP02 | RDF 三元组：知识的原子单位 | ✅ 已发布 · [B站] · [YouTube] · [音频](./episodes/ep02/assets/podcast.mp3) | [`episodes/ep02/`](./episodes/ep02) |
-| EP03 | Protégé 入门：画出你的第一个本体 | [B站] · [YouTube] | [`episodes/ep03/`](./episodes/ep03) |
-| EP04 | OWL 与推理机：让知识自己说话 | [B站] · [YouTube] | [`episodes/ep04/`](./episodes/ep04) |
-| EP05 | 从需求到 Competency Question | [B站] · [YouTube] | [`episodes/ep05/`](./episodes/ep05) |
+| EP03 | 先问问题，再画本体：Competency Questions | 🎬 已制作 · [成片](./podcast-projects/ep03-cq/v1/final.mp4) · [音频](./podcast-projects/ep03-cq/v1/podcast.mp3) | [`episodes/ep03/`](./episodes/ep03) |
+| EP04 | Protégé 入门：从 CQ 到第一个本体 | 🎬 已制作 · [成片](./podcast-projects/ep04-protege/v2/final.mp4) · [音频](./podcast-projects/ep04-protege/v2/podcast.mp3) | [`episodes/ep04/`](./episodes/ep04) |
+| EP05 | OWL 与推理：机器究竟推断出了什么？ | 🎬 已制作 · [成片](./podcast-projects/ep05-owl-reasoning/v1/final.mp4) · [音频](./podcast-projects/ep05-owl-reasoning/v1/podcast.mp3) | [`episodes/ep05/`](./episodes/ep05) |
 | EP06 | 实体抽取：NER 与 LLM 对比 | [B站] · [YouTube] | [`episodes/ep06/`](./episodes/ep06) |
 | EP07 | 关系抽取：OpenIE 与 LLM 方法 | [B站] · [YouTube] | [`episodes/ep07/`](./episodes/ep07) |
 | EP08 | 实体链接：把名字对到真实世界 | [B站] · [YouTube] | [`episodes/ep08/`](./episodes/ep08) |

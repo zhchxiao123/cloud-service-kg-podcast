@@ -78,6 +78,8 @@ temp/
 !episodes/**/assets/*.wav
 !episodes/**/assets/*.aiff
 !episodes/**/assets/*.pptx
+!podcast-projects/**/*.mp4
+!podcast-projects/**/*.mp3
 
 # OS
 Thumbs.db

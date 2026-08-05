@@ -1,0 +1,66 @@
+{
+  "meta": {
+    "title": "EP05｜OWL 与推理：机器究竟推断出了什么？",
+    "host": "小舟",
+    "guest": "林老师",
+    "language": "zh-CN",
+    "total_slides": 10
+  },
+  "script": [
+    {"role": "host", "slide": 1, "text": "欢迎回来。前四集我们已经把云服务知识写成了 RDF，也在 Protégé 里搭出了本体骨架。今天终于轮到一个听上去最像魔法的词，推理。"},
+    {"role": "guest", "slide": 1, "text": "但我们今天要做的恰恰是拆掉魔法感。OWL 推理不是大模型猜答案，而是依据明确公理，把所有必然成立的结论计算出来。每个结果都应该能追溯。"},
+
+    {"role": "host", "slide": 2, "text": "这一集我们追四个问题。第一，显式事实和推断事实到底差在哪。第二，什么样的公理能驱动自动归类。"},
+    {"role": "guest", "slide": 2, "text": "第三，机器怎样发现逻辑矛盾。第四，OWL 为什么不会把缺失字段直接判错。最后我们会把推理器和 SHACL 的职责分开。"},
+
+    {"role": "host", "slide": 3, "text": "先看显式事实。我们直接写下 Demo GPU Service 是 ComputeService，它位于 Tokyo，并且 hasGPU 的值为 true。这些就是 asserted facts。"},
+    {"role": "guest", "slide": 3, "text": "而 inferred facts 没有逐条写在文件里。它们是公理与显式事实共同蕴含的结果。只要前提都成立，结论就必须成立，不依赖模型的信心分数。"},
+    {"role": "host", "slide": 3, "text": "所以推理器不是偷偷补常识。它不会因为名字里有 GPU，就自作主张把服务分进 GPU 类。"},
+    {"role": "guest", "slide": 3, "text": "对。标签是给人看的，正式语义来自公理。一个好习惯是看到推断结果就问，哪几条公理构成了这条结论的解释链。"},
+
+    {"role": "host", "slide": 4, "text": "最简单的链条是 subClassOf。我们声明 ComputeService 是 CloudService 的子类，含义是每一个计算服务也必然是云服务。"},
+    {"role": "guest", "slide": 4, "text": "于是只要实例已经属于 ComputeService，推理器就能得到它也属于 CloudService。若类层级更深，类型还会继续向上继承。"},
+    {"role": "host", "slide": 4, "text": "这里容易犯一个错误，只把类命名成 ComputeService，却没有写子类公理，然后期待机器看懂英文。"},
+    {"role": "guest", "slide": 4, "text": "机器不会从名字猜语义。名称、中文标签和注释能帮助协作，但真正让类型传递的是 rdfs subClassOf 这条公理。"},
+
+    {"role": "host", "slide": 5, "text": "子类能向上推，但还不够自动识别一个新类别。比如我想让所有满足条件的服务自动进入 GPUComputeOffering，该怎么定义。"},
+    {"role": "guest", "slide": 5, "text": "关键是 equivalentClass。subClassOf 通常只说一个类成员必须满足什么，是必要条件。equivalentClass 则说两边成员完全相同，条件既必要又充分。"},
+    {"role": "host", "slide": 5, "text": "也就是说，我们可以定义 GPUComputeOffering 等价于 ComputeService 与 hasGPU value true 的交集。"},
+    {"role": "guest", "slide": 5, "text": "没错。向前看，GPUComputeOffering 的实例必须是计算服务且 GPU 值为真。反过来看，任何已经满足这两个条件的实例，也会被推理器归入 GPUComputeOffering。"},
+    {"role": "host", "slide": 5, "text": "这就是原始类和定义类的实际差别。只有名字和上位类时，机器没有足够条件从数据反向识别。"},
+    {"role": "guest", "slide": 5, "text": "是的。自动归类不来自创建了一个漂亮的类名，而来自我们给出了可计算的充分条件。条件还可以用交集把多个限制组合起来。"},
+
+    {"role": "host", "slide": 6, "text": "接下来是最容易写错的一处，someValuesFrom。比如 RegionalComputeOffering 等价于 ComputeService，并且 hasRegion some Region。这里的 some 到底是什么意思。"},
+    {"role": "guest", "slide": 6, "text": "它表示至少存在一个 hasRegion 的目标，而且那个目标属于 Region。重点是存在性。目标甚至可以暂时没有名字，只要逻辑上必须存在即可。"},
+    {"role": "host", "slide": 6, "text": "那 GPU 也能写成 hasGPU some boolean 吗。"},
+    {"role": "guest", "slide": 6, "text": "不能用它表达支持 GPU。some boolean 只要求存在一个布尔值，true 和 false 都是合法布尔值。所以 hasGPU false 的实例也会满足这个限制。"},
+    {"role": "host", "slide": 6, "text": "正确写法是 hasGPU value true，因为我们关心的不是存在任意布尔值，而是值必须等于 true。"},
+    {"role": "guest", "slide": 6, "text": "完全正确。对象关系需要表达至少有一个合格目标时，用 some。数据值必须等于一个具体值时，用 value。把两者并排理解，比死记语法更可靠。"},
+
+    {"role": "host", "slide": 7, "text": "现在打开 reasoning demo 文件。对 Demo GPU Service，我们只断言三个事实，Compute 类型、Tokyo 区域和 GPU 为真，没有显式写任何定义类类型。"},
+    {"role": "guest", "slide": 7, "text": "在 Protégé 里选择 HermiT，启动推理后查看实例类型。首先，ComputeService 的子类公理会带来 CloudService。"},
+    {"role": "host", "slide": 7, "text": "其次，hasRegion 指向 Tokyo，而 Tokyo 属于 Region，所以它满足 hasRegion some Region，被归入 RegionalComputeOffering。"},
+    {"role": "guest", "slide": 7, "text": "最后，ComputeService 加上 hasGPU value true 满足 GPU 定义类的充分条件，因此得到 GPUComputeOffering。三条原始事实最终多出三个可解释类型。"},
+    {"role": "host", "slide": 7, "text": "Protégé 通常会把推断信息用不同样式显示。我们还可以切换 asserted 与 inferred 层级，查看分类前后的差异。"},
+    {"role": "guest", "slide": 7, "text": "如果结果不符合预期，不要先怪推理器。逐项检查类定义、属性方向、目标类型和数据值，再使用解释功能追踪一条具体推断。"},
+
+    {"role": "host", "slide": 8, "text": "推理器不只增加类型，还能发现没有任何可能世界可以同时满足的知识，也就是不一致。我们做一个故意错误的最小案例。"},
+    {"role": "guest", "slide": 8, "text": "第一条公理声明 ComputeService 与 StorageService 互斥，也就是 disjointWith。第二条说 Broken Service 属于 ComputeService。第三条又说它属于 StorageService。"},
+    {"role": "host", "slide": 8, "text": "三条公理单独看都能写进文件，但联合起来就不可能同时为真。推理器因此报告本体不一致。"},
+    {"role": "guest", "slide": 8, "text": "解释时必须把冲突公理说全。只有双重类型还不矛盾，因为一个个体本来可以属于多个类。真正把它变成矛盾的是互斥声明。"},
+    {"role": "host", "slide": 8, "text": "而且冲突不代表现实世界绝对禁止混合服务。它只表示我们的模型把两类定义成互斥，却又给了同一个体两个类型。"},
+    {"role": "guest", "slide": 8, "text": "如果业务允许一项产品同时承担计算和存储职责，应该调整分类方法或移除互斥公理。推理器暴露的是模型承诺之间的冲突。"},
+
+    {"role": "host", "slide": 9, "text": "最后讲两个和数据库直觉相反的假设。第一是开放世界。OWL 文件没有写某服务支持 GPU，并不能推出它不支持 GPU。"},
+    {"role": "guest", "slide": 9, "text": "缺失只代表未知，可能以后从另一个来源补齐。要表达明确否定，需要负属性断言或其他能蕴含否定的公理，不能把空白自动读成 false。"},
+    {"role": "host", "slide": 9, "text": "第二是没有默认的唯一名称假设。两个不同 IRI 不会仅凭名字不同，就自动被认定为两个不同个体。"},
+    {"role": "guest", "slide": 9, "text": "如果业务确实要求它们不同，可以显式使用 differentFrom。反过来，两个数据源的名字也可能通过 sameAs 表明指向同一个对象。"},
+    {"role": "host", "slide": 9, "text": "这也解释了为什么 OWL 推理器不能替代数据校验。推理器关心蕴含和逻辑一致性，不会因为一个必填字段没出现就自然报错。"},
+    {"role": "guest", "slide": 9, "text": "要检查字段是否必须出现、数量是否符合要求、字符串格式是否合格，应该交给 SHACL 这类形状语言。OWL 描述世界可能是什么，SHACL 检查提交的数据是否符合约定。"},
+
+    {"role": "host", "slide": 10, "text": "今天真正要带走的不是点击启动推理，而是会解释结果。看到自动类型，要能指出它来自哪条子类链或定义类条件。"},
+    {"role": "guest", "slide": 10, "text": "看到不一致，要能缩小到一组共同导致矛盾的公理。与此同时，始终记住未知不等于错误，推理和校验解决的是两类不同问题。"},
+    {"role": "host", "slide": 10, "text": "项目里已经放入两个可直接打开的 Turtle 文件和预期结果说明。你可以亲手复现一次自动归类，再制造一次逻辑冲突。"},
+    {"role": "guest", "slide": 10, "text": "下一集我们进入 SPARQL，把第三集写下的 Competency Questions 变成可执行查询，检验这张图是否真的回答业务问题。"}
+  ]
+}

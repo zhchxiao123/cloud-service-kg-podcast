@@ -1,0 +1,21 @@
+{
+  "meta": {
+    "title": "EP05｜OWL 与推理：机器究竟推断出了什么？",
+    "subtitle": "从显式事实到自动归类，再到可解释的逻辑冲突",
+    "audience": "已完成 RDF、CQ 与 Protégé 入门的知识图谱学习者",
+    "total_slides": 10,
+    "estimated_minutes": 10
+  },
+  "slides": [
+    {"slide": 1, "type": "cover", "title": "机器究竟推断出了什么？", "subtitle": "OWL 与推理｜EP05", "key_points": [], "depth": "short"},
+    {"slide": 2, "type": "toc", "title": "这一集只追四个问题", "subtitle": "结论从哪里来，错误又在哪里", "key_points": [], "depth": "short"},
+    {"slide": 3, "type": "content", "title": "显式事实，不等于全部知识", "subtitle": "Asserted 与 Inferred", "key_points": ["原始三元组是显式事实", "公理链产生隐式结论", "推理不是概率猜测", "每个结论都应可解释"], "depth": "medium"},
+    {"slide": 4, "type": "content", "title": "subClassOf 让类型沿层级传递", "subtitle": "从局部类型得到更一般的类型", "key_points": ["Compute 是 Cloud 子类", "实例类型向上继承", "标签文字不会触发推理", "公理才提供正式语义"], "depth": "medium"},
+    {"slide": 5, "type": "content", "title": "equivalentClass 给出充分且必要条件", "subtitle": "定义类，才能让机器反向归类", "key_points": ["子类只给必要条件", "等价类支持双向推理", "交集组合多个条件", "实例可被自动归类"], "depth": "long"},
+    {"slide": 6, "type": "content", "title": "some 是存在，不是布尔值为真", "subtitle": "someValuesFrom 与 hasValue 的边界", "key_points": ["some 表示至少一个", "对象可以暂时无名称", "some boolean 也接受 false", "布尔真要使用 value true"], "depth": "long"},
+    {"slide": 7, "type": "content", "title": "三条事实，推断出三个新类型", "subtitle": "在 Protégé 中运行 HermiT", "key_points": ["显式类型是 Compute", "区域触发 Regional", "true 触发 GPU Offering", "上位类得到 Cloud"], "depth": "long"},
+    {"slide": 8, "type": "content", "title": "三条公理，制造一个可解释冲突", "subtitle": "disjointWith 把互斥写进模型", "key_points": ["Compute 与 Storage 互斥", "同一个体属于两类", "联合成立时本体不一致", "冲突来自建模决定"], "depth": "long"},
+    {"slide": 9, "type": "content", "title": "OWL 不把未知自动当成错误", "subtitle": "开放世界、名称假设与数据校验", "key_points": ["缺失不等于 false", "不同名称未必不同个体", "推理器检查蕴含与一致", "SHACL 检查数据形状"], "depth": "long"},
+    {"slide": 10, "type": "summary", "title": "会解释结果，才算真正会推理", "subtitle": "从自动归类走向可执行查询", "key_points": ["区分显式与隐式知识", "定义类驱动自动归类", "互斥公理暴露逻辑矛盾", "下一集用 SPARQL 验证 CQ"], "depth": "medium"}
+  ]
+}

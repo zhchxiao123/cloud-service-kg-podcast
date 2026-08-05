@@ -1,0 +1,1042 @@
+[
+  {
+    "index": 0,
+    "turn_index": 0,
+    "role": "host",
+    "duration": 0.838,
+    "start": 0.0,
+    "slide": 1,
+    "sentence_index": 0,
+    "text": "欢迎回来。"
+  },
+  {
+    "index": 1,
+    "turn_index": 0,
+    "role": "host",
+    "duration": 5.029,
+    "start": 0.838,
+    "slide": 1,
+    "sentence_index": 1,
+    "text": "前四集我们已经把云服务知识写成了 RDF，也在 Protégé 里搭出了本体骨架。"
+  },
+  {
+    "index": 2,
+    "turn_index": 0,
+    "role": "host",
+    "duration": 3.429,
+    "start": 5.867,
+    "slide": 1,
+    "sentence_index": 2,
+    "text": "今天终于轮到一个听上去最像魔法的词，推理。"
+  },
+  {
+    "index": 3,
+    "turn_index": 1,
+    "role": "guest",
+    "duration": 2.59,
+    "start": 9.295,
+    "slide": 1,
+    "sentence_index": 0,
+    "text": "但我们今天要做的恰恰是拆掉魔法感。"
+  },
+  {
+    "index": 4,
+    "turn_index": 1,
+    "role": "guest",
+    "duration": 5.79,
+    "start": 11.886,
+    "slide": 1,
+    "sentence_index": 1,
+    "text": "OWL 推理不是大模型猜答案，而是依据明确公理，把所有必然成立的结论计算出来。"
+  },
+  {
+    "index": 5,
+    "turn_index": 1,
+    "role": "guest",
+    "duration": 1.524,
+    "start": 17.676,
+    "slide": 1,
+    "sentence_index": 2,
+    "text": "每个结果都应该能追溯。"
+  },
+  {
+    "index": 6,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 1.524,
+    "start": 19.2,
+    "slide": 2,
+    "sentence_index": 0,
+    "text": "这一集我们追四个问题。"
+  },
+  {
+    "index": 7,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 3.048,
+    "start": 20.724,
+    "slide": 2,
+    "sentence_index": 1,
+    "text": "第一，显式事实和推断事实到底差在哪。"
+  },
+  {
+    "index": 8,
+    "turn_index": 2,
+    "role": "host",
+    "duration": 2.59,
+    "start": 23.771,
+    "slide": 2,
+    "sentence_index": 2,
+    "text": "第二，什么样的公理能驱动自动归类。"
+  },
+  {
+    "index": 9,
+    "turn_index": 3,
+    "role": "guest",
+    "duration": 2.133,
+    "start": 26.362,
+    "slide": 2,
+    "sentence_index": 0,
+    "text": "第三，机器怎样发现逻辑矛盾。"
+  },
+  {
+    "index": 10,
+    "turn_index": 3,
+    "role": "guest",
+    "duration": 3.581,
+    "start": 28.495,
+    "slide": 2,
+    "sentence_index": 1,
+    "text": "第四，OWL 为什么不会把缺失字段直接判错。"
+  },
+  {
+    "index": 11,
+    "turn_index": 3,
+    "role": "guest",
+    "duration": 3.581,
+    "start": 32.076,
+    "slide": 2,
+    "sentence_index": 2,
+    "text": "最后我们会把推理器和 SHACL 的职责分开。"
+  },
+  {
+    "index": 12,
+    "turn_index": 4,
+    "role": "host",
+    "duration": 1.219,
+    "start": 35.657,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "先看显式事实。"
+  },
+  {
+    "index": 13,
+    "turn_index": 4,
+    "role": "host",
+    "duration": 6.629,
+    "start": 36.876,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "我们直接写下 Demo GPU Service 是 ComputeService，它位于 Tokyo，并且 hasGPU 的值为 true。"
+  },
+  {
+    "index": 14,
+    "turn_index": 4,
+    "role": "host",
+    "duration": 1.905,
+    "start": 43.505,
+    "slide": 3,
+    "sentence_index": 2,
+    "text": "这些就是 asserted facts。"
+  },
+  {
+    "index": 15,
+    "turn_index": 5,
+    "role": "guest",
+    "duration": 2.59,
+    "start": 45.41,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "而 inferred facts 没有逐条写在文件里。"
+  },
+  {
+    "index": 16,
+    "turn_index": 5,
+    "role": "guest",
+    "duration": 2.819,
+    "start": 48.0,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "它们是公理与显式事实共同蕴含的结果。"
+  },
+  {
+    "index": 17,
+    "turn_index": 5,
+    "role": "guest",
+    "duration": 4.038,
+    "start": 50.819,
+    "slide": 3,
+    "sentence_index": 2,
+    "text": "只要前提都成立，结论就必须成立，不依赖模型的信心分数。"
+  },
+  {
+    "index": 18,
+    "turn_index": 6,
+    "role": "host",
+    "duration": 2.057,
+    "start": 54.857,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "所以推理器不是偷偷补常识。"
+  },
+  {
+    "index": 19,
+    "turn_index": 6,
+    "role": "host",
+    "duration": 4.343,
+    "start": 56.914,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "它不会因为名字里有 GPU，就自作主张把服务分进 GPU 类。"
+  },
+  {
+    "index": 20,
+    "turn_index": 7,
+    "role": "guest",
+    "duration": 0.381,
+    "start": 61.257,
+    "slide": 3,
+    "sentence_index": 0,
+    "text": "对。"
+  },
+  {
+    "index": 21,
+    "turn_index": 7,
+    "role": "guest",
+    "duration": 2.362,
+    "start": 61.638,
+    "slide": 3,
+    "sentence_index": 1,
+    "text": "标签是给人看的，正式语义来自公理。"
+  },
+  {
+    "index": 22,
+    "turn_index": 7,
+    "role": "guest",
+    "duration": 4.701,
+    "start": 64.0,
+    "slide": 3,
+    "sentence_index": 2,
+    "text": "一个好习惯是看到推断结果就问，哪几条公理构成了这条结论的解释链。"
+  },
+  {
+    "index": 23,
+    "turn_index": 8,
+    "role": "host",
+    "duration": 2.21,
+    "start": 68.701,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "最简单的链条是 subClassOf。"
+  },
+  {
+    "index": 24,
+    "turn_index": 8,
+    "role": "host",
+    "duration": 6.221,
+    "start": 70.91,
+    "slide": 4,
+    "sentence_index": 1,
+    "text": "我们声明 ComputeService 是 CloudService 的子类，含义是每一个计算服务也必然是云服务。"
+  },
+  {
+    "index": 25,
+    "turn_index": 9,
+    "role": "guest",
+    "duration": 5.029,
+    "start": 77.131,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "于是只要实例已经属于 ComputeService，推理器就能得到它也属于 CloudService。"
+  },
+  {
+    "index": 26,
+    "turn_index": 9,
+    "role": "guest",
+    "duration": 2.804,
+    "start": 82.16,
+    "slide": 4,
+    "sentence_index": 1,
+    "text": "若类层级更深，类型还会继续向上继承。"
+  },
+  {
+    "index": 27,
+    "turn_index": 10,
+    "role": "host",
+    "duration": 6.752,
+    "start": 84.963,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "这里容易犯一个错误，只把类命名成 ComputeService，却没有写子类公理，然后期待机器看懂英文。"
+  },
+  {
+    "index": 28,
+    "turn_index": 11,
+    "role": "guest",
+    "duration": 1.752,
+    "start": 91.716,
+    "slide": 4,
+    "sentence_index": 0,
+    "text": "机器不会从名字猜语义。"
+  },
+  {
+    "index": 29,
+    "turn_index": 11,
+    "role": "guest",
+    "duration": 6.781,
+    "start": 93.469,
+    "slide": 4,
+    "sentence_index": 1,
+    "text": "名称、中文标签和注释能帮助协作，但真正让类型传递的是 rdfs subClassOf 这条公理。"
+  },
+  {
+    "index": 30,
+    "turn_index": 12,
+    "role": "host",
+    "duration": 3.276,
+    "start": 100.25,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "子类能向上推，但还不够自动识别一个新类别。"
+  },
+  {
+    "index": 31,
+    "turn_index": 12,
+    "role": "host",
+    "duration": 4.648,
+    "start": 103.526,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "比如我想让所有满足条件的服务自动进入 GPUComputeOffering，该怎么定义。"
+  },
+  {
+    "index": 32,
+    "turn_index": 13,
+    "role": "guest",
+    "duration": 1.676,
+    "start": 108.173,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "关键是 equivalentClass。"
+  },
+  {
+    "index": 33,
+    "turn_index": 13,
+    "role": "guest",
+    "duration": 3.581,
+    "start": 109.85,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "subClassOf 通常只说一个类成员必须满足什么，是必要条件。"
+  },
+  {
+    "index": 34,
+    "turn_index": 13,
+    "role": "guest",
+    "duration": 4.246,
+    "start": 113.43,
+    "slide": 5,
+    "sentence_index": 2,
+    "text": "equivalentClass 则说两边成员完全相同，条件既必要又充分。"
+  },
+  {
+    "index": 35,
+    "turn_index": 14,
+    "role": "host",
+    "duration": 6.705,
+    "start": 117.675,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "也就是说，我们可以定义 GPUComputeOffering 等价于 ComputeService 与 hasGPU value true 的交集。"
+  },
+  {
+    "index": 36,
+    "turn_index": 15,
+    "role": "guest",
+    "duration": 0.61,
+    "start": 124.38,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "没错。"
+  },
+  {
+    "index": 37,
+    "turn_index": 15,
+    "role": "guest",
+    "duration": 4.648,
+    "start": 124.99,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "向前看，GPUComputeOffering 的实例必须是计算服务且 GPU 值为真。"
+  },
+  {
+    "index": 38,
+    "turn_index": 15,
+    "role": "guest",
+    "duration": 5.005,
+    "start": 129.637,
+    "slide": 5,
+    "sentence_index": 2,
+    "text": "反过来看，任何已经满足这两个条件的实例，也会被推理器归入 GPUComputeOffering。"
+  },
+  {
+    "index": 39,
+    "turn_index": 16,
+    "role": "host",
+    "duration": 2.514,
+    "start": 134.642,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "这就是原始类和定义类的实际差别。"
+  },
+  {
+    "index": 40,
+    "turn_index": 16,
+    "role": "host",
+    "duration": 4.571,
+    "start": 137.156,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "只有名字和上位类时，机器没有足够条件从数据反向识别。"
+  },
+  {
+    "index": 41,
+    "turn_index": 17,
+    "role": "guest",
+    "duration": 0.533,
+    "start": 141.728,
+    "slide": 5,
+    "sentence_index": 0,
+    "text": "是的。"
+  },
+  {
+    "index": 42,
+    "turn_index": 17,
+    "role": "guest",
+    "duration": 4.648,
+    "start": 142.261,
+    "slide": 5,
+    "sentence_index": 1,
+    "text": "自动归类不来自创建了一个漂亮的类名，而来自我们给出了可计算的充分条件。"
+  },
+  {
+    "index": 43,
+    "turn_index": 17,
+    "role": "guest",
+    "duration": 2.804,
+    "start": 146.909,
+    "slide": 5,
+    "sentence_index": 2,
+    "text": "条件还可以用交集把多个限制组合起来。"
+  },
+  {
+    "index": 44,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 3.352,
+    "start": 149.712,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "接下来是最容易写错的一处，someValuesFrom。"
+  },
+  {
+    "index": 45,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 5.029,
+    "start": 153.065,
+    "slide": 6,
+    "sentence_index": 1,
+    "text": "比如 RegionalComputeOffering 等价于 ComputeService，并且 hasRegion some Region。"
+  },
+  {
+    "index": 46,
+    "turn_index": 18,
+    "role": "host",
+    "duration": 1.6,
+    "start": 158.093,
+    "slide": 6,
+    "sentence_index": 2,
+    "text": "这里的 some 到底是什么意思。"
+  },
+  {
+    "index": 47,
+    "turn_index": 19,
+    "role": "guest",
+    "duration": 4.571,
+    "start": 159.693,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "它表示至少存在一个 hasRegion 的目标，而且那个目标属于 Region。"
+  },
+  {
+    "index": 48,
+    "turn_index": 19,
+    "role": "guest",
+    "duration": 1.219,
+    "start": 164.265,
+    "slide": 6,
+    "sentence_index": 1,
+    "text": "重点是存在性。"
+  },
+  {
+    "index": 49,
+    "turn_index": 19,
+    "role": "guest",
+    "duration": 3.487,
+    "start": 165.484,
+    "slide": 6,
+    "sentence_index": 2,
+    "text": "目标甚至可以暂时没有名字，只要逻辑上必须存在即可。"
+  },
+  {
+    "index": 50,
+    "turn_index": 20,
+    "role": "host",
+    "duration": 3.108,
+    "start": 168.97,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "那 GPU 也能写成 hasGPU some boolean 吗。"
+  },
+  {
+    "index": 51,
+    "turn_index": 21,
+    "role": "guest",
+    "duration": 1.905,
+    "start": 172.077,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "不能用它表达支持 GPU。"
+  },
+  {
+    "index": 52,
+    "turn_index": 21,
+    "role": "guest",
+    "duration": 4.571,
+    "start": 173.982,
+    "slide": 6,
+    "sentence_index": 1,
+    "text": "some boolean 只要求存在一个布尔值，true 和 false 都是合法布尔值。"
+  },
+  {
+    "index": 53,
+    "turn_index": 21,
+    "role": "guest",
+    "duration": 2.971,
+    "start": 178.553,
+    "slide": 6,
+    "sentence_index": 2,
+    "text": "所以 hasGPU false 的实例也会满足这个限制。"
+  },
+  {
+    "index": 54,
+    "turn_index": 22,
+    "role": "host",
+    "duration": 6.476,
+    "start": 181.525,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "正确写法是 hasGPU value true，因为我们关心的不是存在任意布尔值，而是值必须等于 true。"
+  },
+  {
+    "index": 55,
+    "turn_index": 23,
+    "role": "guest",
+    "duration": 0.914,
+    "start": 188.001,
+    "slide": 6,
+    "sentence_index": 0,
+    "text": "完全正确。"
+  },
+  {
+    "index": 56,
+    "turn_index": 23,
+    "role": "guest",
+    "duration": 3.2,
+    "start": 188.915,
+    "slide": 6,
+    "sentence_index": 1,
+    "text": "对象关系需要表达至少有一个合格目标时，用 some。"
+  },
+  {
+    "index": 57,
+    "turn_index": 23,
+    "role": "guest",
+    "duration": 2.59,
+    "start": 192.115,
+    "slide": 6,
+    "sentence_index": 2,
+    "text": "数据值必须等于一个具体值时，用 value。"
+  },
+  {
+    "index": 58,
+    "turn_index": 23,
+    "role": "guest",
+    "duration": 2.667,
+    "start": 194.706,
+    "slide": 6,
+    "sentence_index": 3,
+    "text": "把两者并排理解，比死记语法更可靠。"
+  },
+  {
+    "index": 59,
+    "turn_index": 24,
+    "role": "host",
+    "duration": 1.981,
+    "start": 197.372,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "现在打开 reasoning demo 文件。"
+  },
+  {
+    "index": 60,
+    "turn_index": 24,
+    "role": "host",
+    "duration": 8.61,
+    "start": 199.353,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "对 Demo GPU Service，我们只断言三个事实，Compute 类型、Tokyo 区域和 GPU 为真，没有显式写任何定义类类型。"
+  },
+  {
+    "index": 61,
+    "turn_index": 25,
+    "role": "guest",
+    "duration": 3.352,
+    "start": 207.963,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "在 Protégé 里选择 HermiT，启动推理后查看实例类型。"
+  },
+  {
+    "index": 62,
+    "turn_index": 25,
+    "role": "guest",
+    "duration": 3.352,
+    "start": 211.315,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "首先，ComputeService 的子类公理会带来 CloudService。"
+  },
+  {
+    "index": 63,
+    "turn_index": 26,
+    "role": "host",
+    "duration": 7.314,
+    "start": 214.668,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "其次，hasRegion 指向 Tokyo，而 Tokyo 属于 Region，所以它满足 hasRegion some Region，被归入 RegionalComputeOffering。"
+  },
+  {
+    "index": 64,
+    "turn_index": 27,
+    "role": "guest",
+    "duration": 7.056,
+    "start": 221.982,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "最后，ComputeService 加上 hasGPU value true 满足 GPU 定义类的充分条件，因此得到 GPUComputeOffering。"
+  },
+  {
+    "index": 65,
+    "turn_index": 27,
+    "role": "guest",
+    "duration": 2.895,
+    "start": 229.038,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "三条原始事实最终多出三个可解释类型。"
+  },
+  {
+    "index": 66,
+    "turn_index": 28,
+    "role": "host",
+    "duration": 3.124,
+    "start": 231.933,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "Protégé 通常会把推断信息用不同样式显示。"
+  },
+  {
+    "index": 67,
+    "turn_index": 28,
+    "role": "host",
+    "duration": 4.495,
+    "start": 235.057,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "我们还可以切换 asserted 与 inferred 层级，查看分类前后的差异。"
+  },
+  {
+    "index": 68,
+    "turn_index": 29,
+    "role": "guest",
+    "duration": 2.59,
+    "start": 239.552,
+    "slide": 7,
+    "sentence_index": 0,
+    "text": "如果结果不符合预期，不要先怪推理器。"
+  },
+  {
+    "index": 69,
+    "turn_index": 29,
+    "role": "guest",
+    "duration": 5.84,
+    "start": 242.143,
+    "slide": 7,
+    "sentence_index": 1,
+    "text": "逐项检查类定义、属性方向、目标类型和数据值，再使用解释功能追踪一条具体推断。"
+  },
+  {
+    "index": 70,
+    "turn_index": 30,
+    "role": "host",
+    "duration": 5.943,
+    "start": 247.983,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "推理器不只增加类型，还能发现没有任何可能世界可以同时满足的知识，也就是不一致。"
+  },
+  {
+    "index": 71,
+    "turn_index": 30,
+    "role": "host",
+    "duration": 1.981,
+    "start": 253.926,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "我们做一个故意错误的最小案例。"
+  },
+  {
+    "index": 72,
+    "turn_index": 31,
+    "role": "guest",
+    "duration": 4.571,
+    "start": 255.907,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "第一条公理声明 ComputeService 与 StorageService 互斥，也就是 disjointWith。"
+  },
+  {
+    "index": 73,
+    "turn_index": 31,
+    "role": "guest",
+    "duration": 2.819,
+    "start": 260.478,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "第二条说 Broken Service 属于 ComputeService。"
+  },
+  {
+    "index": 74,
+    "turn_index": 31,
+    "role": "guest",
+    "duration": 2.362,
+    "start": 263.297,
+    "slide": 8,
+    "sentence_index": 2,
+    "text": "第三条又说它属于 StorageService。"
+  },
+  {
+    "index": 75,
+    "turn_index": 32,
+    "role": "host",
+    "duration": 4.648,
+    "start": 265.659,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "三条公理单独看都能写进文件，但联合起来就不可能同时为真。"
+  },
+  {
+    "index": 76,
+    "turn_index": 32,
+    "role": "host",
+    "duration": 2.046,
+    "start": 270.307,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "推理器因此报告本体不一致。"
+  },
+  {
+    "index": 77,
+    "turn_index": 33,
+    "role": "guest",
+    "duration": 2.21,
+    "start": 272.352,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "解释时必须把冲突公理说全。"
+  },
+  {
+    "index": 78,
+    "turn_index": 33,
+    "role": "guest",
+    "duration": 3.505,
+    "start": 274.562,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "只有双重类型还不矛盾，因为一个个体本来可以属于多个类。"
+  },
+  {
+    "index": 79,
+    "turn_index": 33,
+    "role": "guest",
+    "duration": 2.21,
+    "start": 278.067,
+    "slide": 8,
+    "sentence_index": 2,
+    "text": "真正把它变成矛盾的是互斥声明。"
+  },
+  {
+    "index": 80,
+    "turn_index": 34,
+    "role": "host",
+    "duration": 3.124,
+    "start": 280.276,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "而且冲突不代表现实世界绝对禁止混合服务。"
+  },
+  {
+    "index": 81,
+    "turn_index": 34,
+    "role": "host",
+    "duration": 4.876,
+    "start": 283.4,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "它只表示我们的模型把两类定义成互斥，却又给了同一个体两个类型。"
+  },
+  {
+    "index": 82,
+    "turn_index": 35,
+    "role": "guest",
+    "duration": 6.296,
+    "start": 288.276,
+    "slide": 8,
+    "sentence_index": 0,
+    "text": "如果业务允许一项产品同时承担计算和存储职责，应该调整分类方法或移除互斥公理。"
+  },
+  {
+    "index": 83,
+    "turn_index": 35,
+    "role": "guest",
+    "duration": 2.514,
+    "start": 294.572,
+    "slide": 8,
+    "sentence_index": 1,
+    "text": "推理器暴露的是模型承诺之间的冲突。"
+  },
+  {
+    "index": 84,
+    "turn_index": 36,
+    "role": "host",
+    "duration": 3.048,
+    "start": 297.087,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "最后讲两个和数据库直觉相反的假设。"
+  },
+  {
+    "index": 85,
+    "turn_index": 36,
+    "role": "host",
+    "duration": 1.219,
+    "start": 300.134,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "第一是开放世界。"
+  },
+  {
+    "index": 86,
+    "turn_index": 36,
+    "role": "host",
+    "duration": 4.93,
+    "start": 301.353,
+    "slide": 9,
+    "sentence_index": 2,
+    "text": "OWL 文件没有写某服务支持 GPU，并不能推出它不支持 GPU。"
+  },
+  {
+    "index": 87,
+    "turn_index": 37,
+    "role": "guest",
+    "duration": 3.048,
+    "start": 306.282,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "缺失只代表未知，可能以后从另一个来源补齐。"
+  },
+  {
+    "index": 88,
+    "turn_index": 37,
+    "role": "guest",
+    "duration": 5.943,
+    "start": 309.33,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "要表达明确否定，需要负属性断言或其他能蕴含否定的公理，不能把空白自动读成 false。"
+  },
+  {
+    "index": 89,
+    "turn_index": 38,
+    "role": "host",
+    "duration": 2.362,
+    "start": 315.272,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "第二是没有默认的唯一名称假设。"
+  },
+  {
+    "index": 90,
+    "turn_index": 38,
+    "role": "host",
+    "duration": 4.648,
+    "start": 317.635,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "两个不同 IRI 不会仅凭名字不同，就自动被认定为两个不同个体。"
+  },
+  {
+    "index": 91,
+    "turn_index": 39,
+    "role": "guest",
+    "duration": 3.429,
+    "start": 322.283,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "如果业务确实要求它们不同，可以显式使用 differentFrom。"
+  },
+  {
+    "index": 92,
+    "turn_index": 39,
+    "role": "guest",
+    "duration": 4.267,
+    "start": 325.711,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "反过来，两个数据源的名字也可能通过 sameAs 表明指向同一个对象。"
+  },
+  {
+    "index": 93,
+    "turn_index": 40,
+    "role": "host",
+    "duration": 3.81,
+    "start": 329.978,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "这也解释了为什么 OWL 推理器不能替代数据校验。"
+  },
+  {
+    "index": 94,
+    "turn_index": 40,
+    "role": "host",
+    "duration": 5.257,
+    "start": 333.788,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "推理器关心蕴含和逻辑一致性，不会因为一个必填字段没出现就自然报错。"
+  },
+  {
+    "index": 95,
+    "turn_index": 41,
+    "role": "guest",
+    "duration": 7.467,
+    "start": 339.045,
+    "slide": 9,
+    "sentence_index": 0,
+    "text": "要检查字段是否必须出现、数量是否符合要求、字符串格式是否合格，应该交给 SHACL 这类形状语言。"
+  },
+  {
+    "index": 96,
+    "turn_index": 41,
+    "role": "guest",
+    "duration": 5.536,
+    "start": 346.511,
+    "slide": 9,
+    "sentence_index": 1,
+    "text": "OWL 描述世界可能是什么，SHACL 检查提交的数据是否符合约定。"
+  },
+  {
+    "index": 97,
+    "turn_index": 42,
+    "role": "host",
+    "duration": 4.018,
+    "start": 352.048,
+    "slide": 10,
+    "sentence_index": 0,
+    "text": "今天真正要带走的不是点击启动推理，而是会解释结果。"
+  },
+  {
+    "index": 98,
+    "turn_index": 42,
+    "role": "host",
+    "duration": 4.343,
+    "start": 356.066,
+    "slide": 10,
+    "sentence_index": 1,
+    "text": "看到自动类型，要能指出它来自哪条子类链或定义类条件。"
+  },
+  {
+    "index": 99,
+    "turn_index": 43,
+    "role": "guest",
+    "duration": 3.124,
+    "start": 360.409,
+    "slide": 10,
+    "sentence_index": 0,
+    "text": "看到不一致，要能缩小到一组共同导致矛盾的公理。"
+  },
+  {
+    "index": 100,
+    "turn_index": 43,
+    "role": "guest",
+    "duration": 4.929,
+    "start": 363.532,
+    "slide": 10,
+    "sentence_index": 1,
+    "text": "与此同时，始终记住未知不等于错误，推理和校验解决的是两类不同问题。"
+  },
+  {
+    "index": 101,
+    "turn_index": 44,
+    "role": "host",
+    "duration": 4.094,
+    "start": 368.461,
+    "slide": 10,
+    "sentence_index": 0,
+    "text": "项目里已经放入两个可直接打开的 Turtle 文件和预期结果说明。"
+  },
+  {
+    "index": 102,
+    "turn_index": 44,
+    "role": "host",
+    "duration": 3.657,
+    "start": 372.555,
+    "slide": 10,
+    "sentence_index": 1,
+    "text": "你可以亲手复现一次自动归类，再制造一次逻辑冲突。"
+  },
+  {
+    "index": 103,
+    "turn_index": 45,
+    "role": "guest",
+    "duration": 7.314,
+    "start": 376.212,
+    "slide": 10,
+    "sentence_index": 0,
+    "text": "下一集我们进入 SPARQL，把第三集写下的 Competency Questions 变成可执行查询，检验这张图是否真的回答业务问题。"
+  }
+]
